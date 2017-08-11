@@ -7,6 +7,7 @@ using namespace std;
 class ProblemSpec : public BaseProblemSpec {
 protected:
     int N;
+    vector<int> S;
     vector<int> P;
     vector<vector<int>> C;
 
@@ -14,6 +15,7 @@ protected:
 
     void InputFormat() {
         LINE(N);
+        LINE(S % SIZE(N));
         LINES(P, C) % SIZE(N);
     }
 
@@ -27,11 +29,13 @@ protected:
 
     void Subtask1() {
         CONS(1 <= N && N <= 10);
-        CONS(eachElementBetween(P, 0, 1));
+        CONS(eachElementBetween(S, 1, 2));
+        CONS(eachElementBetween(P, 0, 2));
     }
 
     void Subtask2() {
         CONS(1 <= N && N <= 50);
+        CONS(eachElementBetween(S, 1, 50));
         CONS(eachElementBetween(P, 0, 50));
     }
 

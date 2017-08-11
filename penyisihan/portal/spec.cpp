@@ -6,6 +6,8 @@ using namespace std;
 
 class ProblemSpec : public BaseProblemSpec {
 protected:
+    int T;
+
     int R, C, P;
     vector<vector<char>> G;
 
@@ -18,6 +20,14 @@ protected:
 
     void OutputFormat() {
         LINE(res);
+    }
+
+    void MultipleTestCasesConfig() {
+        Counter(T);
+    }
+
+    void MultipleTestCasesConstraints() {
+        CONS(1 <= T && T <= 10);
     }
 
     void Constraints() {

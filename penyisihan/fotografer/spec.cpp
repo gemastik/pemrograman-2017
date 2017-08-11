@@ -6,6 +6,8 @@ using namespace std;
 
 class ProblemSpec : public BaseProblemSpec {
 protected:
+    int T;
+
     int A, B, K;
     string res;
 
@@ -21,17 +23,25 @@ protected:
         CustomScorer();
     }
 
+    void MultipleTestCasesConfig() {
+        Counter(T);
+    }
+
+    void MultipleTestCasesConstraints() {
+        CONS(1 <= T && T <= 20);
+    }
+
     void Constraints() {
-        CONS(1 <= B && B <= 100000);
+        CONS(1 <= B && B <= 1000);
         CONS(1 <= K && K <= B);
     }
 
     void Subtask1() {
-        CONS(0 <= A <= 1);
+        CONS(0 <= A && A <= 1);
     }
 
     void Subtask2() {
-        CONS(0 <= A <= 100000);
+        CONS(0 <= A && A <= 100000);
     }
 };
 

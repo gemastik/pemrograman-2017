@@ -1,5 +1,5 @@
 /*
-  Reason for WA: outputed answer is valid, but not as long as A+B
+  Reason for WA: not handling case where A = 0
  */
 #include <bits/stdc++.h>
 
@@ -93,7 +93,7 @@ void constructOutputResult() {
 
 bool isValidResult() {
   int len = strlen(result);
-  // if (len != A + B) return false;
+  if (len != A + B) return false;
 
   char lastChar = ' ';
   int cnt = 0;

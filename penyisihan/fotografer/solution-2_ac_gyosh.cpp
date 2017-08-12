@@ -117,6 +117,19 @@ void solve() {
   slotB.clear();
   slotC.clear();
 
+  if (A == 0) {
+    if (B > K) {
+      printf("mustahil\n");
+    } else {
+      for (int i = 0; i < B; i++) {
+        printf("%c", FEMALE);
+      }
+      printf("\n");
+    }
+
+    return;
+  }
+
   // Prep
   for (int i = 0; i < ceilDiv(A, 2) - 1; i++) {
     slotA.push_back(0);

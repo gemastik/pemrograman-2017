@@ -50,6 +50,29 @@ protected:
 
 class TestSpec : public BaseTestSpec<ProblemSpec> {
 protected:
+    void SampleTestCase1() {
+        Subtasks({1, 2});
+        Input({"0 4 4"});
+        Output({"PPPP"});
+    }
+
+    void SampleTestCase2() {
+        Subtasks({1, 2});
+        Input({"0 4 3"});
+        Output({"mustahil"});
+    }
+
+    void SampleTestCase3() {
+        Subtasks({1, 2});
+        Input({"1 3 3"});
+        Output({"LPPP"});
+    }
+
+    void SampleTestCase4() {
+        Subtasks({2});
+        Input({"3 3 3"});
+        Output({"LPPLPL"});
+    }
 
     // Exhaustive for small
     void TestGroup1() {
@@ -64,14 +87,14 @@ protected:
         CASE(A = 0, B = 3, K = 3);
         CASE(A = 0, B = 4, K = 1);
         CASE(A = 0, B = 4, K = 2);
-        CASE(A = 0, B = 4, K = 3);
-        CASE(A = 0, B = 4, K = 4);
+        // CASE(A = 0, B = 4, K = 3); (included as sample)
+        // CASE(A = 0, B = 4, K = 4); (included as sample)
         CASE(A = 1, B = 1, K = 1);
         CASE(A = 1, B = 2, K = 1);
         CASE(A = 1, B = 2, K = 2);
         CASE(A = 1, B = 3, K = 1);
         CASE(A = 1, B = 3, K = 2);
-        CASE(A = 1, B = 3, K = 3);
+        // CASE(A = 1, B = 3, K = 3); (included as sample)
         CASE(A = 1, B = 4, K = 1);
         CASE(A = 1, B = 4, K = 2);
         CASE(A = 1, B = 4, K = 3);
@@ -141,7 +164,7 @@ protected:
         // Combination of A = [3, 6], B = [2, 6], K = [2, B]
         CASE(A = 3, B = 2, K = 2);
         CASE(A = 3, B = 3, K = 2);
-        CASE(A = 3, B = 3, K = 3);
+        // CASE(A = 3, B = 3, K = 3); (included as sample)
         CASE(A = 3, B = 4, K = 2);
         CASE(A = 3, B = 4, K = 3);
         CASE(A = 3, B = 4, K = 4);

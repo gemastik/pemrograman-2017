@@ -14,5 +14,10 @@ tags
 
 ### tcframe ###
 runner
+scorer
+solution
 **/tc/*
 **/tc
+
+### misc. Java files ###
+*.class

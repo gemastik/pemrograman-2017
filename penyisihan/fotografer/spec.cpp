@@ -50,9 +50,6 @@ protected:
 
 class TestSpec : public BaseTestSpec<ProblemSpec> {
 protected:
-    void SampleTestCase1() {
-        Subtasks({1, 2});
-    }
 
     // Exhaustive for small
     void TestGroup1() {
@@ -110,8 +107,35 @@ protected:
         CASE(A = 1, B = rnd.nextInt(0, MAX_FEMALE), K = rnd.nextInt(0, B));
     }
 
-    // Exhaustive for large, pt. 1
+    // Exhaustive for large, pt. 0
     void TestGroup3() {
+        Subtasks({2});
+
+        // Combination of A = [2, 2], B = [2, 6], K = [1, B]
+        CASE(A = 2, B = 2, K = 1);
+        CASE(A = 2, B = 2, K = 2);
+        CASE(A = 2, B = 3, K = 1);
+        CASE(A = 2, B = 3, K = 2);
+        CASE(A = 2, B = 3, K = 3);
+        CASE(A = 2, B = 4, K = 1);
+        CASE(A = 2, B = 4, K = 2);
+        CASE(A = 2, B = 4, K = 3);
+        CASE(A = 2, B = 4, K = 4);
+        CASE(A = 2, B = 5, K = 1);
+        CASE(A = 2, B = 5, K = 2);
+        CASE(A = 2, B = 5, K = 3);
+        CASE(A = 2, B = 5, K = 4);
+        CASE(A = 2, B = 5, K = 5);
+        CASE(A = 2, B = 6, K = 1);
+        CASE(A = 2, B = 6, K = 2);
+        CASE(A = 2, B = 6, K = 3);
+        CASE(A = 2, B = 6, K = 4);
+        CASE(A = 2, B = 6, K = 5);
+        CASE(A = 2, B = 6, K = 6);
+    }
+
+    // Exhaustive for large, pt. 1
+    void TestGroup4() {
         Subtasks({2});
 
         // Combination of A = [3, 6], B = [2, 6], K = [2, B]
@@ -138,7 +162,7 @@ protected:
     }
 
     // Exhaustive for large, pt. 2
-    void TestGroup4() {
+    void TestGroup5() {
         Subtasks({2});
 
         CASE(A = 4, B = 4, K = 4);
@@ -164,7 +188,7 @@ protected:
     }
 
     // Exhaustive for large, pt. 3
-    void TestGroup5() {
+    void TestGroup6() {
         Subtasks({2});
 
         CASE(A = 5, B = 6, K = 2);
@@ -190,7 +214,7 @@ protected:
     }
 
     // Corners for large
-    void TestGroup6() {
+    void TestGroup7() {
         Subtasks({2});
 
         CASE(A = MAX_MALE, B = MAX_MALE, K = 1);

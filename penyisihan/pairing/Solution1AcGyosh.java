@@ -4,13 +4,11 @@
 import java.io.*;
 import java.util.Arrays;
 
-public class Main {
-  public static final int MAX_N = 1000000;
-
+public class Solution1AcGyosh {
   private BufferedReader reader;
   private BufferedWriter writer;
 
-  public Main() {
+  public Solution1AcGyosh() {
     reader = new BufferedReader(new InputStreamReader(System.in));
     writer = new BufferedWriter(new OutputStreamWriter(System.out));
   }
@@ -85,7 +83,7 @@ public class Main {
   }
 
   public static void main(String[] args) throws Exception {
-    Main solver = new Main();
+    Solution1AcGyosh solver = new Solution1AcGyosh();
     solver.solve();
   }
 }

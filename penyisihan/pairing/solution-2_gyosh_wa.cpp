@@ -1,5 +1,5 @@
 /*
-  reason for TLE: worst operation is 100.000 * 1000
+  reason for WA: is using "konstanta marshal"
  */
 #include <bits/stdc++.h>
 
@@ -9,14 +9,13 @@ typedef long long LL;
 
 const int INF = 2123123123;
 const LL INFLL = 2123123123LL * 2123123123LL;
+const int MARSHAL = 2500;
 
 int T;
 int N, M;
 int A[100005];
 int B[100005];
 int C[1005];
-
-int minB[1005];
 
 void solve() {
   scanf("%d %d", &N, &M);
@@ -31,23 +30,17 @@ void solve() {
     scanf("%d", &C[i]);
   }
 
+  sort(A, A + N);
+  int sizeA = unique(A, A + N);
 
-  for (int i = 0; i < M; i++) {
-    minB[i] = INF;
-  }
-  for (int i = 0; i < N; i++) {
-    int x = B[i] % M;
-    minB[x] = min(minB[x], B[i]);
-  }
-
+  sort(B, B + N);
+  int sizeB = unique(B, B + N);
 
   LL answer = INFLL;
-  for (int i = 0; i < N; i++) {
-    for (int j = 0; j < M; j++) {
-      if (minB[j] != INF) {
-        int y = ((LL)A[i]*minB[j]) % M;
-        answer = min(answer, (LL)A[i]*minB[j] + C[y]);
-      }
+  for (int i = 0; i < min(sizeA, MARSHAL); i++) {
+    for (int j = 0; j < min(sizeB, MARSHAL); j++) {
+      int y = ((LL)A[i]*B[j]) % M;
+      answer = min(answer, (LL)A[i]*B[j] + C[y]);
     }
   }
 

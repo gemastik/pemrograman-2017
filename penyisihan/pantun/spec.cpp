@@ -32,11 +32,11 @@ protected:
 
     void Constraints() {
         CONS(all_of(A.begin(),
-                    A.end(), 
+                    A.end(),
                     [](const int i) { return inRange(i, MIN_VALUE, MAX_VALUE); }
         ));
         CONS(all_of(B.begin(),
-                    B.end(), 
+                    B.end(),
                     [](const int i) { return inRange(i, MIN_VALUE, MAX_VALUE); }
         ));
     }
@@ -52,6 +52,29 @@ protected:
 
 class TestSpec : public BaseTestSpec<ProblemSpec> {
 protected:
+    void SampleTestCase1() {
+        Subtasks({1, 2});
+        Input({
+            "1",
+            "3",
+            "5"
+        });
+        Output({
+            "8"
+        });
+    }
+
+    void SampleTestCase2() {
+        Subtasks({2});
+        Input({
+            "2",
+            "1 2",
+            "3 4"
+        });
+        Output({
+            "20"
+        });
+    }
 
     void BeforeTestCase() {
         A.clear();

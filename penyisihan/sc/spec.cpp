@@ -73,6 +73,34 @@ private:
 
 class TestSpec : public BaseTestSpec<ProblemSpec> {
 protected:
+    void SampleTestCase1() {
+        Subtasks({1, 2});
+        Input({
+            "3",
+            "2 2 2",
+            "1 42",
+            "2 42 7",
+            "0"
+        });
+        Output({
+            "5"
+        });
+    }
+
+    void SampleTestCase2() {
+        Subtasks({1, 2});
+        Input({
+            "3",
+            "2 2 1",
+            "1 42",
+            "1 42",
+            "0"
+        });
+        Output({
+            "4"
+        });
+    }
+
     void BeforeTestCase() {
         N = 0;
         S.clear();

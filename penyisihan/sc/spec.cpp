@@ -155,7 +155,7 @@ protected:
         // All made 2 problem
         CASE(N = 10, randomCase(2, 2, 0, 2, 15), remapCompanies());
         CASE(N = 10, randomCase(2, 2, 1, 2, 15), remapCompanies());
-        CASE(N = 10, randomCase(2, 2, 2, 2, 15), remapCompanies());
+        CASE(N = 10, randomCase(2, 2, 2, 2, 10), remapCompanies());
 
         // All jobless
         CASE(N = 10, randomCase(1, 0, 15), remapCompanies());
@@ -183,17 +183,33 @@ protected:
     void TestGroup5() {
         Subtasks({2});
 
-        CASE(N = 50, only1OptimalSolutionForward());
-        CASE(N = 50, only1OptimalSolutionBackward());
-        CASE(N = 50, only1OptimalSolutionForward(), remapCompanies());
-        CASE(N = 50, only1OptimalSolutionBackward(), remapCompanies());
-        CASE(N = 50, only1OptimalSolutionForward(), addNoise(15, 50), remapCompanies());
-        CASE(N = 50, only1OptimalSolutionBackward(), addNoise(15, 50), remapCompanies());
+        CASE(N = 50, only1OptimalSolutionForward(true));
+        CASE(N = 50, only1OptimalSolutionBackward(true));
+        CASE(N = 50, only1OptimalSolutionForward(true), remapCompanies());
+        CASE(N = 50, only1OptimalSolutionBackward(true), remapCompanies());
+        CASE(N = 50, only1OptimalSolutionForward(true), addNoise(10, 50), remapCompanies());
+        CASE(N = 50, only1OptimalSolutionBackward(true), addNoise(10, 50), remapCompanies());
 
         CASE(N = 50, antiForwardGreedy());
         CASE(N = 50, antiBackwardGreedy());
         CASE(N = 50, antiForwardGreedy(), addNoise(15, 10), remapCompanies());
         CASE(N = 50, antiBackwardGreedy(), addNoise(15, 10), remapCompanies());
+    }
+
+    void TestGroup6() {
+        Subtasks({2});
+
+        CASE(N = 50, randomCase(1, 2, 0, 2, 50), remapCompanies());
+        CASE(N = 50, randomCase(2, 2, 50), remapCompanies());
+        CASE(N = 50, randomCase(2, 5, 50), remapCompanies());
+        CASE(N = 50, randomCase(2, 10, 50), remapCompanies());
+
+        CASE(N = 50, only1OptimalSolutionForward(false));
+        CASE(N = 50, only1OptimalSolutionBackward(false));
+        CASE(N = 50, only1OptimalSolutionForward(false), remapCompanies());
+        CASE(N = 50, only1OptimalSolutionBackward(false), remapCompanies());
+        CASE(N = 50, only1OptimalSolutionForward(false), addNoise(10, 50), remapCompanies());
+        CASE(N = 50, only1OptimalSolutionBackward(false), addNoise(10, 50), remapCompanies());
     }
 
 private:
@@ -244,9 +260,13 @@ private:
         C.push_back(vector<int>{1, N});
     }
 
-    void only1OptimalSolutionForward() {
+    void only1OptimalSolutionForward(bool isFullCapacity) {
         for (int i = 0; i < N; i++) {
-            S.push_back(N - i);
+            if (isFullCapacity) {
+                S.push_back(N - i);
+            } else {
+                S.push_back(2);
+            }
 
             int nCompany = N - i;
             P.push_back(nCompany);
@@ -259,9 +279,13 @@ private:
         }
     }
 
-    void only1OptimalSolutionBackward() {
+    void only1OptimalSolutionBackward(bool isFullCapacity) {
         for (int i = 0; i < N; i++) {
-            S.push_back(i+1);
+            if (isFullCapacity) {
+                S.push_back(i+1);
+            } else {
+                S.push_back(2);
+            }
 
             int nCompany = i+1;
             P.push_back(nCompany);

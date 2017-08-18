@@ -8,13 +8,13 @@ class ProblemSpec : public BaseProblemSpec {
 protected:
     int T;
 
-    int R, C, P;
+    int R, C, N;
     vector<vector<char>> G;
 
     int res;
 
     void InputFormat() {
-        LINE(R, C, P);
+        LINE(R, C, N);
         GRID(G) % SIZE(R, C);
     }
 
@@ -37,11 +37,11 @@ protected:
     }
 
     void Subtask1() {
-        CONS(P == 1);
+        CONS(N == 1);
     }
 
     void Subtask2() {
-        CONS(1 <= P && P <= C);
+        CONS(1 <= N && N <= C);
     }
 
 private:
@@ -56,12 +56,12 @@ private:
                 if (i == 0 && c != '0') return false;
 
                 if (c >= 'A' && c <= 'Z') {
-                    if (c - 'A' >= P) return false;
+                    if (c - 'A' >= N) return false;
                     if (portals.insert(c).second) return false;
                 }
             }
         }
-        return portals.size() == P;
+        return portals.size() == N;
     }
 
     bool isAlphanumeric(char c) {

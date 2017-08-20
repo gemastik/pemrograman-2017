@@ -135,11 +135,12 @@ protected:
     void TestGroup2() {
         Subtasks({2});
 
+        CASE(maut());
         CASE(N = 50000, randomNames() , randomNumbers(G, 100000,100000), randomNumbers(C, 100000,100000)); //extreme case
         CASE(N = 50000, randomNames() , randomNumbers(G, 1,1), randomNumbers(C, 1,1)); //extreme case
         for (int i=0;i<2;i++) CASE(N = rnd.nextInt(40000,50000), randomNames() , randomNumbers(G, 1,100000), randomNumbers(C, 1,100000));
         //yg jago cuman 20 orang. konflik.
-        for (int i=0;i<6;i++) CASE(N = 100, randomNumbers(G, 50,100), randomNumbers(C, 50,100), add_useless(50000 - N) , N = 50000, randomNames());
+        for (int i=0;i<5;i++) CASE(N = 100, randomNumbers(G, 50,100), randomNumbers(C, 50,100), add_useless(50000 - N) , N = 50000, randomNames());
     }
 
     void TestGroup3() {

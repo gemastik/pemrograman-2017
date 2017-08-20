@@ -15,6 +15,8 @@ using std::uniform_int_distribution;
 
 namespace tcrand {
 
+    mt19937 r_engine;
+
     template <class T>
     class VectorRandomizer{
         int param_length;
@@ -28,7 +30,6 @@ namespace tcrand {
         function<T(void)> generator;
         vector<T> param_pool;
 
-        mt19937 r_engine;
 
         int param_pool_id;
 

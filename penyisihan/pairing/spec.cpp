@@ -101,7 +101,7 @@ class TestSpec : public BaseTestSpec<ProblemSpec> {
             pq.pop();
             if (pos.first >= NA || pos.second >= NB) continue;
             long long diff = ((long long)tA[pos.first] * tB[pos.second]) - ((long long)tA[0] * tB[0]);
-            if (diff > 1000000) break;
+            if (diff >= 1000000) break;
 
             loc = ((long long)tA[pos.first] * (long long)tB[pos.second]);
 
@@ -141,7 +141,7 @@ class TestSpec : public BaseTestSpec<ProblemSpec> {
         //cerr<<offset<<endl;
         for (int i=0;i<M;i++){
             if (i == latest_mark) C[i] = offset;
-            else if (marked[i] == -1) C[i] = rnd.nextInt(max(0, offset - 10000), offset -1);
+            else if (marked[i] == -1) C[i] = rnd.nextInt(max(0, offset - 10000), offset);
             else C[i] =  rnd.nextInt(exp_sol - marked[i] + 1 , 1000000 - offset) + offset;
         }
     }    
@@ -273,7 +273,8 @@ protected:
     }
 
 
-    
-
-
+public:
+    TestSpec(){
+        tcrand::r_engine.seed(0);
+    }
 };

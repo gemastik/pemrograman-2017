@@ -56,6 +56,30 @@ private:
 
 class TestSpec : public BaseTestSpec<ProblemSpec> {
 protected:
+    void SampleTestCase1() {
+        Subtasks({1, 2});
+        Input({"ab 1 2"});
+        Output({"2"});
+    }
+
+    void SampleTestCase2() {
+        Subtasks({1, 2});
+        Input({"aa 2 2"});
+        Output({"11"});
+    }
+
+    void SampleTestCase3() {
+        Subtasks({2});
+        Input({"gemastik 3 21"});
+        Output({"0"});
+    }
+
+    void SampleTestCase4() {
+        Subtasks({2});
+        Input({"gemastik 20 21"});
+        Output({"662038843"});
+    }
+
     void TestGroup1() {
         Subtasks({1, 2});
 

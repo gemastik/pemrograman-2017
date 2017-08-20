@@ -25,6 +25,49 @@ S N K
 
 Untuk setiap kasus uji, keluarkan sebuah baris berisi banyaknya petakata yang mungkin, modulo 1.000.000.007.
 
+### Contoh Masukan
+
+```
+4
+ab 1 2
+aa 2 2
+gemastik 3 21
+gemastik 20 21
+```
+
+### Contoh Keluaran
+
+```
+2
+11
+0
+662038843
+```
+
+### Penjelasan
+
+Untuk contoh pertama, terdapat 2 petakata yang mungkin:
+
+```
+a  b
+b  a
+```
+
+Untuk contoh kedua, terdapat 11 petakata yang mungkin:
+
+```
+aa  aa  aa  aa
+aa  ab  ba  bb
+
+ab  ab  ab  ba
+aa  ab  ba  aa
+
+ba  ba  bb
+ab  ba  aa
+```
+
+Untuk contoh ketiga, string `gemastik` tidak mungkin terdapat pada petakata berukuran 2 × 3.
+
 ### Batasan
 
 - 1 ≤ T ≤ 5

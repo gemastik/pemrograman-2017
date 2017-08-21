@@ -60,10 +60,9 @@ void constructOutputResult() {
   }
 
   // Alternating C, A, C, A, ...
+  int pa = 0;
+  int pc = 0;
   for (int i = 0; i < slotA.size()+slotC.size(); i++) {
-    int pa = 0;
-    int pc = 0;
-
     result[p++] = MALE;
     if (i % 2 == 0) {
       // slotC

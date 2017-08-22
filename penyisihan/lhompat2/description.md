@@ -1,13 +1,13 @@
 # Saklar Lhompat II
 
-Ruang baca di perpustakaan Fasilkom UI berisi meja-meja yang tersusun atas R baris dan C kolom. Uniknya, meja-meja tersebut memiliki ketinggian berbeda-beda. Saat ini, terdapat N mahasiswa yang sedang berada di dalam ruang baca tersebut. Informasi ini dinyatakan oleh matriks G sebagai berikut:
+Ruang baca di perpustakaan Fasilkom UI berisi meja-meja yang tersusun atas R baris dan C kolom. Uniknya, meja-meja tersebut memiliki ketinggian berbeda-beda. Saat ini, terdapat N mahasiswa yang sedang berada di dalam ruang baca tersebut, dinomori dari 1 hingga N. Informasi ini dinyatakan oleh matriks G sebagai berikut:
 
-- Jika meja (baris i, kolom j) kosong, maka G[i][j] berisi ketinggian meja tersebut, berupa sebuah bilangan bulat antara 0 - 9.
-- Jika meja (baris i, kolom j) ditempati mahasiswa, maka G[i][j] berisi nama mahasiswa tersebut, berupa sebuah huruf antara A - Z. Meja ini memiliki ketinggian 0.
+- Jika meja (baris i, kolom j) kosong, maka G[i][j] berisi ketinggian meja tersebut, berupa sebuah bilangan bulat antara 0 hingga 9.
+- Jika meja (baris i, kolom j) ditempati mahasiswa, maka G[i][j] berisi -X (negatif X), dengan X adalah nomor mahasiswa tersebut.
 
 Mahasiswa-mahasiswa tersebut menyalakan laptop mereka di meja masing-masing. Mereka perlu untuk menyambungkan kabel laptop masing-masing ke stop kontak. Stop-stop kontak hanya terdapat pada meja-meja pada baris pertama. Setiap meja pada baris pertama berisi satu stop kontak.
 
-Untuk menghindari rebutan stop kontak, Pak Chanek, sang kepala pustakawan, akan menentukan untuk setiap mahasiswa, stop kontak mana yang harus disambungkan ke laptopnya. Setiap stop kontak di baris pertama akan disambungkan ke paling banyak satu laptop. Oleh Pak Chanek, penentuan ini disebut dengan "konfigurasi". Konfigurasi yang dipilih Pak Chanek akan selalu sedemikian sehingga, untuk setiap dua mahasiswa A dan B, apabila nama mahasiswa A lebih kecil secara leksikografis dari mahasiswa B, maka stop kontak yang harus disambungkan ke laptop mahasiswa A akan berada di sebelah kiri dari stop kontak yang harus disambungkn ke laptop mahasiswa B.
+Untuk menghindari rebutan stop kontak, Pak Chanek, sang kepala pustakawan, akan menentukan untuk setiap mahasiswa, stop kontak mana yang harus disambungkan ke laptopnya. Setiap stop kontak di baris pertama akan disambungkan ke paling banyak satu laptop. Oleh Pak Chanek, penentuan ini disebut dengan "konfigurasi". Konfigurasi yang dipilih Pak Chanek akan selalu sedemikian sehingga, untuk setiap dua mahasiswa bernomor A dan B, apabila A < B, maka stop kontak yang harus disambungkan ke laptop mahasiswa A akan berada di sebelah kiri dari stop kontak yang harus disambungkn ke laptop mahasiswa B.
 
 Untuk menyambungkan sebuah laptop ke sebuah stop kontak yang ditentukan Pak Chanek, kabel laptop harus bermula pada meja tempat mahasiswa pemilik laptop tersebut berada, kemudian melewati meja-meja lain sampai pada sebuah meja pada baris pertama. Setiap meja yang dilewati, kecuali meja pertama (yang berisi laptop), harus berada tepat di sebelah kiri, atas, kanan, atau bawah dari meja sebelumnya. Kabel laptop boleh melewati meja manapun, termasuk meja-meja lain pada baris pertama, meja-meja yang berisi laptop lain, maupun meja-meja yang dilewati kabel laptop lain.
 
@@ -40,14 +40,49 @@ G[R][1] G[R][2] ... G[R][C]
 
 Untuk setiap kasus uji, keluarkan jumlah dari tingkat efisiensi seluruh portal, untuk seluruh kemungkinan pemasangan portal pasangan, modulo 1.000.000.007.
 
+### Contoh Masukan
+
+```
+2
+3 1 1
+0
+3
+-1
+3 2 1
+0 0
+3 1
+-1 2
+```
+
+### Contoh Keluaran
+
+```
+9
+17
+```
+
+### Penjelasan
+
+Untuk contoh pertama, satu-satunya konfigurasi yang mungkin adalah menyambungkan laptop mahasiswa 1 ke satu-satunya meja baris pertama. Hanya ada satu cara penyambungan yang mungkin: (mulai -> atas -> atas). Tingkat efisiensinya adalah 3 (banyaknya meja yang dilewati kabel) + |0-3| + |3-0| = 9. Ini juga merupakan tingkat kesemrawutan konfigurasi.
+
+Untuk contoh kedua, terdapat 2 konfigurasi yang mungkin:
+
+- (laptop mahasiswa 1) -> (meja baris 1, kolom 1)
+  Tingkat efisiensinya adalah 9, dengan penyambungan (mulai -> atas -> atas) atau (mulai -> kanan -> atas -> atas -> kiri). Ini juga merupakan tingkat kesemrawutan konfigurasi.
+
+- (laptop mahasiswa 1) -> (meja baris 1, kolom 2)
+  Tingkat efisiensinya adalah 8, dengan penyambungan (mulai -> kanan -> atas -> atas). Ini juga merupakan tingkat kesemrawutan konfigurasi.
+
+Total tingkat kesemrawutannya adalah 9 + 8 = 17.
+
 ### Batasan
 
 - 1 ≤ T ≤ 10
-- 2 ≤ R ≤ 100
-- 1 ≤ C ≤ 26
-- G[i][j] berisi huruf besar alfabet 'A' - 'Z' atau bilangan 0 - 9
-- G[1][j] = '0'
-- G berisi tepat N buah huruf besar alfabet berbeda, yang masing-masing termasuk dalam N huruf besar alfabet pertama
+- 2 ≤ R ≤ 50
+- 1 ≤ C ≤ 50
+- -N ≤ G[i][j] ≤ 9
+- G[1][j] = 0
+- G berisi semua bilangan bulat antara -N hingga -1, masing-masing tepat sekali
 
 ### Subsoal 1
 

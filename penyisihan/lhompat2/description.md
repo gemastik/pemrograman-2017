@@ -7,7 +7,7 @@ Ruang baca di perpustakaan Fasilkom UI berisi meja-meja yang tersusun atas R bar
 
 Mahasiswa-mahasiswa tersebut menyalakan laptop mereka di meja masing-masing. Mereka perlu untuk menyambungkan kabel laptop masing-masing ke stop kontak. Stop-stop kontak hanya terdapat pada meja-meja pada baris pertama. Setiap meja pada baris pertama berisi satu stop kontak.
 
-Untuk menghindari rebutan stop kontak, Pak Chanek, sang kepala pustakawan, akan menentukan untuk setiap mahasiswa, stop kontak mana yang harus disambungkan ke laptopnya. Setiap stop kontak di baris pertama akan disambungkan ke paling banyak satu laptop. Oleh Pak Chanek, penentuan ini disebut dengan "konfigurasi". Konfigurasi yang dipilih Pak Chanek akan selalu sedemikian sehingga, untuk setiap dua mahasiswa bernomor A dan B, apabila A < B, maka stop kontak yang harus disambungkan ke laptop mahasiswa A akan berada di sebelah kiri dari stop kontak yang harus disambungkn ke laptop mahasiswa B.
+Untuk menghindari rebutan stop kontak, Pak Chanek, sang kepala pustakawan, akan menentukan stop kontak mana yang harus disambungkan ke laptop setiap mahasiswa. Setiap stop kontak di baris pertama akan disambungkan ke paling banyak satu laptop. Oleh Pak Chanek, penentuan ini disebut dengan "konfigurasi". Konfigurasi yang dipilih Pak Chanek akan selalu sedemikian sehingga, untuk setiap dua mahasiswa bernomor A dan B, apabila A < B, maka stop kontak yang harus disambungkan ke laptop mahasiswa A akan berada di sebelah kiri dari stop kontak yang harus disambungkan ke laptop mahasiswa B.
 
 Untuk menyambungkan sebuah laptop ke sebuah stop kontak yang ditentukan Pak Chanek, kabel laptop harus bermula pada meja tempat mahasiswa pemilik laptop tersebut berada, kemudian melewati meja-meja lain sampai pada sebuah meja pada baris pertama. Setiap meja yang dilewati, kecuali meja pertama (yang berisi laptop), harus berada tepat di sebelah kiri, atas, kanan, atau bawah dari meja sebelumnya. Kabel laptop boleh melewati meja manapun, termasuk meja-meja lain pada baris pertama, meja-meja yang berisi laptop lain, maupun meja-meja yang dilewati kabel laptop lain.
 
@@ -38,7 +38,7 @@ G[R][1] G[R][2] ... G[R][C]
 
 ### Format Keluaran
 
-Untuk setiap kasus uji, keluarkan jumlah dari tingkat efisiensi seluruh portal, untuk seluruh kemungkinan pemasangan portal pasangan, modulo 1.000.000.007.
+Untuk setiap kasus uji, keluarkan jumlah dari tingkat kesemrawutan konfigurasi untuk seluruh kemungkinan konfigurasi, modulo 1.000.000.007.
 
 ### Contoh Masukan
 

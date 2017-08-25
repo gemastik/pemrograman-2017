@@ -1,12 +1,21 @@
+%
+% per problem variables
+%
+\renewcommand{\problemName}{[Judul Soal]}
+%
+
 \begin{center}
-    \section*{[Judul Soal]} %TODO: Change problem name, this line and below
-    \addcontentsline{toc}{section}{[Judul Soal]} % for pdf indexing
+    \section*{\problemName} %TODO: Change problem name, this line and below
+    \addcontentsline{toc}{section}{\problemName} % for pdf indexing
     \vspace*{-0.4cm}
-    Batasan waktu: [?] s\\
-    Batasan memori: [?] MB %TODO: Set limits
+    Penulis soal: [Penulis soal]\\ %TODO: add problem setter(s)
+    Tema: [tema1, tema2] %TODO: Add tema
 \end{center}
 
-[Komentar] %TODO: Add editorial prologue
+\subsection*{Catatan/Komentar}
+\addcontentsline{toc}{subsection}{Catatan/Komentar} % for pdf indexing
+
+Lorem ipsum dolor sit amet ... %TODO: Add editorial prologue
 
 \subsection*{Subsoal 1}
 \addcontentsline{toc}{subsection}{Subsoal 1} % for pdf indexing

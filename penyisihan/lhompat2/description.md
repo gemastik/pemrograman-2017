@@ -2,7 +2,7 @@
 
 Ruang baca di perpustakaan Fasilkom UI berisi meja-meja yang tersusun atas R baris dan C kolom. Uniknya, meja-meja tersebut memiliki ketinggian berbeda-beda. Saat ini, terdapat N mahasiswa yang sedang berada di dalam ruang baca tersebut, dinomori dari 1 hingga N. Informasi ini dinyatakan oleh matriks G sebagai berikut:
 
-- Jika meja (baris i, kolom j) kosong, maka G[i][j] berisi ketinggian meja tersebut, berupa sebuah bilangan bulat antara 0 hingga 9.
+- Jika meja (baris i, kolom j) kosong, maka G[i][j] berisi ketinggian meja tersebut, berupa sebuah bilangan bulat non-negatif.
 - Jika meja (baris i, kolom j) ditempati mahasiswa, maka G[i][j] berisi -X (negatif X), dengan X adalah nomor mahasiswa tersebut.
 
 Mahasiswa-mahasiswa tersebut menyalakan laptop mereka di meja masing-masing. Mereka perlu untuk menyambungkan kabel laptop masing-masing ke stop kontak. Stop-stop kontak hanya terdapat pada meja-meja pada baris pertama. Setiap meja pada baris pertama berisi satu stop kontak.
@@ -80,7 +80,7 @@ Total tingkat kesemrawutannya adalah 9 + 8 = 17.
 - 1 ≤ T ≤ 10
 - 2 ≤ R ≤ 50
 - 1 ≤ C ≤ 50
-- -N ≤ G[i][j] ≤ 9
+- -N ≤ G[i][j] ≤ 100.000
 - G[1][j] = 0
 - G berisi semua bilangan bulat antara -N hingga -1, masing-masing tepat sekali
 

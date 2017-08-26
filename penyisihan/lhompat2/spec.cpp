@@ -66,7 +66,7 @@ private:
     }
 
     bool isValidCell(int c) {
-        return -N <= c && c <= 9;
+        return -N <= c && c <= 100000;
     }
 };
 

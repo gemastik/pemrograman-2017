@@ -15,7 +15,7 @@ int T;
 int N, M;
 int A[100005];
 int B[100005];
-int C[1005];
+int C[100005];
 
 void solve() {
   scanf("%d %d", &N, &M);

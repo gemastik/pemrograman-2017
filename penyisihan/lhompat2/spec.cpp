@@ -109,28 +109,38 @@ protected:
         CASE(makeGrid(2, 50), putLaptop(1, 25));
 
         // Spiral cabling
-        CASE(R = 5, C = 3, N = 1, G = {
-            {0, 0, 0},
-            {9, 9, 9},
-            {0, 5, 9},
-            {9, 3, 9},
-            {-1, 0, 0},
+        CASE(R = 6, C = 3, N = 1, G = {
+            { 0,  0,  0},
+            {77, 99, 99},
+            {77, 77, 77},
+            { 0,  0, 77},
+            {77, 77, 77},
+            {-1, 99,  0},
+        });
+        CASE(R = 8, C = 5, N = 1, G = {
+            { 0,  0,  0,  0,  0},
+            { 0,  0,  0,  0, 77},
+            {99, 99, 99, 99, 77},
+            { 0,  0,  0,  0, 77},
+            {77, 77, 77,  0, 77},
+            {77,  0, 77,  0, 77},
+            {77,  0, 77, 77, 77},
+            {-1, 99,  0,  0,  0},
         });
 
         // Tall tables
         CASE(R = 5, C = 3, N = 1, G = {
             {0, 0, 0},
-            {9, 9, 9},
-            {9, 9, 9},
-            {9, 9, 9},
-            {-1, 0, 0},
+            {100000, 100000, 100000},
+            {100000, 100000, 100000},
+            {100000, 100000, 100000},
+            {0, -1, 0},
         });
 
         CASE(makeGrid(10, 10), randomCheckerboard(), closestToColokans(1));
         CASE(makeGrid(50, 50), randomCheckerboard(), furthestFromColokans(1));
 
         // Just randoms
-        CASE(makeGrid(50, 50), randomBoard(), putLaptop(25, 25));
         CASE(makeGrid(50, 50), randomBoard(), putLaptop(49, 25));
     }
 
@@ -178,19 +188,19 @@ private:
 
     void randomCheckerboard() {
         REP(r, R) REP(c, C) {
-            if (r && (r+c) % 2) G[r][c] = rnd.nextInt(10);
+            if (r && (r+c) % 2) G[r][c] = rnd.nextInt(100001);
         }
     }
 
     void maxCheckerboard() {
         REP(r, R) REP(c, C) {
-            if (r && (r+c) % 2) G[r][c] = 9;
+            if (r && (r+c) % 2) G[r][c] = 100000;
         }
     }
 
     void randomBoard() {
         REP(r, R) REP(c, C) {
-            if (r) G[r][c] = rnd.nextInt(10);
+            if (r) G[r][c] = rnd.nextInt(100001);
         }
     }
 

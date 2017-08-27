@@ -137,10 +137,11 @@ class TestSpec : public BaseTestSpec<ProblemSpec> {
         cerr<<"mark step: "<< mark_step <<endl;  
         cerr<<tA[la]<<" "<<tB[lb]<<" vs "<<tA[0]<<" "<<tB[0]<<endl;
         */
+        long ans_loc = ((long long)tA[la] * tB[lb]) % M;
         int offset =rnd.nextInt(0, 1000000 - diff - 1);
         //cerr<<offset<<endl;
         for (int i=0;i<M;i++){
-            if (i == latest_mark) C[i] = offset;
+            if (i == ans_loc) C[i] = offset;
             else if (marked[i] == -1) C[i] = rnd.nextInt(max(0, offset - 10000), offset);
             else C[i] =  rnd.nextInt(exp_sol - marked[i] + 1 , 1000000 - offset) + offset;
         }

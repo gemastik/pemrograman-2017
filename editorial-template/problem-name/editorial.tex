@@ -1,15 +1,24 @@
-%
-% per problem variables
-%
-\renewcommand{\problemName}{[Judul Soal]}
-%
+% !TeX root = ../editorial_template.tex
+\documentclass[../editorial_template.tex]{subfiles} % Inherits definitions from parent .tex file.
+
+% Per-problem variable definitions
+%TODO: Change placeholders to correct info.
+\newcommand{\problemName}{Judul Soal}
+\newcommand{\problemWriter}{Penulis soal}
+\newcommand{\problemEditorialWriter}{Penulis editorial}
+\newcommand{\problemTags}{tema1, tema2}
+
+\begin{document}
 
 \begin{center}
-    \section*{\problemName} %TODO: Change problem name, this line and below
+    \section*{\problemName}
     \addcontentsline{toc}{section}{\problemName} % for pdf indexing
-    \vspace*{-0.4cm}
-    Penulis soal: [Penulis soal]\\ %TODO: add problem setter(s)
-    Tema: [tema1, tema2] %TODO: Add tema
+    
+    \begin{tabular}{rl}
+    Penulis soal : & \problemWriter \\
+    Penulis editorial : & \problemEditorialWriter \\
+    Tema : & \problemTags
+    \end{tabular}
 \end{center}
 
 \subsection*{Catatan/Komentar}
@@ -25,6 +34,9 @@ Lorem ipsum dolor sit amet ... %TODO: Add editorial for subtask 1
 
 \subsection*{Subsoal 2}
 \addcontentsline{toc}{subsection}{Subsoal 2} % for pdf indexing
+
 Batasan: $...$ %TODO: Add constraints for subtask 2
 
 Lorem ipsum dolor sit amet ... %TODO: Add editorial for subtask 2
+
+\end{document}

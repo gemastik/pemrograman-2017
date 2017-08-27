@@ -1,13 +1,13 @@
 \documentclass[a4paper]{article}
 \usepackage[margin=1in]{geometry}
-\usepackage{graphicx}
 
-\usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{listings}
 \usepackage{mathtools}
+\usepackage{subfiles}
+\usepackage{hyperref}
 
 \newtheorem{algorithm_def}{Algorithm}[subsection]
 \newtheorem{definition}{Definition}[subsection]
@@ -18,8 +18,8 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
 
-% Global variable
-\newcommand{\problemName}{}
+\usepackage{enumitem}
+\setlist{nolistsep}
 
 \begin{document}
 
@@ -58,8 +58,10 @@
 \end{center}
 \end{titlepage}
 
-\include{problem-name/editorial}
-% \include{problem-name/editorial}
-% \include{problem-name/editorial}
+\subfile{problem-name/editorial}
+\pagebreak % to force next section on new page
+%\subfile{problem-name/editorial}
+%\pagebreak % to force next section on new page
+% \subfile{problem-name/editorial}
 
 \end{document}

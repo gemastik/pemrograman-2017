@@ -9,7 +9,8 @@ public class Solution2ACAfaji {
     static int R,C,N;
     static int mx[] = {1,-1,0,0};
     static int my[] = {0,0,1,-1};
-    static long dp[][][];
+    static class MyMap extends HashMap<Long, Long> {}
+    static MyMap dp[][];
 
     static Cell mp(int a,int b, int c) {
         return new Cell(a, b, c);
@@ -49,21 +50,23 @@ public class Solution2ACAfaji {
         }
     }
 
-    static long wow(int pos, int n, int maks){
+    static long wow(int pos, int n, long maks){
         if (n == N){
             return maks;
         }
         if (pos == C){
             return 0;   
         }
-        if (dp[pos][n][maks] != -1)
-            return dp[pos][n][maks];
+        if (dp[pos][n].containsKey(maks))
+            return dp[pos][n].get(maks);
 
-        dp[pos][n][maks] = wow(pos + 1, n, maks)
+        long res = wow(pos + 1, n, maks)
                          + wow(pos + 1, n + 1, Math.max(maks, shortest[n+1][pos]));
 
-        dp[pos][n][maks] %= 1000000007;
-        return dp[pos][n][maks];
+
+        res %= 1000000007;
+        dp[pos][n].put(maks, res);
+        return res;
 
     }
     static void solve() throws IOException {
@@ -84,11 +87,10 @@ public class Solution2ACAfaji {
                     dijkstra(-grid[i][j], i,j);
                 }
 
-        dp = new long[C][N][1000];
+        dp = new MyMap[C][N];
         for (int i=0;i<C;i++)
             for (int j=0;j<N;j++)
-                for (int k=0;k<1000;k++)
-                    dp[i][j][k] = -1;
+                dp[i][j] = new MyMap();
 
         writer.println(wow(0,0,0));
     }

@@ -1,0 +1,73 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{subfiles}
+\usepackage{hyperref}
+
+\newtheorem{algorithm_def}{Algorithm}[subsection]
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{lemma}{Lemma}[subsection]
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{corollary}{Corollary}[subsection]
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\usepackage{enumitem}
+\setlist{nolistsep}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+
+    \textbf{\huge BUKLET PEMBAHASAN SOAL}
+    
+    \vspace{1cm} % padding
+    
+    \includegraphics[width=0.5\textwidth]{../gemastiklogo}
+    
+	\vspace{1cm} % padding
+    
+    \textbf{\LARGE PENYISIHAN PEMROGRAMAN GEMASTIK 10}\\[0.5cm]
+    \textbf{\LARGE 30 September 2017}
+
+	\vfill
+	
+	{\Large Soal-Soal}
+	
+	\def\arraystretch{1.5} % biar megar
+	\begin{tabular}{|c|l|l|}
+		\hline
+		\textbf{Kode} & \textbf{Judul} & \textbf{Penulis} \\
+		\hline
+		A & Berbalas Pantun & Alham Fikri Aji \\
+		B & Fotografer Wisuda & Ashar Fuadi \\
+		C & Penulis Soal & Ashar Fuadi \\
+		D & Saklar Lhompat II & Anthony \\
+		E & Pasangan Terbaik & Alham Fikri Aji \\
+		F & Rubrik Petakata & Ashar Fuadi \\
+		\hline
+	\end{tabular}
+
+\end{center}
+\end{titlepage}
+
+\subfile{pantun/editorial}
+\pagebreak
+\subfile{fotografer/editorial}
+\pagebreak
+\subfile{sc/editorial}
+\pagebreak
+\subfile{lhompat2/editorial}
+\pagebreak
+\subfile{pairing/editorial}
+\pagebreak
+\subfile{scrabble/editorial}
+
+\end{document}

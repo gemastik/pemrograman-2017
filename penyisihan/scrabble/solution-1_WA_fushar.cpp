@@ -1,5 +1,7 @@
 /*
  * (c) fushar (Ashar Fuadi)
+ *
+ * Reason for WA: Array-nya kurang besar 1 indeks
 */
 
 #include <bits/stdc++.h>
@@ -11,7 +13,7 @@ using namespace std;
 
 /***********************************************************/
 
-const int MAXM = 3, MAXK = 26, MAXN = 51, MOD = 1000000007;
+const int MAXM = 3, MAXK = 26, MAXN = 50, MOD = 1000000007;
 
 int T;
 char S[MAXM];

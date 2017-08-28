@@ -86,12 +86,25 @@ protected:
     void SampleTestCase2() {
         Subtasks({1, 2});
         Input({
-            "3 2 1",
+            "4 2 1",
             "0 0",
             "3 1",
-            "-1 2"
+            "-1 2",
+            "9 8"
         });
         Output({"17"});
+    }
+
+    void SampleTestCase3() {
+        Subtasks({2});
+        Input({
+            "4 3 2",
+            "0 0 0",
+            "9 5 6",
+            "7 6 7",
+            "-2 9 -1"
+        });
+        Output({"60"});
     }
 
     void BeforeTestCase() {

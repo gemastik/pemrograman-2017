@@ -43,15 +43,21 @@ Untuk setiap kasus uji, keluarkan jumlah dari tingkat kesemrawutan konfigurasi u
 ### Contoh Masukan
 
 ```
-2
+3
 3 1 1
 0
 3
 -1
-3 2 1
+4 2 1
 0 0
 3 1
 -1 2
+9 8
+4 3 2
+0 0 0
+9 5 6
+7 6 7
+-2 9 -1
 ```
 
 ### Contoh Keluaran
@@ -59,21 +65,35 @@ Untuk setiap kasus uji, keluarkan jumlah dari tingkat kesemrawutan konfigurasi u
 ```
 9
 17
+60
 ```
 
 ### Penjelasan
 
-Untuk contoh pertama, satu-satunya konfigurasi yang mungkin adalah menyambungkan laptop mahasiswa 1 ke satu-satunya meja baris pertama. Hanya ada satu cara penyambungan yang mungkin: (mulai -> atas -> atas). Tingkat efisiensinya adalah 3 (banyaknya meja yang dilewati kabel) + |0-3| + |3-0| = 9. Ini juga merupakan tingkat kesemrawutan konfigurasi.
+Untuk contoh pertama, satu-satunya konfigurasi yang mungkin adalah menyambungkan laptop mahasiswa 1 ke satu-satunya meja baris pertama. Hanya ada satu cara penyambungan yang mungkin, seperti yang ditunjukkan oleh gambar di bawah ini:
+
+{lhompat2_sample_1.png}
+
+Tingkat efisiensinya: 3 (banyaknya meja yang dilewati kabel) + |0-3| + |3-0| = 9. Ini juga merupakan tingkat kesemrawutan konfigurasi.
 
 Untuk contoh kedua, terdapat 2 konfigurasi yang mungkin:
 
-- (laptop mahasiswa 1) -> (meja baris 1, kolom 1)
-  Tingkat efisiensinya adalah 9, dengan penyambungan (mulai -> atas -> atas) atau (mulai -> kanan -> atas -> atas -> kiri). Ini juga merupakan tingkat kesemrawutan konfigurasi.
+{lhompat2_sample_2.png}
 
-- (laptop mahasiswa 1) -> (meja baris 1, kolom 2)
-  Tingkat efisiensinya adalah 8, dengan penyambungan (mulai -> kanan -> atas -> atas). Ini juga merupakan tingkat kesemrawutan konfigurasi.
+- Tingkat kesemrawutan konfigurasi 1: 9
+- Tingkat kesemrawutan konfigurasi 2: 8
 
 Total tingkat kesemrawutannya adalah 9 + 8 = 17.
+
+Untuk contoh ketiga, terdapat 3 konfigurasi yang mungkin:
+
+{lhompat2_sample_3.png}
+
+- Tingkat kesemrawutan konfigurasi 1: max(20, 19) = 20
+- Tingkat kesemrawutan konfigurasi 2: max(20, 20) = 20
+- Tingkat kesemrawutan konfigurasi 3: max(19, 20) = 20
+
+Total tingkat kesemrawutannya adalah 20 + 20 + 20 = 60.
 
 ### Batasan
 

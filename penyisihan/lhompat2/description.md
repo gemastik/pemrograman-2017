@@ -72,13 +72,13 @@ Untuk setiap kasus uji, keluarkan jumlah dari tingkat kesemrawutan konfigurasi u
 
 Untuk contoh pertama, satu-satunya konfigurasi yang mungkin adalah menyambungkan laptop mahasiswa 1 ke satu-satunya meja baris pertama. Hanya ada satu cara penyambungan yang mungkin, seperti yang ditunjukkan oleh gambar di bawah ini:
 
-{lhompat2_sample_1.png}
+![](img/sample1.jpg)
 
 Tingkat efisiensinya: 3 (banyaknya meja yang dilewati kabel) + |0-3| + |3-0| = 9. Ini juga merupakan tingkat kesemrawutan konfigurasi.
 
 Untuk contoh kedua, terdapat 2 konfigurasi yang mungkin:
 
-{lhompat2_sample_2.png}
+![](img/sample2.jpg)
 
 - Tingkat kesemrawutan konfigurasi 1: 9
 - Tingkat kesemrawutan konfigurasi 2: 8
@@ -87,7 +87,7 @@ Total tingkat kesemrawutannya adalah 9 + 8 = 17.
 
 Untuk contoh ketiga, terdapat 3 konfigurasi yang mungkin:
 
-{lhompat2_sample_3.png}
+![](img/sample3.jpg)
 
 - Tingkat kesemrawutan konfigurasi 1: max(20, 19) = 20
 - Tingkat kesemrawutan konfigurasi 2: max(20, 20) = 20

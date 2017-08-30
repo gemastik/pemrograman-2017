@@ -1,4 +1,4 @@
-# Menggemaskan dan Cantik
+# Menggemaskan dan Cantik (Mudah)
 
 Sebentar lagi, kompetisi paling bergengsi se-Indonesia akan diadakan! Apa lagi kalau bukan Kompetisi Menggemaskan dan Cantik (geMasTIK). Seperti biasa, geMasTIK tahun ini terdiri atas dua kategori kompetisi: Kompetisi Ke**geMas**an dan Kompetisi Kecan**TIK**an.
 
@@ -98,10 +98,8 @@ victor mona sherly
 - Semua nama dijamin berbeda-beda
 - 1 ≤ G[i], C[i] ≤ 100.000
 
-### Subsoal 1
+### Batasan Khusus Versi Mudah
+
+**Soal ini adalah soal versi mudah**. Batasan di bawah ini juga berlaku, namun akan berbeda pada soal versi sulit:
 
 - 6 ≤ N ≤ 15
-
-### Subsoal 2
-
-- 6 ≤ N ≤ 50.000

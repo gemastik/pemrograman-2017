@@ -1,4 +1,4 @@
-# Papan Selancar
+# Papan Selancar (Sulit)
 
 Setelah geMasTIK berakhir, Ani beserta peserta lainnya diajak pergi ke pantai oleh panitia sebagai salah satu rangkaian acara. Sebagian peserta langsung menceburkan diri ke laut untuk berenang. Amat disayangkan, karena Ani tidak bisa berenang, ia memutuskan untuk duduk-duduk saja di pinggir pantai. Kebetulan, ia melihat ada papan selancar di dekatnya. Ia lalu berinisiatif untuk bermain-main pasir dengan papan selancar tersebut.
 
@@ -36,7 +36,7 @@ x[M] k[M]
 Untuk setiap kasus uji, keluarkan jawaban dalam format berikut ini:
 
 ```
-H[1] H[2] ... H[N]
+H[1] H[2] .. H[N]
 ```
 
 dengan H[i] menyatakan tinggi pasir pada posisi ke-i.
@@ -68,10 +68,8 @@ dengan H[i] menyatakan tinggi pasir pada posisi ke-i.
 - 1 ≤ x[i] ≤ N
 - 1 ≤ k[i] ≤ 50.000
 
-### Subsoal 1
+### Batasan Khusus Versi Sulit
 
-- 1 ≤ N, M ≤ 1.000
-
-### Subsoal 2
+**Soal ini adalah soal versi sulit**. Batasan di bawah ini juga berlaku, namun akan berbeda pada soal versi mudah:
 
 - 1 ≤ N, M ≤ 50.000

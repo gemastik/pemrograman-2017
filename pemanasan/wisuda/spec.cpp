@@ -102,6 +102,15 @@ protected:
     }
 
     void SampleTestCase2() {
+        Subtasks({1, 2});
+        Input({
+            "1",
+            "dibantu 1 ani"
+        });
+        Output({"2"});
+    }
+
+    void SampleTestCase3() {
         Subtasks({2});
         Input({
             "3",

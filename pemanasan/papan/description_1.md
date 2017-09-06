@@ -13,9 +13,7 @@ Angin di pantai tersebut lumayan kencang. Oleh karena itu, setiap kali Ani menab
 - Tinggi pasir pada posisi x+2 bertambah sebesar k-2.
 - ... dan seterusnya sampai pertambahan tinggi pasir menjadi 0 (k-k).
 
-Setelah melakukan M taburan, mendadak ombak besar datang dan menghempaskan karya Ani. Ani pun menjadi sedih. Anda yang merupakan teman dekat Ani (dan baru selesai berenang), ingin membantu Ani membuat kembali “bangunan pasir” tersebut. Beruntung, Ani ingat persis setiap kegiatan taburan yang ia lakukan. Tentukan tinggi pasir pada setiap posisi agar Anda bisa membuat kembali bangunan pasir Ani!
-
-
+Setelah melakukan M taburan, mendadak ombak besar datang dan menghempaskan karya Ani. Ani pun menjadi sedih. Anda yang merupakan teman dekat Ani (dan baru selesai berenang), ingin membantu Ani membuat kembali "bangunan pasir" tersebut. Beruntung, Ani ingat persis setiap kegiatan taburan yang ia lakukan. Tentukan tinggi pasir pada setiap posisi agar Anda bisa membuat kembali bangunan pasir Ani!
 
 ### Format Masukan
 
@@ -25,7 +23,6 @@ Baris pertama berisi sebuah bilangan bulat T yang menyatakan banyaknya kasus uji
 N M
 x[1] k[1]
 x[2] k[2]
-.
 .
 .
 x[M] k[M]

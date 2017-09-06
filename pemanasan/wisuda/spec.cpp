@@ -26,6 +26,11 @@ protected:
         LINE(res);
     }
 
+    void GradingConfig() {
+        TimeLimit(2);
+        MemoryLimit(64);
+    }
+
     void MultipleTestCasesConfig() {
         Counter(T);
     }

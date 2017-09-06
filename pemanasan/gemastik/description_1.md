@@ -6,8 +6,7 @@ Setiap perwakilan universitas berhak mengirimkan tepat satu tim untuk masing-mas
 
 Terdapat tepat N mahasiswa yang memenuhi syarat bertanding pada geMasTIK. Mahasiswa ke-i memiliki 2 nilai keahlian, yakni G[i] dan C[i]. G[i] menandakan seberapa menggemaskan mahasiswa tersebut, sedangkan C[i] menandakan seberapa cantik mahasiswa tersebut. Kekuatan suatu tim adalah hasil perkalian dari keahlian masing-masing anggotanya.
 
-Anda berencana untuk mengirimkan tepat 2 tim. Tim pertama akan dikirim untuk mengikuti kontes KegeMasan, sementara kelompok kedua akan dikirim untuk mengikuti kontes KecanTIKan. Anda diminta mengatur pembagian tim sedemikian rupa sehingga kekuatan KegeMasan kelompok pertama ditambah kekuatan KecanTIKan kelompok kedua, sebesar mungkin. Dengan kata lain, misalkan indeks-indeks anggota kelompok pertama adalah a, b, c, sementara kelompok kedua adalah x, y, dan z. Carilah pembagian sedemikian sehingga nilai (G[a] * G[b] * G[c]) + (C[x] * C[y] * C[z]) maksimum.
-
+Anda berencana untuk mengirimkan tepat 2 tim. Tim pertama akan dikirim untuk mengikuti kontes KegeMasan, sementara kelompok kedua akan dikirim untuk mengikuti kontes KecanTIKan. Anda diminta mengatur pembagian tim sedemikian rupa sehingga kekuatan KegeMasan kelompok pertama ditambah kekuatan KecanTIKan kelompok kedua, sebesar mungkin. Dengan kata lain, misalkan indeks-indeks anggota kelompok pertama adalah a, b, c, sementara kelompok kedua adalah x, y, dan z. Carilah pembagian sedemikian sehingga nilai (G[a] × G[b] × G[c]) + (C[x] × C[y] × C[z]) maksimum.
 
 ### Format Masukan
 
@@ -17,7 +16,6 @@ Baris pertama berisi sebuah bilangan bulat T yang menyatakan banyaknya kasus uji
 N
 S[1] G[1] C[1]
 S[2] G[2] C[2]
-.
 .
 .
 S[N] G[N] C[N]
@@ -37,7 +35,7 @@ S[x] S[y] S[z]
 
 dengan:
 
-- M adalah nilai maksimum dari (G[a] * G[b] * G[c]) + (C[x] * C[y] * C[z])
+- M adalah nilai maksimum dari (G[a] × G[b] × G[c]) + (C[x] × C[y] × C[z])
 - S[a], S[b], S[c], S[x], S[y], dan S[z] menyatakan nama-nama dari mahasiswa dalam pembagian tersebut.
 
 Jika ada lebih dari satu cara untuk membagi kelompok yang menghasilkan total kekuatan terbesar, **keluarkan yang mana saja**.

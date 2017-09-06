@@ -33,6 +33,11 @@ protected:
         CustomScorer();
     }
 
+    void GradingConfig() {
+        TimeLimit(4);
+        MemoryLimit(256);
+    }
+
     void MultipleTestCasesConfig() {
         Counter(T);
     }

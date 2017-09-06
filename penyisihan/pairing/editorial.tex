@@ -2,11 +2,14 @@
 \documentclass[../main_editorial.tex]{subfiles} % Inherits definitions from parent .tex file.
 
 % Per-problem variable definitions
-%TODO: Change placeholders to correct info.
-\newcommand{\problemName}{Judul Soal}
-\newcommand{\problemWriter}{Penulis soal}
-\newcommand{\problemEditorialWriter}{Penulis editorial}
-\newcommand{\problemTags}{tema1, tema2}
+\newcommand{\problemName}{Pasangan Terbaik}
+\newcommand{\problemWriter}{Alham Fikri Aji}
+\newcommand{\problemEditorialWriter}{William Gozali}
+\newcommand{\problemTags}{matematika, heuristik}
+
+\newcommand{\Mod}[1]{\ \mathrm{mod}\ #1}
+\newcommand{\bigO}[1]{\mathcal{O}(#1)}
+\newcommand{\maxValue}{\mathcal{Z}}
 
 \begin{document}
 
@@ -24,19 +27,64 @@
 \subsection*{Catatan/Komentar}
 \addcontentsline{toc}{subsection}{Catatan/Komentar} % for pdf indexing
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial prologue
+Berikut adalah rumus yang diberikan pada soal.
+$$f(i, j) = A[i] \times B[j] + C[(A[i] \times  B[j]) \Mod{M}]$$
+
+Bagian penjumlahan dengan suatu elemen pada array $C$ merupakan bagian yang paling sulit dikendalikan. Sebab elemen $C$ yang dipilih memiliki pola yang sulit ditebak. Solusi yang digunakan akan fokus pada menganalisis bagian tersebut.
+
+Untuk kemudahan, definisikan nilai terbesar yang mungkin untuk elemen array adalah $\maxValue$, dengan $\maxValue = 1.000.000$.
 
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
-Batasan: $...$ %TODO: Add constraints for easy version
+Batasan: $1 \le M \le 1.000$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for easy version
+Perhatikan rumus indeks array $C$ yang akan dipilih. Berdasarkan sifat modulo, diketahui:
+$$(A[i] \times B[j]) \Mod{M} = ((A[i]\Mod{M}) \times (B[j]\Mod{M})) \Mod{M}$$
+
+Berapapun nilai $A[i]$, yang menentukan indeks array $C$ yang digunakan adalah nilai modulonya. Artinya ketika terdapat beberapa elemen $A[i]$ yang memiliki nilai $(A[i]\Mod{M})$ sama, sudah pasti lebih menguntungkan untuk hanya menggunakan nilai $A[i]$ yang terkecil. Berdasarkan observasi ini, kita dapat mengurangi banyaknya elemen pada array $A$ menjadi paling banyak $M$ elemen. Terapkan pula hal serupa untuk array $B$.
+
+Kini array $A$ dan array $B$ memiliki paling banyak $M$ elemen. Coba semua kemungkinan pasangan dan cari yang menghasilkan nilai $f$ terkecil. Kompleksitas solusi $\bigO{M^2}$.
 
 \subsection*{Versi Sulit}
 \addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
+Batasan: $1 \le M \le 100.000$
 
-Batasan: $...$ %TODO: Add constraints for hard version
+Untuk nilai elemen $A$ dan $B$ yang cukup besar, perkalian antar suatu elemen array $A$ dengan array $B$ memiliki kontribusi kepada nilai $f$ yang jauh lebih besar daripada bagian penjumlahan dengan suatu elemen array $C$. Artinya nilai elemen $C$ manapun yang dipilih kurang signifikan pada nilai akhir $f$.
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for hard version
+Dengan sifat tersebut dan perilaku pemilihan elemen $C$ yang polanya sulit ditebak, kita dapat menganggap penjumlahan dengan suatu elemen $C$ sebagai suatu \textit{error} atau \textit{noise}. Tuliskan rumus $f$ menjadi:
+$$f(i,j) = A[i] \times B[j] + err$$
+
+Dengan $err$ adalah suatu nilai yang berkisar antara $0$ sampai dengan $\maxValue$.
+
+Sekarang misalkan kita memilih suatu $i=x$. Kita dapat mencoba seluruh kemungkinan nilai elemen $B$, dari yang paling kecil hingga suatu elemen yang cukup besar sehingga $err$ menjadi tidak lagi signifikan. 
+
+Misalkan $B_{min}$ adalah elemen terkecil pada array $B$. Misalkan juga $C_{min}$ dan $C_{max}$ menyatakan elemen terkecil dan terbesar pada array $C$. Kita harus mencoba seluruh elemen $B[j]$ yang memenuhi:
+\begin{align}
+A[x] \times B[j] + C_{min} &< A[x] \times B_{min} + C_{max} \nonumber \\
+A[x] \times B[j] - A[x] \times B_{min} &< C_{max} - C_{min} \nonumber\\
+A[x] (B[j] - B_{min}) &< 1.000.000 \nonumber \\
+B[j] - B_{min} &< \frac{1.000.000}{A[x]} \label{bound}
+\end{align}
+
+Pada awalnya, $A[x] \times B_{min} + err$ merupakan kandidat solusi. Seluruh $B[j]$ yang tidak memenuhi pertidaksamaan \ref{bound} tidak mungkin menjadi kandidat solusi, karena sudah pasti lebih besar daripada $A[x] \times B_{min} + err$, tanpa peduli berapapun nilai $err$.
+
+Dengan asumsi array $A$ dan array $B$ memiliki nilai yang unik, banyaknya $B[j]$ unik yang perlu diperiksa untuk suatu $A[x]$ dibatasi oleh $O\left(\frac{1.000.000}{A[x]}\right)$. Banyaknya pasangan yang perlu diperiksa dapat diperkirakan dengan cara berikut:
+\begin{align}
+\sum_{i=0}^{|A|-1} \frac{1.000.000}{A[i]} &= 1.000.000 \sum_{i=0}^{|A|-1} \frac{1}{A[i]} \nonumber \\
+&\le 1.000.000 \sum_{i=0}^{\maxValue} \frac{1}{i} \label{eq1} \\
+&\le 1.000.000 (\ln{\maxValue} + 1) \label{eq2}
+\end{align}
+
+Pada kenyataannya, $|A|$ terbesar adalah $100.000$, yaitu $\frac{1}{10}$ dari $\maxValue$. Jadi pertidaksamaan yang ditunjukkan pada \ref{eq1} merupakan estimasi yang berlebihan. Sebagai catatan, perpindahan dari \ref{eq1} ke \ref{eq2} memanfaatkan sifat \href{https://en.wikipedia.org/wiki/Harmonic_series_%28mathematics%29}{deret harmonik}.
+
+Sebagai kesimpulan, solusi yang digunakan adalah:
+\begin{enumerate}
+\item Urutkan array $B$ dari kecil ke besar, lalu buang elemen-elemen duplikat sehingga didapatkan array yang unik.
+\item Coba seluruh kemungkinan $A[i]$.
+\item Untuk suatu $A[i]$ yang dipilih, coba seluruh elemen $B$ mulai dari yang terkecil sampai ke elemen terbesar yang masih memenuhi pertidaksamaan \ref{bound}.
+\item Cetak yang menghasilkan nilai $f$ terkecil.
+\end{enumerate}
+
+Estimasi kasar berlebihan untuk kompleksitas solusi ini adalah $\bigO{\maxValue \ln{\maxValue}}$.
 
 \end{document}

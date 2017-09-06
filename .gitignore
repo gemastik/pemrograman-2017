@@ -244,3 +244,6 @@ TSWLatexianTemp*
 
 # expex forward references with \gathertags
 *-tags.tex
+
+# if you have assets made on pdf, please add them manually
+*.pdf

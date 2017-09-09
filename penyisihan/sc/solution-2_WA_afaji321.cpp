@@ -9,6 +9,7 @@
 #include <map>
 #include <string>
 #include <cstdio>
+#include <cstring>
 #include <iostream>
 using namespace std;
 

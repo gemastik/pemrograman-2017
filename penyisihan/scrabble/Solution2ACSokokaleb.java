@@ -22,6 +22,18 @@ public class Solution2ACSokokaleb {
     static int[][] dp = new int[55][1 << 11];
     static int[] pkt = new int[105];
 
+    static int[] ftable = new int[15];
+
+    static void clear() {
+        for (int i = 0; i < (1 << lenS); ++i) {
+            for (int j = 0; j < K; ++j) {
+                Arrays.fill(twoStepTransition[i][j], 0);
+            }
+            Arrays.fill(oneStepTransition[i], 0);
+        }
+        Arrays.fill(ftable, -1);
+    }
+
     static int f(int col, int mask) {
         if (dp[col][mask] == -1) {
             int res;
@@ -50,8 +62,6 @@ public class Solution2ACSokokaleb {
         }
         return dp[col][mask];
     }
-
-    static int[] ftable = new int[15];
 
     public static void computeFailTable() {
         ftable[0] = -1;
@@ -145,10 +155,12 @@ public class Solution2ACSokokaleb {
 
         finishState = 1 << lenS;
 
-        for (int i = 0; i <= N; ++i) {
+        for (int i = 0; i <= N + 1; ++i) {
             Arrays.fill(dp[i], -1);
         }
         writer.println(f(0, 1 << 0));
+
+        clear();
     }
 
     public static void main(String[] args) throws IOException {

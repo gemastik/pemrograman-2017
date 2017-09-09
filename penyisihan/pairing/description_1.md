@@ -1,4 +1,4 @@
-# Pasangan Terbaik
+# Pasangan Terbaik (Mudah)
 
 Pak Chanek memiliki tiga buah *array* bilangan bulat: A dan B yang masing-masing memiliki N elemen, dan C yang memiliki M elemen. Untuk kemudahan, anggap bahwa indeks elemen-elemen *array* dimulai dari 0.
 
@@ -20,9 +20,9 @@ Baris pertama berisi sebuah bilangan bulat T yang menyatakan banyaknya kasus uji
 
 ```
 N M
-A[0] A[1] ... A[N-1]
-B[0] B[1] ... B[N-1]
-C[0] C[1] ... C[M-1]
+A[0] A[1] .. A[N-1]
+B[0] B[1] .. B[N-1]
+C[0] C[1] .. C[M-1]
 ```
 
 ### Format Keluaran
@@ -66,10 +66,9 @@ A[0] × B[0] + C[(A[0] × B[0]) % 3] = 3 × 26 + C[(3 × 26) mod 3] = 78 + 93 = 
 - 1 ≤ N ≤ 100.000
 - 0 ≤ A[i], B[i], C[i] ≤ 1.000.000
 
-### Subsoal 1
+### Batasan Khusus Versi Mudah
+
+**Soal ini adalah soal versi mudah**. Batasan di bawah ini juga berlaku, namun akan berbeda pada soal versi sulit:
 
 - 1 ≤ M ≤ 1.000
 
-### Subsoal 2
-
-- 1 ≤ M ≤ 100.000

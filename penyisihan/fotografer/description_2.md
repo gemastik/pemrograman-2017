@@ -1,4 +1,4 @@
-# Fotografer Wisuda
+# Fotografer Wisuda (Sulit)
 
 Pak Chanek sedang mengunjungi perayaan wisuda teman-temannya di Balairung Universitas Indonesia. Seperti biasa, ia sering diminta untuk memotret teman-temannya di halaman Balairung.
 
@@ -56,10 +56,8 @@ Pada contoh keempat, `LLLPPP` merupakan barisan yang tidak diperbolehkan karena 
 - 1 ≤ B ≤ 1.000
 - 1 ≤ K ≤ B
 
-### Subsoal 1
+### Batasan Khusus Versi Sulit
 
-- 0 ≤ A ≤ 1
-
-### Subsoal 2
+**Soal ini adalah soal versi sulit**. Batasan di bawah ini juga berlaku, namun akan berbeda pada soal versi mudah:
 
 - 0 ≤ A ≤ 1.000

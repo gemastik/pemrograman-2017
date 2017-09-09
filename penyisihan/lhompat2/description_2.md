@@ -1,4 +1,4 @@
-# Saklar Lhompat II
+# Saklar Lhompat II (Sulit)
 
 Ruang baca di perpustakaan Fasilkom UI berisi meja-meja yang tersusun atas R baris dan C kolom. Uniknya, meja-meja tersebut memiliki ketinggian berbeda-beda. Saat ini, terdapat N mahasiswa yang sedang berada di dalam ruang baca tersebut, dinomori dari 1 hingga N. Informasi ini dinyatakan oleh matriks G sebagai berikut:
 
@@ -28,12 +28,11 @@ Baris pertama berisi sebuah bilangan bulat T yang menyatakan banyaknya kasus uji
 
 ```
 R C N
-G[1][1] G[1][2] ... G[1][C]
-G[2][1] G[2][2] ... G[2][C]
+G[1][1] G[1][2] .. G[1][C]
+G[2][1] G[2][2] .. G[2][C]
 .
 .
-.
-G[R][1] G[R][2] ... G[R][C]
+G[R][1] G[R][2] .. G[R][C]
 ```
 
 ### Format Keluaran
@@ -104,10 +103,9 @@ Total tingkat kesemrawutannya adalah 20 + 20 + 20 = 60.
 - G[1][j] = 0
 - G berisi semua bilangan bulat antara -N hingga -1, masing-masing tepat sekali
 
-### Subsoal 1
+### Batasan Khusus Versi Sulit
 
-- N = 1
-
-### Subsoal 2
+**Soal ini adalah soal versi sulit**. Batasan di bawah ini juga berlaku, namun akan berbeda pada soal versi mudah:
 
 - 1 ≤ N ≤ C
+

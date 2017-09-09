@@ -1,4 +1,4 @@
-# Penulis Soal
+# Penulis Soal (Sulit)
 
 Tim soal Gemastik 2017 terdiri atas N penulis soal. Saat ini, penulis ke-i sedang bekerja pada P[i] perusahaan. Terdapat paling banyak 50 perusahaan tempat para penulis soal bekerja, dinomori dari 1 hingga 50. Penulis ke-i bekerja pada perusahaan-perusahaan C[i][1], C[i][2], ..., C[i][P[i]].
 
@@ -17,13 +17,12 @@ Baris pertama berisi sebuah bilangan bulat T yang menyatakan banyaknya kasus uji
 
 ```
 N
-S[1] S[2] ... S[N]
-P[1] C[1][1] C[1][2] ... C[1][P[1]]
-P[2] C[2][1] C[2][2] ... C[2][P[2]]
+S[1] S[2] .. S[N]
+P[1] C[1][1] C[1][2] .. C[1][P[1]]
+P[2] C[2][1] C[2][2] .. C[2][P[2]]
 .
 .
-.
-P[N] C[N][1] C[N][2] ... C[N][P[N]]
+P[N] C[N][1] C[N][2] .. C[N][P[N]]
 ```
 
 ### Format Keluaran
@@ -77,13 +76,9 @@ Himpunan pemilik soal berbeda adalah {Penulis 1, Perusahaan 42, Penulis 2, Penul
 - 1 ≤ C[i][j] ≤ 50
 - Nilai-nilai dari C[i][1], C[i][2], ... C[i][P[i]] berbeda-beda
 
-### Subsoal 1
+### Batasan Khusus Versi Sulit
 
-- 1 ≤ N ≤ 10
-- 1 ≤ S[i] ≤ 2
-- 0 ≤ P[i] ≤ 2
-
-### Subsoal 2
+**Soal ini adalah soal versi sulit**. Batasan di bawah ini juga berlaku, namun akan berbeda pada soal versi mudah:
 
 - 1 ≤ N ≤ 50
 - 1 ≤ S[i] ≤ 50

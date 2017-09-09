@@ -1,4 +1,4 @@
-# Rubrik Petakata
+# Rubrik Petakata (Mudah)
 
 Petakata adalah sebuah rubrik teka-teki pada koran langganan Pak Chanek. Sebuah petakata terdiri atas petak-petak berukuran 2 baris dan N kolom. Setiap petak berisi sebuah huruf dari K huruf kecil pertama pada alfabet.
 
@@ -28,11 +28,9 @@ Untuk setiap kasus uji, keluarkan sebuah baris berisi banyaknya petakata yang mu
 ### Contoh Masukan
 
 ```
-4
+2
 ab 1 2
 aa 2 2
-gemastik 3 21
-gemastik 20 21
 ```
 
 ### Contoh Keluaran
@@ -40,8 +38,6 @@ gemastik 20 21
 ```
 2
 11
-0
-662038843
 ```
 
 ### Penjelasan
@@ -66,8 +62,6 @@ ba  ba  bb
 ab  ba  aa
 ```
 
-Untuk contoh ketiga, string `gemastik` tidak mungkin terdapat pada petakata berukuran 2 × 3.
-
 ### Batasan
 
 - 1 ≤ T ≤ 5
@@ -75,10 +69,9 @@ Untuk contoh ketiga, string `gemastik` tidak mungkin terdapat pada petakata beru
 - 1 ≤ K ≤ 26
 - Setiap huruf pada S termasuk dalam K huruf kecil pertama pada alfabet
 
-### Subsoal 1
+### Batasan Khusus Versi Mudah
+
+**Soal ini adalah soal versi mudah**. Batasan di bawah ini juga berlaku, namun akan berbeda pada soal versi sulit:
 
 - S terdiri atas tepat 2 huruf
 
-### Subsoal 2
-
-- S terdiri atas 1 hingga 10 huruf, inklusif

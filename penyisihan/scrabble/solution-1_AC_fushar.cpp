@@ -21,6 +21,8 @@ int N, K;
 int dp[MAXN][MAXK][MAXK][2];
 
 int doDP() {
+    memset(dp, 0, sizeof dp);
+
     dp[0][0][0][0] = 1;
     REP(i, N) REP(a, K) REP(b, K) REP(done, 2) REP(c, K) REP(d, K) {
         int ndone = done;

@@ -59,8 +59,8 @@ public class Solution2ACSokokaleb {
             }
         }
 
-        int currentHeight = 0;
-        int currentGrad = 0;
+        Long currentHeight = 0;
+        Long currentGrad = 0;
         for (int i = 1; i <= N; ++i) {
             if (i > 1) {
                 writer.print(" ");

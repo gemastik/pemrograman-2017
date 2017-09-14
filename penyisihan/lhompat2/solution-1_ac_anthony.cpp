@@ -9,7 +9,7 @@ const int DY[] = { 0, -1, 0, 1 };
 int r, c, p;
 int fx, fy;
 int dist[MAXN][50];
-char grid[MAXN][50];
+int grid[MAXN][50];
 
 int getValue(int x, int y) {
 	return (grid[x][y] > 0) * grid[x][y];

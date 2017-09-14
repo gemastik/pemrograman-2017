@@ -71,7 +71,7 @@ ab  ba  aa
 
 ### Batasan Khusus Versi Mudah
 
-**Soal ini adalah soal versi mudah**. Batasan di bawah ini juga berlaku, namun akan berbeda pada soal versi sulit:
+**Soal ini adalah soal versi mudah**. Batasan khusus untuk soal versi mudah:
 
 - S terdiri atas tepat 2 huruf
 

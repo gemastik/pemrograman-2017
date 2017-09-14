@@ -105,7 +105,7 @@ Total tingkat kesemrawutannya adalah 20 + 20 + 20 = 60.
 
 ### Batasan Khusus Versi Sulit
 
-**Soal ini adalah soal versi sulit**. Batasan di bawah ini juga berlaku, namun akan berbeda pada soal versi mudah:
+**Soal ini adalah soal versi sulit**. Batasan khusus untuk soal versi sulit:
 
 - 1 ≤ N ≤ C
 

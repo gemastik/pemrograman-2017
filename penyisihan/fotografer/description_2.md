@@ -58,6 +58,6 @@ Pada contoh keempat, `LLLPPP` merupakan barisan yang tidak diperbolehkan karena 
 
 ### Batasan Khusus Versi Sulit
 
-**Soal ini adalah soal versi sulit**. Batasan di bawah ini juga berlaku, namun akan berbeda pada soal versi mudah:
+**Soal ini adalah soal versi sulit**. Batasan khusus untuk soal versi sulit:
 
 - 0 ≤ A ≤ 1.000

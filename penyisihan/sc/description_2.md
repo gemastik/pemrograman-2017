@@ -78,7 +78,7 @@ Himpunan pemilik soal berbeda adalah {Penulis 1, Perusahaan 42, Penulis 2, Penul
 
 ### Batasan Khusus Versi Sulit
 
-**Soal ini adalah soal versi sulit**. Batasan di bawah ini juga berlaku, namun akan berbeda pada soal versi mudah:
+**Soal ini adalah soal versi sulit**. Batasan khusus untuk soal versi sulit:
 
 - 1 ≤ N ≤ 50
 - 1 ≤ S[i] ≤ 50

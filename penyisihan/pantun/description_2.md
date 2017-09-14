@@ -68,6 +68,6 @@ Total waktu yang dibutuhkan adalah 4 + 5 + 5 + 6 = 20 detik.
 
 ### Batasan Khusus Versi Sulit
 
-**Soal ini adalah soal versi sulit**. Batasan di bawah ini juga berlaku, namun akan berbeda pada soal versi mudah:
+**Soal ini adalah soal versi sulit**. Batasan khusus untuk soal versi sulit:
 
 - 1 ≤ N ≤ 100.000

@@ -77,6 +77,6 @@ Untuk contoh ketiga, string `gemastik` tidak mungkin terdapat pada petakata beru
 
 ### Batasan Khusus Versi Sulit
 
-**Soal ini adalah soal versi sulit**. Batasan di bawah ini juga berlaku, namun akan berbeda pada soal versi mudah:
+**Soal ini adalah soal versi sulit**. Batasan khusus untuk soal versi sulit:
 
 - S terdiri atas 1 hingga 10 huruf, inklusif

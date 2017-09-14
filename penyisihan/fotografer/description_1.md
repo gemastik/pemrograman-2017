@@ -54,6 +54,6 @@ Pada contoh kedua, satu-satunya barisan yang mungkin, `PPPP`,  merupakan barisan
 
 ### Batasan Khusus Versi Mudah
 
-**Soal ini adalah soal versi mudah**. Batasan di bawah ini juga berlaku, namun akan berbeda pada soal versi sulit:
+**Soal ini adalah soal versi mudah**. Batasan khusus untuk soal versi mudah:
 
 - 0 ≤ A ≤ 1

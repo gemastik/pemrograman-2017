@@ -68,7 +68,7 @@ A[0] × B[0] + C[(A[0] × B[0]) % 3] = 3 × 26 + C[(3 × 26) mod 3] = 78 + 93 = 
 
 ### Batasan Khusus Versi Mudah
 
-**Soal ini adalah soal versi mudah**. Batasan di bawah ini juga berlaku, namun akan berbeda pada soal versi sulit:
+**Soal ini adalah soal versi mudah**. Batasan khusus untuk soal versi mudah:
 
 - 1 ≤ M ≤ 1.000
 

@@ -11,7 +11,7 @@ Untuk menghindari rebutan stop kontak, Pak Chanek, sang kepala pustakawan, akan 
 
 Untuk menyambungkan sebuah laptop ke sebuah stop kontak yang ditentukan Pak Chanek, kabel laptop harus bermula pada meja tempat mahasiswa pemilik laptop tersebut berada, kemudian melewati meja-meja lain sampai pada sebuah meja pada baris pertama. Setiap meja yang dilewati, kecuali meja pertama (yang berisi laptop), harus berada tepat di sebelah kiri, atas, kanan, atau bawah dari meja sebelumnya. Kabel laptop boleh melewati meja manapun, termasuk meja-meja lain pada baris pertama, meja-meja yang berisi laptop lain, maupun meja-meja yang dilewati kabel laptop lain.
 
-Panjang kabel efektif sebuah penyambungan didefinisikan sebagai total dari:
+"Panjang kabel efektif" sebuah penyambungan didefinisikan sebagai total dari:
 
 - banyaknya meja yang dilewati, termasuk meja pertama dan meja terakhir, dan
 - jumlah dari perbedaan tinggi dari setiap meja yang bersebelahan yang dilewati.

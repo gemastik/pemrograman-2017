@@ -5,7 +5,7 @@ Petakata adalah sebuah rubrik teka-teki pada koran langganan Pak Chanek. Sebuah 
 Tujuan pembaca adalah untuk menemukan sebuah string S pada petakata tersebut. Sebuah string S dikatakan terdapat pada petakata, apabila terdapat serangkaian petak yang memenuhi seluruh syarat di bawah ini:
 
 - dimulai pada sebuah petak yang mana saja,
-- setiap petak, selain petak pertama, berada tepat di sebelah atas, bawah, kanan, kanan-atas, atau kanan-bawah dari petak sebelumnya,
+- setiap petak, selain petak pertama, berada tepat di sebelah atas, bawah, kanan, kanan-atas, atau kanan-bawah dari petak sebelumnya (perhatikan bahwa setiap petak tidak boleh berada di sebelah kiri petak sebelumnya),
 - tidak ada petak yang dikunjungi lebih dari satu kali, dan
 - huruf-huruf pada petak-petak yang dikunjungi tepat membentuk string S (yakni, petak pertama berisi huruf pertama dari S, petak kedua berisi huruf kedua, dan seterusnya).
 

@@ -2,11 +2,10 @@
 \documentclass[../main_editorial.tex]{subfiles} % Inherits definitions from parent .tex file.
 
 % Per-problem variable definitions
-%TODO: Change placeholders to correct info.
-\newcommand{\problemName}{Judul Soal}
-\newcommand{\problemWriter}{Penulis soal}
-\newcommand{\problemEditorialWriter}{Penulis editorial}
-\newcommand{\problemTags}{tema1, tema2}
+\newcommand{\problemName}{Berbalas Pantun}
+\newcommand{\problemWriter}{Alham Fikri Aji}
+\newcommand{\problemEditorialWriter}{Anthony}
+\newcommand{\problemTags}{\textit{ad hoc}}
 
 \begin{document}
 
@@ -24,19 +23,37 @@
 \subsection*{Catatan/Komentar}
 \addcontentsline{toc}{subsection}{Catatan/Komentar} % for pdf indexing
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial prologue
+Soal ini merupakan soal penyisihan termudah karena tidak dibutuhkan pengetahuan khusus untuk menyelesaikannya.
 
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
-Batasan: $...$ %TODO: Add constraints for easy version
+Batasan: $1 \le T \le 10; 1 \le A[i], B[i] \le 100; \mathbf{N = 1}$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for easy version
+Untuk versi mudah dari soal ini, karena $N = 1$, maka jawabannya adalah $A[1] + B[1]$.
 
 \subsection*{Versi Sulit}
 \addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
 
-Batasan: $...$ %TODO: Add constraints for hard version
+Batasan: $1 \le T \le 10; 1 \le A[i], B[i] \le 100; \mathbf{1 \le N \le 100.000}$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for hard version
+Berikut adalah jumlahan yang diminta pada soal:
+\begin{gather*}
+(A[1] + B[1]) + (A[1] + B[2]) + (A[1] + B[3]) + \dots + (A[1] + B[N])\\
++(A[2] + B[1]) + (A[2] + B[2]) + (A[2] + B[3]) + \dots + (A[2] + B[N])\\
++ \dots \\
++ (A[N] + B[1]) + (A[N] + B[2]) + (A[N] + B[3]) + \dots + (A[N] + B[N])
+\end{gather*}
+Setiap elemen dari $A$ akan dipasangkan dengan setiap elemen dari $B$, sehingga jumlahan untuk sebuah $A[i]$ dapat dituliskan sebagai berikut:
+\begin{align*}
+(A[i] + B[1]) + (A[i] + B[2]) + \dots + (A[i] + B[N]) &= (A[i] \times N) + (B[1] + B[2] + \dots + B[N])\\
+&= (A[i] \times N) + \sum_{j=1}^{N}B[j]
+\end{align*}
+Jawaban akhir diperoleh dengan menjumlahkan persamaan di atas untuk setiap $i$ dari 1 hingga $N$:
+\begin{align*}
+\sum_{i=1}^{N} \left((A[i] \times N) + \sum_{j=1}^{N}B[j]\right) &= N \times \left(\sum_{j=1}^{N}B[j]\right) + \sum_{i=1}^{N} (A[i] \times N)\\
+&= N \times \left(\sum_{j=1}^{N}B[j]\right) + N \times \left(\sum_{i=1}^{N} A[i]\right)\\
+&= N \times \left(\sum_{i=1}^{N}A[i] + \sum_{j=1}^{N}B[j]\right)
+\end{align*}
+Melalui penyederhanaan di atas, diperoleh jawaban akhir yaitu N dikalikan dengan jumlahan semua elemen-elemen A dan B.
 
 \end{document}

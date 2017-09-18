@@ -2,11 +2,10 @@
 \documentclass[../main_editorial.tex]{subfiles} % Inherits definitions from parent .tex file.
 
 % Per-problem variable definitions
-%TODO: Change placeholders to correct info.
-\newcommand{\problemName}{Judul Soal}
-\newcommand{\problemWriter}{Penulis soal}
-\newcommand{\problemEditorialWriter}{Penulis editorial}
-\newcommand{\problemTags}{tema1, tema2}
+\newcommand{\problemName}{Fotografer Wisuda}
+\newcommand{\problemWriter}{Ashar Fuadi}
+\newcommand{\problemEditorialWriter}{Anthony}
+\newcommand{\problemTags}{algoritma konstruktif}
 
 \begin{document}
 
@@ -24,19 +23,40 @@
 \subsection*{Catatan/Komentar}
 \addcontentsline{toc}{subsection}{Catatan/Komentar} % for pdf indexing
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial prologue
+Ide untuk menyelesaikan soal ini tidak sulit tetapi cukup rawan terjadi kesalahan pada implementasinya.
 
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
-Batasan: $...$ %TODO: Add constraints for easy version
+Batasan: $1 \le T \le 20; 1 \le K \le B \le 1.000; \mathbf{0 \le A \le 1}$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for easy version
+Untuk menyelesaikan versi mudah dari soal ini, penyelesaian untuk seluruh kemungkinan masukan dapat dikategorikan sebagai berikut:
+
+\begin{itemize}
+	\item Jika tidak ada teman laki-laki ($A = 0$):
+		\begin{itemize}
+			\item jika banyaknya teman perempuan melebihi $K$ ($B > K$), jawabannya adalah \texttt{mustahil},
+			\item jika tidak, cetak \texttt{P} sebanyak $B$ kali.
+		\end{itemize}
+	\item Jika terdapat tepat 1 teman laki-laki ($A = 1$):
+		\begin{itemize}
+			\item jika banyaknya teman perempuan melebihi $2K$ ($B > 2K$), jawabannya adalah \texttt{mustahil},
+			\item selain itu, cetak \texttt{P} sebanyak $\min(B, K)$, \texttt{L}, kemudian diikuti \texttt{P} sebanyak $B - \min(B, K)$.
+		\end{itemize}
+\end{itemize}
 
 \subsection*{Versi Sulit}
 \addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
 
-Batasan: $...$ %TODO: Add constraints for hard version
+Batasan: $1 \le T \le 20; 1 \le K \le B \le 1.000; \mathbf{0 \le A \le 1.000}$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for hard version
+Hal pertama yang dapat dilakukan adalah pemeriksaan kasus \texttt{mustahil}, yaitu jika tidak memungkinkan untuk menempatkan teman laki-laki sehingga paling banyak dua teman laki-laki bersebelahan untuk setiap deretan teman laki-laki. Dengan kata lain, kasus \texttt{mustahil} hanya terjadi pada masukan yang memenuhi:
+\begin{itemize}
+	\item $A > 2(B + 1)$ atau
+	\item $A < \lceil \frac{B}{K} \rceil - 1$.
+\end{itemize}
+
+Perhatikan bahwa $\lceil \frac{B}{K} \rceil - 1$ dan $2(B + 1)$ berturut-turut merupakan batas bawah dan batas atas banyaknya deretan teman perempuan (\texttt{P}) yang dipisahkan oleh deretan teman laki-laki (\texttt{L}).
+
+Untuk masukan yang tidak \texttt{mustahil}, solusi dapat dibangun dengan cara mencoba menyelipkan $A$ buah \texttt{L} ke dalam deretan yang terdiri dari $B$ buah \texttt{P} sedemikian rupa sehingga memenuhi persyaratan yang diberikan pada soal. Sebagai contoh, pola yang dapat dibentuk adalah \texttt{P...PLLP...PLLP...PLP...PLP...P}.
 
 \end{document}

@@ -40,7 +40,6 @@ Terdapat 1 kemungkinan pasangan murid yang akan tampil: satu-satunya murid kelas
 
 ### Batasan
 
-- 1 ≤ T ≤ 10
 - 1 ≤ A[i], B[i] ≤ 100
 
 ### Batasan Khusus Versi Mudah

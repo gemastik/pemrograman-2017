@@ -63,7 +63,6 @@ Total waktu yang dibutuhkan adalah 4 + 5 + 5 + 6 = 20 detik.
 
 ### Batasan
 
-- 1 ≤ T ≤ 10
 - 1 ≤ A[i], B[i] ≤ 100
 
 ### Batasan Khusus Versi Sulit

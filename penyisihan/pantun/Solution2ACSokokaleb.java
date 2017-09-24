@@ -6,19 +6,19 @@ import java.io.*;
 import java.util.*;
 
 public class Solution2ACSokokaleb {
-    static int N;
-    static int ans = 0;
+    static long N;
+    static long ans = 0L;
 
     static Reader reader = new Reader();
     static Writer writer = new Writer();
 
     public static void main(String[] args) throws IOException {
-        N = reader.getInt();
+        N = reader.getLong();
         for (int i = 0; i < N; ++i) {
-            ans += reader.getInt();
+            ans += reader.getLong();
         }
         for (int i = 0; i < N; ++i) {
-            ans += reader.getInt();
+            ans += reader.getLong();
         }
 
         writer.println(ans * N);
@@ -43,6 +43,13 @@ public class Solution2ACSokokaleb {
                 st = new StringTokenizer(br.readLine());
             }
             return Integer.parseInt(st.nextToken());
+        }
+
+        long getLong() throws IOException {
+            if (!st.hasMoreTokens()) {
+                st = new StringTokenizer(br.readLine());
+            }
+            return Long.parseLong(st.nextToken());
         }
     }
 

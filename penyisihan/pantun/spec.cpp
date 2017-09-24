@@ -18,7 +18,7 @@ protected:
 
     int N;
     vector<int> A, B;
-    int ans;
+    long long ans;
 
     void InputFormat() {
         LINE(N);

@@ -3,10 +3,10 @@
 
 % Per-problem variable definitions
 %TODO: Change placeholders to correct info.
-\newcommand{\problemName}{Judul Soal}
-\newcommand{\problemWriter}{Penulis soal}
-\newcommand{\problemEditorialWriter}{Penulis editorial}
-\newcommand{\problemTags}{tema1, tema2}
+\newcommand{\problemName}{Penulis Soal}
+\newcommand{\problemWriter}{Ashar Fuadi}
+\newcommand{\problemEditorialWriter}{Alham Fikri Aji}
+\newcommand{\problemTags}{\textit{Bipartite Matching}}
 
 \begin{document}
 
@@ -24,19 +24,40 @@
 \subsection*{Catatan/Komentar}
 \addcontentsline{toc}{subsection}{Catatan/Komentar} % for pdf indexing
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial prologue
-
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
-Batasan: $...$ %TODO: Add constraints for easy version
+Batasan: 
+$\mathbf{1 \le N \le 10; 1 \le S[i] \le 2; 0 \le P[i] \le 2}$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for easy version
+Kita asumsikan kondisi terburuk dengan setiap penulis memiliki afiliasi terhadap 2 perusahaan. Untuk setiap penulis, terdapat 2 kasus yaitu:
+\begin{itemize}
+  \item $S[i] = 1$. Untuk kasus ini, penulis ke-$i$ dapat menggunakan soal tersebut untuk:
+  \begin{itemize}
+	  \item Dirinya sendiri
+	  \item Perusahaan pertama si penulis
+	  \item Perusahaan kedua si penulis
+  \end{itemize}
+  \item $S[i] = 2$. Untuk kasus ini, penulis ke-$i$ dapat menggunakan soal tersebut untuk:
+  \begin{itemize}
+	  \item Dirinya sendiri + Perusahaan pertama si penulis
+	  \item Dirinya sendiri + Perusahaan kedua si penulis
+	  \item Perusahaan pertama dan kedua si penulis
+  \end{itemize}
+\end{itemize}
+
+Dapat dilihat bahwa penulis memiliki paling banyak 3 pilihan. Karena jumlah penulis paling banyak adalah 10, maka semua pilihan dapat disimulasikan, dengan kompleksitas akhir $O(3^N)$. 
+
+Solusi di atas sudah cukup untuk mendapatkan nilai penuh di versi mudah. Namun, jika dianalisa lebih lanjut, solusi optimal selalu dicapai jika setiap penulis menggunakan salah satu soalnya atas dirinya sendiri. Langkah ini selalu optimal karena hanya penulis ke-$i$ yang dapat berafiliasi dengan dirinya sendiri, sehingga tidak mungkin terjadi bentrok. Dengan memanfaatkan strategi tersebut, kompleksitas dapat ditekan menjadi $O(2^N)$.
+
 
 \subsection*{Versi Sulit}
 \addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
 
-Batasan: $...$ %TODO: Add constraints for hard version
+Batasan:
+$\mathbf{1 \le N \le 50; 1 \le S[i] \le 50; 0 \le P[i] \le 50}$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for hard version
+Solusi optimal selalu dicapai jika setiap penulis menggunakan salah satu soalnya atas dirinya sendiri. Dengan demikian, kita hanya perlu memasangkan paling banyak 49 soal dari setiap penulis ke 50 perusahaan yang ada. Relasi ini dapat direpresentasikan dalam bentuk graf, yang mana terdapat edge dari node $i$ dan $(j+50)$ jika penulis ke $i$ bekerja di perusahaan ke-$j$. Ternyata, graph yang dihasilkan akan selalu bipartite, sehingga kita dapat melakukan algoritma bipartite matching. Namun, setiap penulis bisa menuliskan lebih dari 1 soal, sehingga kita harus menduplikasi node $i$ sebanyak $S[i]-1$ kali. 
+
+Alternatif lain, kita juga dapat membuat sebuah node baru $source$ dengan terdapat edge dari node $source$ ke $i$ dengan kapasitas $S[i] - 1$. Setelah itu, kita buat juga node $sink$ dengan terdapat edge dari $(j+50)$ ke $sink$ dengan kapasitas $1$. Untuk mendapatkan solusi, kita cukup menjalankan algoritma max-flow dari $source$ ke $sink$.
 
 \end{document}

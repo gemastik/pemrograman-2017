@@ -7,20 +7,20 @@ Ruang baca di perpustakaan Fasilkom UI berisi meja-meja yang tersusun atas R bar
 
 Mahasiswa-mahasiswa tersebut menyalakan laptop mereka di meja masing-masing. Mereka perlu untuk menyambungkan kabel laptop masing-masing ke stop kontak. Stop-stop kontak hanya terdapat pada meja-meja pada baris pertama. Setiap meja pada baris pertama berisi satu stop kontak.
 
-Untuk menghindari rebutan stop kontak, Pak Chanek, sang kepala pustakawan, akan menentukan stop kontak mana yang harus disambungkan ke laptop setiap mahasiswa. Setiap stop kontak di baris pertama akan disambungkan ke paling banyak satu laptop. Oleh Pak Chanek, penentuan ini disebut dengan "konfigurasi". Konfigurasi yang dipilih Pak Chanek akan selalu sedemikian sehingga, untuk setiap dua mahasiswa bernomor A dan B, apabila A < B, maka stop kontak yang harus disambungkan ke laptop mahasiswa A akan berada di sebelah kiri dari stop kontak yang harus disambungkan ke laptop mahasiswa B.
+Untuk menghindari rebutan stop kontak, Pak Chanek, sang kepala pustakawan, akan menentukan stop kontak mana yang harus disambungkan ke laptop setiap mahasiswa. Setiap stop kontak di baris pertama akan disambungkan ke paling banyak satu laptop. Oleh Pak Chanek, penentuan ini disebut dengan **konfigurasi**. Konfigurasi yang dipilih Pak Chanek akan selalu berupa **konfigurasi teratur**; yakni, untuk setiap dua mahasiswa bernomor A dan B, apabila A < B, maka stop kontak yang harus disambungkan ke laptop mahasiswa A akan berada di sebelah kiri dari stop kontak yang harus disambungkan ke laptop mahasiswa B.
 
 Untuk menyambungkan sebuah laptop ke sebuah stop kontak yang ditentukan Pak Chanek, kabel laptop harus bermula pada meja tempat mahasiswa pemilik laptop tersebut berada, kemudian melewati meja-meja lain sampai pada sebuah meja pada baris pertama. Setiap meja yang dilewati, kecuali meja pertama (yang berisi laptop), harus berada tepat di sebelah kiri, atas, kanan, atau bawah dari meja sebelumnya. Kabel laptop boleh melewati meja manapun, termasuk meja-meja lain pada baris pertama, meja-meja yang berisi laptop lain, maupun meja-meja yang dilewati kabel laptop lain.
 
-"Panjang kabel efektif" sebuah penyambungan didefinisikan sebagai total dari:
+Panjang kabel sebuah penyambungan didefinisikan sebagai total dari:
 
 - banyaknya meja yang dilewati, termasuk meja pertama dan meja terakhir, dan
 - jumlah dari perbedaan tinggi dari setiap meja yang bersebelahan yang dilewati.
 
-Setiap mahasiswa akan selalu memilih cara sedemikian sehingga panjang kabel efektif untuk menyambungkan laptopnya ke stop kontak yang telah ditentukan, sependek mungkin. Panjang terpendek ini didefinisikan sebagai "tingkat efisiensi penyambungan laptop" untuk mahasiswa tersebut.
+Setiap mahasiswa akan selalu memilih cara sedemikian sehingga panjang kabel untuk menyambungkan laptopnya ke stop kontak yang telah ditentukan, sependek mungkin. Panjang terpendek ini didefinisikan sebagai **tingkat efisiensi penyambungan** untuk mahasiswa tersebut.
 
-Akhirnya, "tingkat kesemrawutan konfigurasi" didefinisikan sebagai tingkat efisiensi penyambungan laptop terbesar di antara N penyambungan laptop, pada konfigurasi tersebut.
+Akhirnya, **tingkat kesemrawutan konfigurasi** didefinisikan sebagai **tingkat efisiensi penyambungan** terbesar di antara N penyambungan pada konfigurasi tersebut.
 
-Tentu saja, terdapat banyak konfigurasi yang dapat dipilih Pak Chanek. Tentukan jumlah dari tingkat kesemrawutan konfigurasi, untuk seluruh kemungkinan konfigurasi berbeda, modulo 1.000.000.007. Dua buah konfigurasi dikatakan berbeda apabila terdapat setidaknya seorang mahasiswa yang harus menyambungkan ke stop kontak yang berbeda di antara kedua konfigurasi tersebut.
+Tentu saja, terdapat banyak konfigurasi teratur yang dapat dipilih Pak Chanek. Tentukan jumlah dari tingkat kesemrawutan konfigurasi, untuk seluruh kemungkinan konfigurasi teratur berbeda, modulo 1.000.000.007. Dua buah konfigurasi dikatakan berbeda apabila terdapat setidaknya seorang mahasiswa yang harus menyambungkan ke stop kontak yang berbeda di antara kedua konfigurasi tersebut.
 
 ### Format Masukan
 
@@ -37,7 +37,7 @@ G[R][1] G[R][2] .. G[R][C]
 
 ### Format Keluaran
 
-Untuk setiap kasus uji, keluarkan jumlah dari tingkat kesemrawutan konfigurasi untuk seluruh kemungkinan konfigurasi, modulo 1.000.000.007.
+Untuk setiap kasus uji, keluarkan jumlah dari **tingkat kesemrawutan konfigurasi** untuk seluruh kemungkinan konfigurasi teratur, modulo 1.000.000.007.
 
 ### Contoh Masukan
 
@@ -69,13 +69,13 @@ Untuk setiap kasus uji, keluarkan jumlah dari tingkat kesemrawutan konfigurasi u
 
 ### Penjelasan
 
-Untuk contoh pertama, satu-satunya konfigurasi yang mungkin adalah menyambungkan laptop mahasiswa 1 ke satu-satunya meja baris pertama. Hanya ada satu cara penyambungan yang mungkin, seperti yang ditunjukkan oleh gambar di bawah ini:
+Untuk contoh pertama, satu-satunya konfigurasi teratur yang mungkin adalah menyambungkan laptop mahasiswa 1 ke satu-satunya meja baris pertama. Hanya ada satu cara penyambungan yang mungkin, seperti yang ditunjukkan oleh gambar di bawah ini:
 
 ![](img/sample1.jpg)
 
-Tingkat efisiensinya: 3 (banyaknya meja yang dilewati kabel) + |0-3| + |3-0| = 9. Ini juga merupakan tingkat kesemrawutan konfigurasi.
+Tingkat efisiensinya: 3 (banyaknya meja yang dilewati kabel) + |0-3| + |3-0| = 9. Ini juga merupakan tingkat kesemrawutan konfigurasi, karena ini merupakan satu-satunya penyambungan.
 
-Untuk contoh kedua, terdapat 2 konfigurasi yang mungkin:
+Untuk contoh kedua, terdapat 2 konfigurasi teratur yang mungkin:
 
 ![](img/sample2.jpg)
 
@@ -84,7 +84,7 @@ Untuk contoh kedua, terdapat 2 konfigurasi yang mungkin:
 
 Total tingkat kesemrawutannya adalah 9 + 8 = 17.
 
-Untuk contoh ketiga, terdapat 3 konfigurasi yang mungkin:
+Untuk contoh ketiga, terdapat 3 konfigurasi teratur yang mungkin:
 
 ![](img/sample3.jpg)
 

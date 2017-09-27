@@ -1,5 +1,7 @@
 # Pasangan Terbaik (Mudah)
 
+_Catatan: pada soal ini, terdapat rumus yang menggunakan notasi LaTeX. Refresh broswer Anda apabila rumusnya tidak muncul dengan sempurna._
+
 Pak Chanek memiliki tiga buah *array* bilangan bulat: A dan B yang masing-masing memiliki N elemen, dan C yang memiliki M elemen. Untuk kemudahan, anggap bahwa indeks elemen-elemen *array* dimulai dari 0.
 
 Diberikan sepasang bilangan bulat i dan j, Pak Chanek mendefinisikan f(i, j) sebagai berikut:

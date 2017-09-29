@@ -3,10 +3,12 @@
 
 % Per-problem variable definitions
 %TODO: Change placeholders to correct info.
-\newcommand{\problemName}{Judul Soal}
-\newcommand{\problemWriter}{Penulis soal}
-\newcommand{\problemEditorialWriter}{Penulis editorial}
-\newcommand{\problemTags}{tema1, tema2}
+\newcommand{\problemName}{Saklar Lhompat II}
+\newcommand{\problemWriter}{Anthony}
+\newcommand{\problemEditorialWriter}{Ashar Fuadi}
+\newcommand{\problemTags}{\textit{shortest path}, \textit{dynamic programming}}
+
+\newcommand{\bigO}[1]{\mathcal{O}(#1)}
 
 \begin{document}
 
@@ -24,19 +26,43 @@
 \subsection*{Catatan/Komentar}
 \addcontentsline{toc}{subsection}{Catatan/Komentar} % for pdf indexing
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial prologue
+Latar belakang cerita dari soal ini merupakan sekuel dari soal Saklar Lhompat pada Gemastik 9 tahun 2016.
 
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
-Batasan: $...$ %TODO: Add constraints for easy version
+Batasan: $N = 1$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for easy version
+Karena hanya terdapat tepat satu orang mahasiswa, maka:
+
+\begin{itemize}
+    \item Terdapat tepat $C$ konfigurasi (yang semuanya pasti teratur): sambungkan laptop tersebut ke meja ke-$i$ di baris pertama, untuk setiap $1 \le i \le C$.
+    \item Untuk setiap konfigurasi, tingkat kesemrawutan = tingkat efisiensi penyambungan = panjang terpendek kabel untuk penyambungan tersebut.
+    \item Dengan kata lain, jawabannya adalah jumlah dari jarak terpendek dari laptop ke setiap meja pada baris pertama.
+\end{itemize}
+
+Untuk menghitung jarak terpendek laptop ke semua meja pada baris pertama, dapat digunakan algoritma Dijkstra (satu kali saja, dengan meja satu-satunya mahasiswa sebagai \textit{source}). Kompleksitasnya adalah $ \bigO{RC \log RC} $.
 
 \subsection*{Versi Sulit}
 \addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
 
-Batasan: $...$ %TODO: Add constraints for hard version
+Batasan: $1 \le N \le C$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for hard version
+Pertama-tama, mari kita hitung, ada berapa banyak konfigurasi teratur yang mungkin?
+
+Misalkan kita sudah menetapkan $N$ meja pada baris pertama untuk disambungkan ke laptop-laptop mahasiswa. Dalam konfigurasi yang teratur, pastilah meja terkiri dari $N$ meja tersebut adalah untuk mahasiswa 1, meja berikutnya untuk mahasiswa 2, dan seterusnya sampai meja terkanan dari $N$ meja tersebut untuk mahasiswa $N$. Yakni, untuk setiap pemilihan $N$ meja, terdapat tepat 1 cara untuk memasang-masangkannya dengan $N$ laptop mahasiswa. Oleh karena itu, banyaknya konfigurasi teratur sama dengan banyaknya cara memilih $N$ meja dari $C$ meja pada baris pertama, atau dinotasikan dengan $\binom{C}{N}$.
+
+Pada kasus terburuk, dengan $N = 50, C = 25$, banyaknya konfigurasi teratur adalah $\binom{50}{25}$, yang merupakan bilangan yang sangat besar sehingga tidak bisa kita iterasi satu-persatu secara \textit{brute-force}. Mari kita selesaikan dengan cara lain. Soal-soal kombinatorika semacam ini cocok diselesaikan dengan metode \textit{dynamic programming}.
+
+Kita definisikan $dp(c, n, e)$ sebagai total tingkat kesemrawutan, apabila terdapat $c$ meja terkiri baris pertama, $n$ mahasiswa pertama, dan tingkat efisiensi penyambungan terbesar saat ini adalah $e$. Nilainya adalah salah satu dari:
+
+\begin{itemize}
+    \item $e$, jika  $n = 0$ (semua laptop sudah disambungkan)
+    \item $\infty$, jika  $c = 0$ dan $n > 0$ (terdapat laptop yang tidak disambungkan, namun meja habis)
+    \item $dp(c-1, n, e) + dp(c-1, n-1, max(e, dist(c, n)))$, selainnya (terdapat dua pilihan: sambungkan meja ke-$c$ baris pertama dengan laptop mahasiswa ke-$n$, atau tidak. $dist(c, n)$ menyatakan jarak terpendek dari meja ke-$c$ baris pertama ke laptop mahasiswa ke-$n$)
+\end{itemize}
+
+Jawaban akhirnya adalah $dp(C, N, 0)$.
+
+Solusi di atas tidak dapat diimplementasikan secara naif karena dimensi ketiga bisa sangat besar (tinggi suatu meja bisa mencapai 100.000). Namun, perhatikan bahwa sebenarnya hanya terdapat paling banyak $\bigO{NC}$ nilai berbeda untuk dimensi ketiga ini, karena dimensi ketiga pasti merupakan tingkat efisiensi penyambungan salah satu laptop ke salah satu meja baris pertama. Dengan implementasi yang tepat, kompleksitas akhir solusi dapat ditekan menjadi (kompleksitas penghitungan $dist$ + kompleksitas penghitungan $dp$) = $\bigO{NRC \log RC + C^{2} N^{2}}$.
 
 \end{document}

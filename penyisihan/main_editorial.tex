@@ -12,6 +12,7 @@
 \usepackage{hyperref}
 \usepackage{tikz}
 \usepackage{caption}
+\usepackage{pgfplots}
 
 \newtheorem{algorithm_def}{Algorithm}[subsection]
 \newtheorem{definition}{Definition}[subsection]
@@ -75,6 +76,121 @@
 
 \end{center}
 \end{titlepage}
+
+\section*{Statistik Penyisihan}
+\addcontentsline{toc}{section}{Statistik Umum} % for pdf indexing
+
+Catatan: Statistik dibuat berdasarkan kondisi sebelum tabel peringkat dibekukan.
+
+\begin{itemize}
+\item Penyisihan Pemrograman GEMASTIK 10 diikuti oleh 316 tim, dengan 233 tim setidaknya mengirimkan satu pengumpulan jawaban.
+
+\vspace*{.2cm}
+\item Statistik banyaknya soal yang diselesaikan oleh seluruh tim:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{\# \textit{Accepted}} & 0  & 1  & 2  & 3  & 4  & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+\textbf{\# Tim}      & 31 & 67 & 39 & 60 & 11 & 9 & 2 & 3 & 4 & 3 & 2  & 0  & 2  \\ \hline
+\end{tabular}
+\end{table}
+
+\vspace*{.2cm}
+\item Statistik per soal:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l|c|c|c|c|c|c|c|c|c|c|c|c|}
+\cline{2-13}
+                                                        & \multicolumn{2}{c|}{\textbf{A}} & \multicolumn{2}{c|}{\textbf{B}} & \multicolumn{2}{c|}{\textbf{C}} & \multicolumn{2}{c|}{\textbf{D}} & \multicolumn{2}{c|}{\textbf{E}} & \multicolumn{2}{c|}{\textbf{F}} \\ \cline{2-13} 
+                                                        & \textbf{1}     & \textbf{2}     & \textbf{1}     & \textbf{2}     & \textbf{1}     & \textbf{2}     & \textbf{1}     & \textbf{2}     & \textbf{1}     & \textbf{2}     & \textbf{1}     & \textbf{2}     \\ \hline
+\multicolumn{1}{|l|}{\textbf{\# \textit{Accepted}}}          & 199            & 121            & 113            & 28             & 25             & 14             & 15             & 7              & 18             & 5              & 3              & 2              \\ \hline
+\multicolumn{1}{|l|}{\textbf{\# Pengiriman Solusi}} & 384            & 653            & 459            & 209            & 262            & 56             & 53             & 24             & 335            & 41             & 9              & 4              \\ \hline
+\end{tabular}
+\end{table}
+
+Pertama untuk mendapatkan \textit{Accepted}:
+
+\begin{itemize}
+\item Soal A1:
+\begin{itemize}
+\item TMCLL (Institut Teknologi Sepuluh Nopember)
+\item pada menit ke-2
+\end{itemize}
+
+\item Soal A2:
+\begin{itemize}
+\item gak ada pencerahan (Universitas Indonesia)
+\item pada menit ke-3
+\end{itemize}
+
+\item Soal B1:
+\begin{itemize}
+\item Fata Ganteng (Universitas Indonesia)
+\item pada menit ke-10
+\end{itemize}
+
+\item Soal B2:
+\begin{itemize}
+\item Fata Ganteng (Universitas Indonesia)
+\item pada menit ke-22
+\end{itemize}
+
+\item Soal C1:
+\begin{itemize}
+\item Ainge ST (Institut Teknologi Bandung)
+\item pada menit ke-16
+\end{itemize}
+
+\item Soal C2:
+\begin{itemize}
+\item Ainge ST (Institut Teknologi Bandung)
+\item pada menit ke-16
+\end{itemize}
+
+\item Soal D1:
+\begin{itemize}
+\item collateral\_damage (Universitas Bina Nusantara)
+\item pada menit ke-33
+\end{itemize}
+
+\item Soal D2:
+\begin{itemize}
+\item gak ada pencerahan (Universitas Indonesia)
+\item pada menit ke-61
+\end{itemize}
+
+\item Soal E1:
+\begin{itemize}
+\item gak ada pencerahan (Universitas Indonesia)
+\item pada menit ke-15
+\end{itemize}
+
+\item Soal E2:
+\begin{itemize}
+\item gak ada pencerahan (Universitas Indonesia)
+\item pada menit ke-26
+\end{itemize}
+
+\item Soal F1:
+\begin{itemize}
+\item gak ada pencerahan (Universitas Indonesia)
+\item pada menit ke-83
+\end{itemize}
+
+\item Soal F2:
+\begin{itemize}
+\item gak ada pencerahan (Universitas Indonesia)
+\item pada menit ke-83
+\end{itemize}
+
+\end{itemize}
+
+\end{itemize}
+
+\pagebreak
 
 \subfile{pantun/editorial}
 \pagebreak

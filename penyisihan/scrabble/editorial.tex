@@ -34,7 +34,7 @@
 \subsection*{Catatan/Komentar}
 \addcontentsline{toc}{subsection}{Catatan/Komentar} % for pdf indexing
 
-Untuk dapat mendapatkan \textit{Accepted} pada versi manapun pada soal ini, dibutuhkan pengetahuan mengenai \textit{dynamic programming}. Lebih lanjut, untuk mendapatkan \textit{Accepted} pada versi sulit, dibutuhkan pengetahuan mengenai algoritma Knuth-Morris-Pratt (KMP) dan representasi algoritma KMP dalam \textit{deterministic finite state machine} (DFSM).
+Untuk dapat mendapatkan \textit{Accepted} pada versi manapun pada soal ini, dibutuhkan pengetahuan mengenai \textit{dynamic programming}. Lebih lanjut, untuk mendapatkan \textit{Accepted} pada versi sulit, dibutuhkan pengetahuan mengenai algoritma Knuth-Morris-Pratt (KMP) dan representasi algoritma KMP dalam \textit{deterministic finite state machine} (DFSM) (atau bisa juga tidak; lihat bagian terakhir pada pembahasan soal ini).
 
 Beberapa notasi dan kesepakatan yang digunakan:
 \begin{itemize}
@@ -192,7 +192,7 @@ Perhatikan bahwa \textit{base case} yang memiliki nilai kembalian $ 1 $ terjadi 
 Jawaban terdapat pada $ \dpf(1, q_0) $. Solusi ini memiliki kompleksitas $ \bigO{\textrm{pembangunan DFSM untuk }S} + \bigO{\textrm{eksekusi solusi dengan DP}} = \bigO{|S|} + \bigO{NK^2} = \bigO{|S| + NK^2} $.
 
 \subsubsection*{Solusi untuk Petak Berukuran $ 2 \times N $ (Soal Versi Sulit)}
-\addcontentsline{toc}{subsubsection}{Solusi untuk Petak Berukuran $ 1 \times N $} % for pdf indexing
+\addcontentsline{toc}{subsubsection}{Solusi untuk Petak Berukuran $ 2 \times N $} % for pdf indexing
 
 Solusi untuk varian petak berukuran $ 1 \times N $ di atas dapat dikembangkan menjadi solusi untuk soal versi sulit dengan melakukan modifikasi terhadap komponen-komponen \textit{state} dari \textit{dynamic programming} yaitu
 
@@ -231,4 +231,8 @@ $$
 
 Jawaban terdapat pada $ \dpf\left(1, \left\{q_\epsilon\right\} \right) $ Solusi ini memiliki kompleksitas sebesar $ \bigO{\textrm{pembangunan DFSM untuk }S} + \bigO{\textrm{\textit{state} DP}} \cdot \bigO{\textrm{transisi DP}} = \bigO{|S|} + \bigO{N2^{|S| + 1}} \cdot \bigO{K^2} = \bigO{|S| + NK^22^{|S| + 1}} $.
 
+\subsubsection*{Solusi Tanpa Pembuatan DFSM KMP}
+\addcontentsline{toc}{subsubsection}{Solusi Tanpa Pembuatan DFSM KMP} % for pdf indexing
+
+Terdapat pula solusi yang lebih mudah, yakni tanpa membuat DFSM KMP. Observasinya adalah sebagai berikut: untuk setiap \textit{bitmask} $V$ yang \textit{valid} pada DP, jika sebuah \textit{state} $q$ adalah elemen dari $V$, maka $q'$ juga pasti adalah elemen dari $V$, untuk setiap $q'$ yang merepresentasikan sufiks dari string yang direpresentasikan oleh $q$, yang mana juga merupakan prefiks dari $S$. Sebagai contoh, jika $V$ mengandung \texttt{tesat}, maka $V$ juga pasti mengandung \texttt{t}. Sisanya diserahkan kepada pembaca sebagai latihan.
 \end{document}

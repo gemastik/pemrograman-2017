@@ -34,9 +34,11 @@ Bagian penjumlahan dengan suatu elemen pada array $C$ merupakan bagian yang pali
 
 Untuk kemudahan, definisikan nilai terbesar yang mungkin untuk elemen array adalah $\maxValue$, dengan $\maxValue = 1.000.000$.
 
+Batasan kedua versi: $1 \le N \le 100.000; 0 \le A[i], B[i], C[i] \le 1.000.000$
+
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
-Batasan: $1 \le M \le 1.000$
+Batasan: $\mathbf{1 \le M \le 1.000}$
 
 Perhatikan rumus indeks array $C$ yang akan dipilih. Berdasarkan sifat modulo, diketahui:
 $$(A[i] \times B[j]) \Mod{M} = ((A[i]\Mod{M}) \times (B[j]\Mod{M})) \Mod{M}$$
@@ -47,7 +49,7 @@ Kini array $A$ dan array $B$ memiliki paling banyak $M$ elemen. Coba semua kemun
 
 \subsection*{Versi Sulit}
 \addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
-Batasan: $1 \le M \le 100.000$
+Batasan: $\mathbf{1 \le M \le 100.000}$
 
 Untuk nilai elemen $A$ dan $B$ yang cukup besar, perkalian antar suatu elemen array $A$ dengan array $B$ memiliki kontribusi kepada nilai $f$ yang jauh lebih besar daripada bagian penjumlahan dengan suatu elemen array $C$. Artinya nilai elemen $C$ manapun yang dipilih kurang signifikan pada nilai akhir $f$.
 

@@ -25,9 +25,11 @@
 
 Ide untuk menyelesaikan soal ini tidak sulit tetapi cukup rawan terjadi kesalahan pada implementasinya.
 
+Batasan kedua versi: $1 \le K \le B \le 1.000$
+
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
-Batasan: $1 \le T \le 20; 1 \le K \le B \le 1.000; \mathbf{0 \le A \le 1}$
+Batasan: $\mathbf{0 \le A \le 1}$
 
 Untuk menyelesaikan versi mudah dari soal ini, penyelesaian untuk seluruh kemungkinan masukan dapat dikategorikan sebagai berikut:
 
@@ -40,14 +42,14 @@ Untuk menyelesaikan versi mudah dari soal ini, penyelesaian untuk seluruh kemung
 	\item Jika terdapat tepat 1 teman laki-laki ($A = 1$):
 		\begin{itemize}
 			\item jika banyaknya teman perempuan melebihi $2K$ ($B > 2K$), jawabannya adalah \texttt{mustahil},
-			\item selain itu, cetak \texttt{P} sebanyak $\min(B, K)$, \texttt{L}, kemudian diikuti \texttt{P} sebanyak $B - \min(B, K)$.
+			\item selain itu, cetak \texttt{P} sebanyak $\min(B, K)$, kemudian \texttt{L}, kemudian \texttt{P} sebanyak $B - \min(B, K)$.
 		\end{itemize}
 \end{itemize}
 
 \subsection*{Versi Sulit}
 \addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
 
-Batasan: $1 \le T \le 20; 1 \le K \le B \le 1.000; \mathbf{0 \le A \le 1.000}$
+Batasan: $\mathbf{0 \le A \le 1.000}$
 
 Hal pertama yang dapat dilakukan adalah pemeriksaan kasus \texttt{mustahil}, yaitu jika tidak memungkinkan untuk menempatkan teman laki-laki sehingga paling banyak dua teman laki-laki bersebelahan untuk setiap deretan teman laki-laki. Dengan kata lain, kasus \texttt{mustahil} hanya terjadi pada masukan yang memenuhi:
 \begin{itemize}
@@ -57,6 +59,6 @@ Hal pertama yang dapat dilakukan adalah pemeriksaan kasus \texttt{mustahil}, yai
 
 Perhatikan bahwa $\lceil \frac{B}{K} \rceil - 1$ dan $2(B + 1)$ berturut-turut merupakan batas bawah dan batas atas banyaknya deretan teman perempuan (\texttt{P}) yang dipisahkan oleh deretan teman laki-laki (\texttt{L}).
 
-Untuk masukan yang tidak \texttt{mustahil}, solusi dapat dibangun dengan cara mencoba menyelipkan $A$ buah \texttt{L} ke dalam deretan yang terdiri dari $B$ buah \texttt{P} sedemikian rupa sehingga memenuhi persyaratan yang diberikan pada soal. Sebagai contoh, pola yang dapat dibentuk adalah \texttt{P...PLLP...PLLP...PLP...PLP...P}.
+Untuk masukan yang tidak \texttt{mustahil}, solusi dapat dibangun dengan cara menemukan pola "penyelipan" $A$ buah \texttt{L} ke dalam deretan yang terdiri dari $B$ buah \texttt{P} sedemikian rupa sehingga memenuhi persyaratan yang diberikan pada soal. Sebagai contoh, pola yang dapat dibentuk adalah \texttt{P...PLLP...PLLP...PLP...PLP...P}.
 
 \end{document}

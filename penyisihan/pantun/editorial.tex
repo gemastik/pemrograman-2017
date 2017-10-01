@@ -25,16 +25,18 @@
 
 Soal ini merupakan soal penyisihan termudah karena tidak dibutuhkan pengetahuan khusus untuk menyelesaikannya.
 
+Batasan kedua versi: $1 \le A[i], B[i] \le 100$
+
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
-Batasan: $1 \le T \le 10; 1 \le A[i], B[i] \le 100; \mathbf{N = 1}$
+Batasan: $\mathbf{N = 1}$
 
 Untuk versi mudah dari soal ini, karena $N = 1$, maka jawabannya adalah $A[1] + B[1]$.
 
 \subsection*{Versi Sulit}
 \addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
 
-Batasan: $1 \le T \le 10; 1 \le A[i], B[i] \le 100; \mathbf{1 \le N \le 100.000}$
+Batasan: $\mathbf{1 \le N \le 100.000}$
 
 Berikut adalah jumlahan yang diminta pada soal:
 \begin{gather*}
@@ -54,6 +56,6 @@ Jawaban akhir diperoleh dengan menjumlahkan persamaan di atas untuk setiap $i$ d
 &= N \times \left(\sum_{j=1}^{N}B[j]\right) + N \times \left(\sum_{i=1}^{N} A[i]\right)\\
 &= N \times \left(\sum_{i=1}^{N}A[i] + \sum_{j=1}^{N}B[j]\right)
 \end{align*}
-Melalui penyederhanaan di atas, diperoleh jawaban akhir yaitu N dikalikan dengan jumlahan semua elemen-elemen A dan B.
+Rumus jawaban akhir menjadi sangat sederhana, yakni: N dikalikan dengan jumlahan semua elemen-elemen A dan B.
 
 \end{document}

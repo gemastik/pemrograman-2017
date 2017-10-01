@@ -67,9 +67,11 @@ Perhatikan bahwa pada optimisasi ini, untuk mengisi petak-petak pada suatu kolom
 
 Solusi ini akan dioptimisasi lebih lanjut dengan \textit{dynamic programming} pada subbagian editorial berikutnya.
 
+Batasan kedua versi: $1 \le N \le 50; 1 \le K \le 26$
+
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
-Batasan: $1 \le T \le 5; 1 \le N \le 50; 1 \le K \le 26; \mathbf{|S| = 2}$
+Batasan: $\mathbf{|S| = 2}$
 
 Dari penjelasan pada subbagian sebelumnya, perhatikan bahwa suatu \textit{state}/keadaan pengisian petak-petak rubrik petakata dapat direpresentasikan dengan komponen-komponen berikut.
 
@@ -96,7 +98,7 @@ Jawaban terdapat pada $ \dpf(1, -, -) $ dengan $ - $ adalah karakter yang tidak 
 \subsection*{Versi Sulit}
 \addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
 
-Batasan: $1 \le T \le 5; 1 \le N \le 50; 1 \le K \le 26; \mathbf{1 \le |S| \le 10}$
+Batasan: $\mathbf{1 \le |S| \le 10}$
 
 Solusi untuk versi mudah tidak dapat secara langsung diperumum/diterapkan untuk menyelesaikan versi sulit karena terdapat batasan bahwa untuk suatu masukan $ S $, dalam pengisian petak-petak pada kolom $ c $ dibutuhkan informasi mengenai karakter-karakter yang mengisi kolom-kolom $ c-|S|+1 $ hingga $ c-1 $, yang mengakibatkan kompleksitas solusi menjadi $ \bigO{NK^{2|S|} \cdot {K^2}} = \bigO{NK^{2(|S| + 1)}} $. Untuk versi ini, $ |S| $ dapat mencapai 10; penerapan solusi versi mudah secara langsung memiliki kompleksitas $ \bigO{NK^{22}} $ yang akan mendapatkan penilaian \textit{Time Limit Exceeded} pada versi sulit.
 

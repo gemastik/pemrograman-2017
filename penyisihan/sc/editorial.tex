@@ -6,7 +6,7 @@
 \newcommand{\problemName}{Penulis Soal}
 \newcommand{\problemWriter}{Ashar Fuadi}
 \newcommand{\problemEditorialWriter}{Alham Fikri Aji}
-\newcommand{\problemTags}{\textit{Bipartite Matching}}
+\newcommand{\problemTags}{\textit{bipartite matching, maximum flow}}
 
 \begin{document}
 
@@ -20,9 +20,6 @@
     Tema : & \problemTags
     \end{tabular}
 \end{center}
-
-%\subsection*{Catatan/Komentar}
-%\addcontentsline{toc}{subsection}{Catatan/Komentar} % for pdf indexing
 
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
@@ -47,7 +44,7 @@ Kita asumsikan kondisi terburuk dengan setiap penulis memiliki afiliasi terhadap
 
 Dapat dilihat bahwa penulis memiliki paling banyak 3 pilihan. Karena jumlah penulis paling banyak adalah 10, maka semua pilihan dapat disimulasikan, dengan kompleksitas akhir $O(3^N)$. 
 
-Solusi di atas sudah cukup untuk mendapatkan nilai penuh di versi mudah. Namun, jika dianalisa lebih lanjut, solusi optimal selalu dicapai jika setiap penulis menggunakan salah satu soalnya atas dirinya sendiri. Langkah ini selalu optimal karena hanya penulis ke-$i$ yang dapat berafiliasi dengan dirinya sendiri, sehingga tidak mungkin terjadi bentrok. Dengan memanfaatkan strategi tersebut, kompleksitas dapat ditekan menjadi $O(2^N)$.
+Solusi di atas sudah cukup untuk mendapatkan nilai penuh di versi mudah. Namun, jika dianalisis lebih lanjut, solusi optimal selalu dicapai jika setiap penulis menggunakan salah satu soalnya atas dirinya sendiri. Langkah ini selalu optimal karena hanya penulis ke-$i$ yang dapat berafiliasi dengan dirinya sendiri, sehingga tidak mungkin terjadi bentrok. Dengan memanfaatkan strategi tersebut, kompleksitas dapat ditekan menjadi $O(2^N)$.
 
 
 \subsection*{Versi Sulit}

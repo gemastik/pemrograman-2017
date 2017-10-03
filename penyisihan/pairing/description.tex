@@ -1,0 +1,126 @@
+% !TeX root = ../main_problemset.tex
+\documentclass[../main_problemset.tex]{subfiles} % Inherits definitions from parent .tex file.
+
+% Per-problem variable definitions
+\newcommand{\problemName}{E. Pasangan Terbaik}
+\newcommand{\problemTL}{3 s}
+\newcommand{\problemML}{128 MB}
+
+\begin{document}
+
+\begin{center}
+    \section*{\problemName}
+    \addcontentsline{toc}{section}{\problemName} % for pdf indexing
+    
+    \begin{tabular}{rl}
+    Batasan waktu : & \problemTL \\
+    Batasan memori : & \problemML
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+\addcontentsline{toc}{subsection}{Deskripsi} % for pdf indexing
+
+Pak Chanek memiliki tiga buah \textit{array} bilangan bulat: $ A $ dan $ B $ yang masing-masing memiliki $ N $ elemen, dan $ C $ yang memiliki $ M $ elemen. Untuk kemudahan, anggap bahwa indeks elemen-elemen \textit{array} dimulai dari $ 0 $.
+
+Diberikan sepasang bilangan bulat $ i $ dan $ j $, Pak Chanek mendefinisikan $ f(i,j) $ sebagai berikut:
+
+$$
+f(i,j)=A[i]\times B[j]+C[(A[i]\times B[j])\bmod M]
+$$
+
+Pak Chanek ingin mengetahui nilai dari:
+
+$$
+\min_{0 \le i,j < N} f(i,j)
+$$
+
+atau dengan kata lain, nilai terkecil dari $ f(i,j) $ untuk semua kemungkinan pasangan indeks \textit{array} $ A $ dan $ B $.
+
+Bantulah Pak Chanek menghitung nilai tersebut!
+
+\subsection*{Format Masukan}
+\addcontentsline{toc}{subsection}{Format Masukan} % for pdf indexing
+
+Baris pertama berisi sebuah bilangan bulat $ T $ yang menyatakan banyaknya kasus uji. Baris-baris berikutnya berisi $ T $ kasus uji, yang masing-masing diberikan dalam format berikut ini:
+
+\begin{lcverbatim}
+N M
+A[0] A[1] .. A[N-1]
+B[0] B[1] .. B[N-1]
+C[0] C[1] .. C[M-1]
+\end{lcverbatim}
+
+\subsection*{Format Keluaran}
+\addcontentsline{toc}{subsection}{Format Keluaran} % for pdf indexing
+
+Untuk setiap kasus uji, keluarkan sebuah baris berisi nilai dari $ \min_{0 \le i,j < N} f(i,j) $.
+
+\vspace{.4cm}
+
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Masukan}
+\addcontentsline{toc}{subsection}{Contoh Masukan} % for pdf indexing
+
+\begin{lcverbatim}
+2
+4 2
+3 14 15 9
+26 53 58 97
+93 2
+4 3
+3 14 15 9
+26 53 58 97
+93 2 38
+\end{lcverbatim}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Keluaran}
+\addcontentsline{toc}{subsection}{Contoh Keluaran} % for pdf indexing
+
+\begin{lcverbatim}
+161
+171
+\end{lcverbatim}
+\end{minipage}
+
+\pagebreak
+\subsection*{Penjelasan}
+\addcontentsline{toc}{subsection}{Penjelasan} % for pdf indexing
+
+Pada contoh pertama, pasangan $ (i,j) $ yang menyebabkan $ f(i,j) $ minimum adalah $ (i=0,j=1) $. Nilai dari $ f(0,1) $ adalah:
+
+$$
+A[0]\times B[1]+C[(A[0]\times B[1])\bmod 2]=3\times 53+C[(3\times 53)\bmod 2]=159+2=161
+$$
+
+Pada contoh kedua, pasangan $ (i,j) $ yang menyebabkan $ f(i,j) $ minimum adalah $ (i=0,j=0) $. Nilai dari $ f(0,0) $ adalah:
+
+$$
+A[0]\times B[0]+C[(A[0]\times B[0])\bmod 3]=3\times 26+C[(3\times 26)\bmod 3]=78+93=171
+$$
+
+\subsection*{Batasan}
+\addcontentsline{toc}{subsection}{Batasan} % for pdf indexing
+
+Batasan yang berlaku untuk versi mudah dan versi sulit:
+
+\begin{itemize}
+	\item $ 1 \le T \le 5 $
+	\item $ 1 \le N \le 100.000 $
+	\item $ 1 \le A[i], B[i], C[i] \le 1.000.000 $
+\end{itemize}
+
+Batasan khusus versi mudah:
+
+\begin{itemize}
+	\item $0 \le M \le 1.000$
+\end{itemize}
+
+Batasan khusus versi sulit:
+
+\begin{itemize}
+	\item $0 \le M \le 100.000$
+\end{itemize}
+
+\end{document}

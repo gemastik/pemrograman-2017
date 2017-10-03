@@ -1,0 +1,173 @@
+% !TeX root = ../main_problemset.tex
+\documentclass[../main_problemset.tex]{subfiles} % Inherits definitions from parent .tex file.
+
+% Per-problem variable definitions
+\newcommand{\problemName}{D. Saklar Lhompat II}
+\newcommand{\problemTL}{2 s}
+\newcommand{\problemML}{64 MB}
+
+\begin{document}
+
+\begin{center}
+    \section*{\problemName}
+    \addcontentsline{toc}{section}{\problemName} % for pdf indexing
+    
+    \begin{tabular}{rl}
+    Batasan waktu : & \problemTL \\
+    Batasan memori : & \problemML
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+\addcontentsline{toc}{subsection}{Deskripsi} % for pdf indexing
+
+Ruang baca di perpustakaan Fasilkom UI berisi meja-meja yang tersusun atas $ R $ baris dan $ C $ kolom. Uniknya, meja-meja tersebut memiliki ketinggian berbeda-beda. Saat ini, terdapat $ N $ mahasiswa yang sedang berada di dalam ruang baca tersebut, dinomori dari 1 hingga $ N $. Informasi ini dinyatakan oleh matriks $ G $ sebagai berikut:
+
+\begin{itemize}
+	\item Jika meja (baris $ i $, kolom $ j $) kosong, maka $ G[i][j] $ berisi ketinggian meja tersebut, berupa sebuah bilangan bulat non-negatif.
+	\item Jika meja (baris $ i $, kolom $ j $) ditempati mahasiswa, maka $ G[i][j] $ berisi $ -X $ (negatif $ X $), dengan $ X $ adalah nomor mahasiswa tersebut.
+\end{itemize}
+
+Mahasiswa-mahasiswa tersebut menyalakan laptop mereka di meja masing-masing. Mereka perlu untuk menyambungkan kabel laptop masing-masing ke stop kontak. Stop-stop kontak hanya terdapat pada meja-meja pada baris pertama. Setiap meja pada baris pertama berisi satu stop kontak.
+
+Untuk menghindari rebutan stop kontak, Pak Chanek, sang kepala pustakawan, akan menentukan stop kontak mana yang harus disambungkan ke laptop setiap mahasiswa. Setiap stop kontak di baris pertama akan disambungkan ke paling banyak satu laptop. Oleh Pak Chanek, penentuan ini disebut dengan \textbf{konfigurasi}. Konfigurasi yang dipilih Pak Chanek akan selalu berupa \textbf{konfigurasi teratur}; yakni, untuk setiap dua mahasiswa bernomor $ A $ dan $ B $, apabila $ A < B $, maka stop kontak yang harus disambungkan ke laptop mahasiswa $ A $ akan berada di sebelah kiri dari stop kontak yang harus disambungkan ke laptop mahasiswa $ B $.
+
+Untuk menyambungkan sebuah laptop ke sebuah stop kontak yang ditentukan Pak Chanek, kabel laptop harus bermula pada meja tempat mahasiswa pemilik laptop tersebut berada, kemudian melewati meja-meja lain sampai pada sebuah meja pada baris pertama. Setiap meja yang dilewati, kecuali meja pertama (yang berisi laptop), harus berada tepat di sebelah kiri, atas, kanan, atau bawah dari meja sebelumnya. Kabel laptop boleh melewati meja manapun, termasuk meja-meja lain pada baris pertama, meja-meja yang berisi laptop lain, maupun meja-meja yang dilewati kabel laptop lain.
+
+Panjang kabel sebuah penyambungan didefinisikan sebagai total dari:
+
+\begin{itemize}
+	\item banyaknya meja yang dilewati, termasuk meja pertama dan meja terakhir, dan
+	\item jumlah dari perbedaan tinggi dari setiap meja yang bersebelahan yang dilewati.
+\end{itemize}
+
+Setiap mahasiswa akan selalu memilih cara sedemikian sehingga panjang kabel untuk menyambungkan laptopnya ke stop kontak yang telah ditentukan, sependek mungkin. Panjang terpendek ini didefinisikan sebagai \textbf{tingkat efisiensi penyambungan} untuk mahasiswa tersebut.
+
+Akhirnya, \textbf{tingkat kesemrawutan konfigurasi} didefinisikan sebagai \textbf{tingkat efisiensi penyambungan} terbesar di antara $ N $ penyambungan pada konfigurasi tersebut.
+
+Tentu saja, terdapat banyak konfigurasi teratur yang dapat dipilih Pak Chanek. Tentukan jumlah dari tingkat kesemrawutan konfigurasi, untuk seluruh kemungkinan konfigurasi teratur berbeda, modulo $ 1.000.000.007 $. Dua buah konfigurasi dikatakan berbeda apabila terdapat setidaknya seorang mahasiswa yang harus menyambungkan ke stop kontak yang berbeda di antara kedua konfigurasi tersebut.
+
+\pagebreak
+\subsection*{Format Masukan}
+\addcontentsline{toc}{subsection}{Format Masukan} % for pdf indexing
+
+Baris pertama berisi sebuah bilangan bulat $ T $ yang menyatakan banyaknya kasus uji. Baris-baris berikutnya berisi $ T $ kasus uji, yang masing-masing diberikan dalam format berikut ini:
+
+\begin{lcverbatim}
+R C N
+G[1][1] G[1][2] .. G[1][C]
+G[2][1] G[2][2] .. G[2][C]
+.
+.
+G[R][1] G[R][2] .. G[R][C]
+\end{lcverbatim}
+
+\subsection*{Format Keluaran}
+\addcontentsline{toc}{subsection}{Format Keluaran} % for pdf indexing
+
+Untuk setiap kasus uji, keluarkan jumlah dari \textbf{tingkat kesemrawutan konfigurasi} untuk seluruh kemungkinan konfigurasi teratur, modulo $ 1.000.000.007 $.
+
+\vspace{.4cm}
+
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Masukan}
+\addcontentsline{toc}{subsection}{Contoh Masukan} % for pdf indexing
+
+\begin{lcverbatim}
+3
+3 1 1
+0
+3
+-1
+4 2 1
+0 0
+3 1
+-1 2
+9 8
+4 3 2
+0 0 0
+9 5 6
+7 6 7
+-2 9 -1
+\end{lcverbatim}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Keluaran}
+\addcontentsline{toc}{subsection}{Contoh Keluaran} % for pdf indexing
+
+\begin{lcverbatim}
+9
+17
+60
+\end{lcverbatim}
+\end{minipage}
+
+\subsection*{Penjelasan}
+\addcontentsline{toc}{subsection}{Penjelasan} % for pdf indexing
+
+Untuk contoh pertama, satu-satunya konfigurasi teratur yang mungkin adalah menyambungkan laptop mahasiswa 1 ke satu-satunya meja baris pertama. Hanya ada satu cara penyambungan yang mungkin, seperti yang ditunjukkan oleh gambar di bawah ini:
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[height=150px]{lhompat2/img/sample1}
+\end{figure}
+
+Tingkat efisiensinya: $ 3 $ (banyaknya meja yang dilewati kabel) $ + |0-3| + |3-0| = 9 $. Ini juga merupakan tingkat kesemrawutan konfigurasi, karena ini merupakan satu-satunya penyambungan.
+
+\pagebreak
+Untuk contoh kedua, terdapat 2 konfigurasi teratur yang mungkin:
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[height=150px]{lhompat2/img/sample2}
+\end{figure}
+
+\begin{itemize}
+	\item Tingkat kesemrawutan konfigurasi 1: 9
+	\item Tingkat kesemrawutan konfigurasi 2: 8
+\end{itemize}
+
+Total tingkat kesemrawutannya adalah $ 9 + 8 = 17 $.
+
+Untuk contoh ketiga, terdapat 3 konfigurasi teratur yang mungkin:
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[height=150px]{lhompat2/img/sample3}
+\end{figure}
+
+\begin{itemize}
+	\item Tingkat kesemrawutan konfigurasi 1: max(20, 19) = 20
+	\item Tingkat kesemrawutan konfigurasi 2: max(20, 20) = 20
+	\item Tingkat kesemrawutan konfigurasi 3: max(19, 20) = 20
+\end{itemize}
+
+Total tingkat kesemrawutannya adalah 20 + 20 + 20 = 60.
+
+\subsection*{Batasan}
+\addcontentsline{toc}{subsection}{Batasan} % for pdf indexing
+
+Batasan yang berlaku untuk versi mudah dan versi sulit:
+
+\begin{itemize}
+	\item $ 1 \le T \le 10 $
+	\item $ 2 \le R \le 50 $
+	\item $ 1 \le C \le 50 $
+	\item $ -N \le G[i][j] \le 100.000 $
+	\item $ G[1][j] = 0 $
+	\item $ G $ berisi semua bilangan bulat antara $ -N $ hingga $ -1 $, masing-masing tepat sekali
+\end{itemize}
+
+Batasan khusus versi mudah:
+
+\begin{itemize}
+	\item $ N = 1 $
+\end{itemize}
+
+Batasan khusus versi sulit:
+
+\begin{itemize}
+	\item $1 \le N \le C$
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,129 @@
+% !TeX root = ../main_problemset.tex
+\documentclass[../main_problemset.tex]{subfiles} % Inherits definitions from parent .tex file.
+
+% Per-problem variable definitions
+\newcommand{\problemName}{F. Rubrik Petakata}
+\newcommand{\problemTL}{3 s}
+\newcommand{\problemML}{64 MB}
+
+\begin{document}
+
+\begin{center}
+    \section*{\problemName}
+    \addcontentsline{toc}{section}{\problemName} % for pdf indexing
+    
+    \begin{tabular}{rl}
+    Batasan waktu : & \problemTL \\
+    Batasan memori : & \problemML
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+\addcontentsline{toc}{subsection}{Deskripsi} % for pdf indexing
+
+Petakata adalah sebuah rubrik teka-teki pada koran langganan Pak Chanek. Sebuah petakata terdiri atas petak-petak berukuran $ 2 $ baris dan $ N $ kolom. Setiap petak berisi sebuah huruf dari $ K $ huruf kecil pertama pada alfabet.
+
+Tujuan pembaca adalah untuk menemukan sebuah string $ S $ pada petakata tersebut. Sebuah string $ S $ dikatakan terdapat pada petakata, apabila terdapat serangkaian petak yang memenuhi seluruh syarat di bawah ini:
+
+\begin{itemize}
+	\item dimulai pada sebuah petak yang mana saja,
+	\item setiap petak, selain petak pertama, berada tepat di sebelah atas, bawah, kanan, kanan-atas, atau kanan-bawah dari petak sebelumnya (perhatikan bahwa setiap petak \textbf{tidak boleh berada di sebelah kiri} petak sebelumnya),
+	\item tidak ada petak yang dikunjungi lebih dari satu kali, dan
+	\item huruf-huruf pada petak-petak yang dikunjungi tepat membentuk string $ S $ (yakni, petak pertama berisi huruf pertama dari $ S $, petak kedua berisi huruf kedua, dan seterusnya).
+\end{itemize}
+
+Merasa bosan mengerjakan petakata setiap minggu, Pak Chanek malah penasaran: diberikan $ S $, $ N $, dan $ K $, ada berapa petakata berbeda sedemikian sehingga pembaca dapat menemukan string $ S $ pada petakata? Dua buah petakata dikatakan berbeda apabila terdapat setidaknya sebuah petak pada posisi yang sama namun berisi huruf yang berbeda di antara kedua petakata tersebut.
+
+Bantulah Pak Chanek menghitung banyaknya petakata yang dimaksud, modulo $ 1.000.000.007 $.
+
+\subsection*{Format Masukan}
+\addcontentsline{toc}{subsection}{Format Masukan} % for pdf indexing
+
+Baris pertama berisi sebuah bilangan bulat $ T $ yang menyatakan banyaknya kasus uji. Baris-baris berikutnya berisi $ T $ kasus uji, yang masing-masing diberikan dalam format berikut ini:
+
+\begin{lcverbatim}
+S N K
+\end{lcverbatim}
+
+\subsection*{Format Keluaran}
+\addcontentsline{toc}{subsection}{Format Keluaran} % for pdf indexing
+
+Untuk setiap kasus uji, keluarkan sebuah baris berisi banyaknya petakata yang mungkin, modulo $ 1.000.000.007 $.
+
+\vspace{.4cm}
+
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Masukan}
+\addcontentsline{toc}{subsection}{Contoh Masukan} % for pdf indexing
+
+\begin{lcverbatim}
+4
+ab 1 2
+aa 2 2
+gemastik 3 21
+gemastik 20 21
+\end{lcverbatim}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Keluaran}
+\addcontentsline{toc}{subsection}{Contoh Keluaran} % for pdf indexing
+
+\begin{lcverbatim}
+2
+11
+0
+662038843
+\end{lcverbatim}
+\end{minipage}
+
+\pagebreak
+\subsection*{Penjelasan}
+\addcontentsline{toc}{subsection}{Penjelasan} % for pdf indexing
+
+Untuk contoh pertama, terdapat 2 petakata yang mungkin:
+
+\begin{lcverbatim}
+a  |  b
+b  |  a
+\end{lcverbatim}
+
+Untuk contoh kedua, terdapat 11 petakata yang mungkin:
+
+\begin{lcverbatim}
+ aa  |  aa  |  aa  |  aa
+ aa  |  ab  |  ba  |  bb
+-----+------+------+-----
+ ab  |  ab  |  ab  |  ba
+ aa  |  ab  |  ba  |  aa
+-----+------+------+-----
+ ba  |  ba  |  bb
+ ab  |  ba  |  aa
+\end{lcverbatim}
+
+Untuk contoh ketiga, string gemastik tidak mungkin terdapat pada petakata berukuran $ 2 \times 3 $.
+
+\subsection*{Batasan}
+\addcontentsline{toc}{subsection}{Batasan} % for pdf indexing
+
+Batasan yang berlaku untuk versi mudah dan versi sulit:
+
+\begin{itemize}
+	\item $ 1 \le T \le 5 $
+	\item $ 1 \le N \le 50 $
+	\item $ 1 \le K \le 26 $
+	\item Setiap huruf pada $ S $ termasuk dalam $ K $ huruf kecil pertama pada alfabet
+\end{itemize}
+
+Batasan khusus versi mudah:
+
+\begin{itemize}
+	\item $ S $ terdiri atas tepat 2 huruf
+\end{itemize}
+
+Batasan khusus versi sulit:
+
+\begin{itemize}
+	\item $ S $ terdiri atas 1 hingga 10 huruf, inklusif
+\end{itemize}
+
+\end{document}

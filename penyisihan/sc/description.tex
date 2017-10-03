@@ -1,0 +1,140 @@
+% !TeX root = ../main_problemset.tex
+\documentclass[../main_problemset.tex]{subfiles} % Inherits definitions from parent .tex file.
+
+% Per-problem variable definitions
+\newcommand{\problemName}{C. Penulis Soal}
+\newcommand{\problemTL}{1 s}
+\newcommand{\problemML}{64 MB}
+
+\begin{document}
+
+\begin{center}
+    \section*{\problemName}
+    \addcontentsline{toc}{section}{\problemName} % for pdf indexing
+    
+    \begin{tabular}{rl}
+    Batasan waktu : & \problemTL \\
+    Batasan memori : & \problemML
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+\addcontentsline{toc}{subsection}{Deskripsi} % for pdf indexing
+
+Tim soal Gemastik 2017 terdiri atas $ N $ penulis soal. Saat ini, penulis ke-$ i $ sedang bekerja pada $ P[i] $ perusahaan. Terdapat paling banyak 50 perusahaan tempat para penulis soal bekerja, dinomori dari 1 hingga 50. Penulis ke-$ i $ bekerja pada perusahaan-perusahaan $ C[i][1], C[i][2], \mathellipsis, C[i][P[i]] $.
+
+Untuk paket soal penyisihan, penulis ke-$ i $ menyumbang $ S[i] $ soal. Setelah kontes berakhir, rencananya akan diumumkan "pemilik" dari setiap soal. Pemilik soal didefinisikan sebagai salah satu dari:
+
+\begin{itemize}
+	\item penulis soal tersebut, atau
+	\item salah satu dari perusahaan tempat sang penulis soal bekerja.
+\end{itemize}
+
+Tingkat keragaman paket soal didefinisikan sebagai banyaknya pemilik soal yang berbeda. Pak Chanek, sebagai ketua tim soal, ingin agar tingkat keragaman paket soal penyisihan sebesar mungkin.
+
+Bantulah Pak Chanek menentukan tingkat keragaman maksimum tersebut!
+
+\subsection*{Format Masukan}
+\addcontentsline{toc}{subsection}{Format Masukan} % for pdf indexing
+
+Baris pertama berisi sebuah bilangan bulat $ T $ yang menyatakan banyaknya kasus uji. Baris-baris berikutnya berisi $ T $ kasus uji, yang masing-masing diberikan dalam format berikut ini:
+
+\begin{lcverbatim}
+N
+S[1] S[2] .. S[N]
+P[1] C[1][1] C[1][2] .. C[1][P[1]]
+P[2] C[2][1] C[2][2] .. C[2][P[2]]
+.
+.
+P[N] C[N][1] C[N][2] .. C[N][P[N]]
+\end{lcverbatim}
+
+\subsection*{Format Keluaran}
+\addcontentsline{toc}{subsection}{Format Keluaran} % for pdf indexing
+
+Untuk setiap kasus uji, keluarkan sebuah baris berisi tingkat keragaman maksimum.
+
+
+
+\vspace{.4cm}
+
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Masukan}
+\addcontentsline{toc}{subsection}{Contoh Masukan} % for pdf indexing
+
+\begin{lcverbatim}
+2
+3
+2 2 2
+1 42
+2 42 7
+0
+3
+2 2 1
+1 42
+1 42
+0
+\end{lcverbatim}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Keluaran}
+\addcontentsline{toc}{subsection}{Contoh Keluaran} % for pdf indexing
+
+\begin{lcverbatim}
+5
+4
+\end{lcverbatim}
+\end{minipage}
+
+\pagebreak
+\subsection*{Penjelasan}
+\addcontentsline{toc}{subsection}{Penjelasan} % for pdf indexing
+
+Untuk contoh pertama, salah satu cara optimal adalah:
+
+\begin{itemize}
+	\item 2 soal dari penulis 1 dimiliki oleh \{Penulis 1, Perusahaan 42\}.
+	\item 2 soal dari penulis 2 dimiliki oleh \{Penulis 2, Perusahaan 7\}.
+	\item 2 soal dari penulis 3 dimiliki oleh \{Penulis 3, Penulis 3\}.
+\end{itemize}
+
+Himpunan pemilik soal berbeda adalah \{Penulis 1, Perusahaan 42, Penulis 2, Perusahaan 7, Penulis 3\}, yang memiliki tingkat keragaman 5.
+
+Untuk contoh kedua, salah satu cara optimal adalah:
+
+\begin{itemize}
+	\item 2 soal dari penulis 1 dimiliki oleh \{Penulis 1, Perusahaan 42\}.
+	\item 2 soal dari penulis 2 dimiliki oleh \{Penulis 2, Perusahaan 42\}.
+	\item 1 soal dari penulis 3 dimiliki oleh \{Penulis 3\}.
+\end{itemize}
+
+Himpunan pemilik soal berbeda adalah \{Penulis 1, Perusahaan 42, Penulis 2, Penulis 3\}, yang memiliki tingkat keragaman 4.
+
+\subsection*{Batasan}
+\addcontentsline{toc}{subsection}{Batasan} % for pdf indexing
+
+Batasan yang berlaku untuk versi mudah dan versi sulit:
+
+\begin{itemize}
+	\item $ 1 \le T \le 10 $
+	\item $ 1 \le C[i][j] \le 50 $
+	\item Nilai-nilai dari $ C[i][1], C[i][2], \mathellipsis, C[i][P[i]] $ berbeda-beda.
+\end{itemize}
+
+Batasan khusus versi mudah:
+
+\begin{itemize}
+	\item $1 \le N \le 10$
+	\item $1 \le S[i] \le 2$
+	\item $0 \le P[i] \le 2$
+\end{itemize}
+
+Batasan khusus versi sulit:
+
+\begin{itemize}
+	\item $1 \le N \le 50$
+	\item $1 \le S[i] \le 50$
+	\item $1 \le P[i] \le 50$
+\end{itemize}
+
+\end{document}

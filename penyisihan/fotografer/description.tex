@@ -1,0 +1,109 @@
+% !TeX root = ../main_problemset.tex
+\documentclass[../main_problemset.tex]{subfiles} % Inherits definitions from parent .tex file.
+
+% Per-problem variable definitions
+\newcommand{\problemName}{B. Fotografer Wisuda}
+\newcommand{\problemTL}{1 s}
+\newcommand{\problemML}{64 MB}
+
+\begin{document}
+
+\begin{center}
+    \section*{\problemName}
+    \addcontentsline{toc}{section}{\problemName} % for pdf indexing
+    
+    \begin{tabular}{rl}
+    Batasan waktu : & \problemTL \\
+    Batasan memori : & \problemML
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+\addcontentsline{toc}{subsection}{Deskripsi} % for pdf indexing
+
+Pak Chanek sedang mengunjungi perayaan wisuda teman-temannya di Balairung Universitas Indonesia. Seperti biasa, ia sering diminta untuk memotret teman-temannya di halaman Balairung.
+
+Kali ini, terdapat $ A $ teman laki-laki dan $ B $ teman perempuan Pak Chanek yang meminta untuk difoto. Bosan dengan pose foto pada umumnya, Pak Chanek ingin menjejerkan mereka dalam sebuah barisan lurus yang memenuhi seluruh syarat berikut ini:
+\begin{itemize}
+	\item Tidak ada subbarisan yang terdiri atas lebih dari 2 teman laki-laki yang bersebelahan.
+	\item Tidak ada subbarisan yang terdiri atas lebih dari $ K $ teman perempuan yang bersebelahan.
+\end{itemize}
+
+Bantulah Pak Chanek untuk mencarikan sebuah barisan yang memenuhi syarat-syarat tersebut, atau laporkan apabila hal tersebut mustahil.
+
+\subsection*{Format Masukan}
+\addcontentsline{toc}{subsection}{Format Masukan} % for pdf indexing
+
+Baris pertama berisi sebuah bilangan bulat $ T $ yang menyatakan banyaknya kasus uji. Baris-baris berikutnya berisi $ T $ kasus uji, yang masing-masing diberikan dalam format berikut ini:
+
+\begin{lcverbatim}
+A B K
+\end{lcverbatim}
+
+\subsection*{Format Keluaran}
+\addcontentsline{toc}{subsection}{Format Keluaran} % for pdf indexing
+
+Untuk setiap kasus uji, keluarkan sebuah baris berisi sebuah string yang terdiri atas $ A + B $ karakter yang menyatakan sebuah barisan yang memenuhi seluruh syarat. Nyatakan teman laki-laki dengan karakter \texttt{L}, dan teman perempuan dengan karakter \texttt{P}.
+
+Apabila terdapat lebih dari satu barisan yang mungkin, \textbf{keluarkan yang mana saja}.
+
+Apabila tidak ada barisan yang mungkin, keluarkan \texttt{mustahil}.
+
+\vspace{.4cm}
+
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Masukan}
+\addcontentsline{toc}{subsection}{Contoh Masukan} % for pdf indexing
+
+\begin{lcverbatim}
+4
+0 4 4
+0 4 3
+1 3 3
+3 3 3
+\end{lcverbatim}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Keluaran}
+\addcontentsline{toc}{subsection}{Contoh Keluaran} % for pdf indexing
+
+\begin{lcverbatim}
+PPPP
+mustahil
+LPPP
+LPPLPL
+\end{lcverbatim}
+\end{minipage}
+
+\subsection*{Penjelasan}
+\addcontentsline{toc}{subsection}{Penjelasan} % for pdf indexing
+
+Pada contoh kedua, satu-satunya barisan yang mungkin, \texttt{PPPP}, merupakan barisan yang tidak diperbolehkan karena terdapat 4 (yakni, lebih dari $ K=3 $) teman perempuan yang bersebelahan.
+
+Pada contoh keempat, \texttt{LLLPPP} merupakan barisan yang tidak diperbolehkan karena terdapat 3 (yakni, lebih dari $ K=2 $) teman laki-laki yang saling bersebelahan. Perhatikan bahwa terdapat beberapa barisan lain yang diperbolehkan, misalnya \texttt{PLLPPL}.
+
+\pagebreak
+\subsection*{Batasan}
+\addcontentsline{toc}{subsection}{Batasan} % for pdf indexing
+
+Batasan yang berlaku untuk versi mudah dan versi sulit:
+
+\begin{itemize}
+	\item $ 1 \le T \le 20 $
+	\item $ 1 \le B \le 1.000 $
+	\item $ 1 \le K \le B $
+\end{itemize}
+
+Batasan khusus versi mudah:
+
+\begin{itemize}
+	\item $0 \le A \le 1$
+\end{itemize}
+
+Batasan khusus versi sulit:
+
+\begin{itemize}
+	\item $0 \le A \le 1.000$
+\end{itemize}
+
+\end{document}

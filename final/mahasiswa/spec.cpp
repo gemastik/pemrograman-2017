@@ -6,25 +6,22 @@ using namespace std;
 
 typedef long long ll;
 
-constexpr ll MILLION = 1000 * 1000;
-const ll MAX_HAI_LENGTH = MILLION * MILLION * MILLION; // 10^18
-
 class ProblemSpec : public BaseProblemSpec {
 protected:
     int T;
 
-    int N;
-    vector<ll> hais;
+    int N, K;
+    vector<int> M;
 
-    int res;
+    ll result;
 
     void InputFormat() {
-        LINE(N);
-        LINES(hais) % SIZE(N);
+        LINE(N, K);
+        LINE(M % SIZE(N));
     }
 
     void OutputFormat() {
-        LINE(res);
+        LINE(result);
     }
 
     void MultipleTestCasesConfig() {
@@ -36,20 +33,21 @@ protected:
     }
 
     void Constraints() {
-        CONS(1 <= N && N <= 100000);
+        CONS(eachElementBetween(M, 1, 100000));
+        CONS(1 <= K && K <= N);
     }
 
     void Subtask1() {
-        CONS(eachElementBetween(hais, 1, 100));
+        CONS(1 <= N && N <= 2);
     }
 
     void Subtask2() {
-        CONS(eachElementBetween(hais, 1, MAX_HAI_LENGTH));
+        CONS(1 <= N && N <= 100000);
     }
 
 private:
-    bool eachElementBetween(const vector<ll>& v, ll lo, ll hi) {
-        return all_of(v.begin(), v.end(), [lo, hi](ll a) {return lo <= a && a <= hi;});
+    bool eachElementBetween(const vector<int>& v, int lo, int hi) {
+        return all_of(v.begin(), v.end(), [lo, hi](int a) {return lo <= a && a <= hi;});
     }
 };
 

@@ -65,7 +65,99 @@ private:
 
 class TestSpec : public BaseTestSpec<ProblemSpec> {
 protected:
+    /*
+    Note: the larger a node's index, the deeper it is
+     */
+
+    void BeforeTestCase() {
+        N = 0;
+        R.clear();
+        P.clear();
+    }
+
     void TestGroup1() {
         Subtasks({1, 2});
+
+        CASE(singletonTree(), randomRichness());
+        CASE(linearTree(500), randomRichness());
+        CASE(kAryTree(500, 2, 10), randomRichness());
+        CASE(kAryTree(500, 4, 30), randomRichness());
+        CASE(randomTree(500), ascRichness());
+        CASE(randomTree(500), descRichness());
+        CASE(randomTree(1000), randomRichness());
+    }
+
+    void TestGroup2() {
+        Subtasks({2});
+
+        CASE(linearTree(50000), descRichness()); // Overflow trap
+        CASE(linearTree(50000), randomRichness());
+        CASE(kAryTree(50001, 50000, 0), randomRichness()); // Shallow tree
+        CASE(kAryTree(100000, 3, 50), randomRichness()); // Deep tree
+        CASE(randomTree(100000), randomRichness());
+    }
+
+    void singletonTree() {
+        N = 1;
+        P.clear();
+    }
+
+    void linearTree(int n) {
+        N = n;
+        P.clear();
+        for (int i = 2; i <= N; i++) {
+            P.push_back(i-1);
+        }
+    }
+
+    void randomTree(int n) {
+        N = n;
+        P.clear();
+        for (int i = 2; i <= N; i++) {
+            int parIdx = rnd.nextInt(1, (int)floor(sqrt(i)));
+            P.push_back(parIdx);
+        }
+    }
+
+    void kAryTree(int n, int k, int holePercentage) {
+        N = n;
+        P.clear();
+
+        vector<int> child[n];
+        int nextIdx = 1;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < k; j++) {
+                if ((nextIdx < n) && (rnd.nextInt(1, 100) > holePercentage)) {
+                    child[i].push_back(nextIdx);
+                    nextIdx++;
+                }
+            }
+        }
+
+        for (int i = 0; i < n-1; i++) {
+            P.push_back(0);
+        }
+        for (int i = 0; i < n; i++) {
+            for (int c : child[i]) {
+                P[c-1] = i+1;
+            }
+        }
+    }
+
+    void randomRichness() {
+        R.clear();
+        for (int i = 0; i < N; i++) {
+            R.push_back(rnd.nextInt(MIN_RICHNESS, MAX_RICHNESS));
+        }
+    }
+
+    void ascRichness() {
+        randomRichness();
+        sort(R.begin(), R.end());
+    }
+
+    void descRichness() {
+        ascRichness();
+        reverse(R.begin(), R.end());
     }
 };

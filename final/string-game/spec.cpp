@@ -33,7 +33,7 @@ protected:
     }
 
     void MultipleTestCasesConstraints() {
-        CONS(inRange(T, 1, 10));
+        CONS(inRange(T, 1, 100));
     }
 
     void Constraints() {
@@ -44,7 +44,7 @@ protected:
 
     void Subtask1() {
         CONS(N == 2);
-        CONS(inRange(L, 1, 6));
+        CONS(inRange(L, 1, 5));
     }
 
     void Subtask2() {
@@ -81,25 +81,25 @@ protected:
         CASE(N = 2, L = 3, S = "l");
         CASE(N = 2, L = 4, S = "o");
         CASE(N = 2, L = 5, S = "t");
-        CASE(N = 2, L = 6, S = "z");
+        CASE(N = 2, L = 5, S = "z");
+
+        CASE(N = 2, L = 5, S = "aaaaa");
+        CASE(N = 2, L = 4, S = "asu");
+        CASE(N = 2, L = 5, S = "alot");
+        CASE(N = 2, L = 5, S = "yyyyy");
+        CASE(N = 2, L = 5, S = "abcde");
+        CASE(N = 2, L = 5, S = "uvxyz");
+        CASE(N = 2, L = 5, S = "aamnz");
+        CASE(N = 2, L = 5, S = "zzzzz");
+        CASE(N = 2, L = 4, S = "zzz");
+        CASE(N = 2, L = 5, S = "afkpy");
+
+        for (int i = 0; i < 80; ++i) {
+            CASE(N = 2, L = rnd.nextInt(2, 5), S = generateString(max(2, L - rnd.nextInt(2)), rnd.nextInt(16)));
+        }
     }
 
     void TestGroup2() {
-        Subtasks({1, 2});
-
-        CASE(N = 2, L = 6, S = "aaaaaa");
-        CASE(N = 2, L = 6, S = "asu");
-        CASE(N = 2, L = 5, S = "alot");
-        CASE(N = 2, L = 6, S = "yyyyyy");
-        CASE(N = 2, L = 6, S = "abcde");
-        CASE(N = 2, L = 6, S = "uvwxyz");
-        CASE(N = 2, L = 6, S = "aamnzz");
-        CASE(N = 2, L = 6, S = "zzzzzz");
-        CASE(N = 2, L = 4, S = "zzz");
-        CASE(N = 2, L = 6, S = "afkpuy");
-    }
-
-    void TestGroup3() {
         Subtasks({2});
 
         CASE(N = 3,         L = 10000,     S = "z");
@@ -112,10 +112,6 @@ protected:
         CASE(N = MAX_N,     L =    15,     S = generateString(15, 0));
         CASE(N = MAX_N,     L =   300,     S = generateString(250, 13));
         CASE(N = MAX_N,     L =  1337,     S = generateString(1010, 15));
-    }
-
-    void TestGroup4() {
-        Subtasks({2});
 
         CASE(N = rnd.nextInt(MAX_N >> 1, MAX_N), L = rnd.nextInt(MAX_L - 500, MAX_L), S = generateString(rnd.nextInt(9000, L), 0));
         CASE(N = rnd.nextInt(MAX_N >> 1, MAX_N), L = rnd.nextInt(MAX_L - 500, MAX_L), S = generateString(rnd.nextInt(9000, L), 0));
@@ -127,6 +123,10 @@ protected:
         CASE(N = rnd.nextInt(MAX_N >> 1, MAX_N), L = rnd.nextInt(MAX_L - 500, MAX_L), S = generateString(rnd.nextInt(9000, L), 9));
         CASE(N = rnd.nextInt(MAX_N >> 1, MAX_N), L = rnd.nextInt(MAX_L - 500, MAX_L), S = generateString(rnd.nextInt(9000, L), 5));
         CASE(N = rnd.nextInt(MAX_N >> 1, MAX_N), L = rnd.nextInt(MAX_L - 500, MAX_L), S = generateString(rnd.nextInt(9000, L), 4));
+
+        for (int i = 0; i < 80; ++i) {
+            CASE(N = rnd.nextInt(MAX_N >> 1, MAX_N), L = rnd.nextInt(MAX_L >> 1, MAX_L), S = generateString(rnd.nextInt(L >> 1, L), rnd.nextInt(32)));
+        }
     }
 
 private:

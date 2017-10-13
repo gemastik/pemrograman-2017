@@ -247,3 +247,5 @@ TSWLatexianTemp*
 
 # if you have assets made on pdf, please add them manually
 *.pdf
+
+*.exe

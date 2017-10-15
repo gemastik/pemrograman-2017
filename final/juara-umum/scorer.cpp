@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
 
         if (fscanf(tc_con, "%s", user_verdict) != 1) wa();
         if (strcmp(verdict, user_verdict) != 0) wa();
-        if (verdict[0] == 'T') continue;
+        if (verdict[2] == 's') continue; //mu s tahil
 
         vector<pair<int, pair<int,int> > > medals(M);
         for (int i=0;i<N;i++){

@@ -4,7 +4,7 @@
 using namespace tcframe;
 using namespace std;
 
-const int MIN_COORD = 0;
+const int MIN_COORD = -1000000000;
 const int MAX_COORD = 1000000000;
 const double PI = acos(-1.0);
 
@@ -15,14 +15,12 @@ protected:
     int T;
 
     int N, M;
-    int baloonX, baloonY;
     vector<vector<int>> coords;
 
     double res;
 
     void InputFormat() {
         LINE(N, M);
-        LINE(baloonX, baloonY);
         LINES(coords) % SIZE(N);
     }
 
@@ -44,12 +42,9 @@ protected:
 
     void Constraints() {
         CONS(3 <= M && M <= 10);
-        CONS(coords.size() == N);
         CONS(completeCoords());
         CONS(coordsBetween(MIN_COORD, MAX_COORD));
-        CONS(baloonCenterIsNotOnPoint());
-        CONS(MIN_COORD <= baloonX && baloonX <= MAX_COORD);
-        CONS(MIN_COORD <= baloonY && baloonY <= MAX_COORD);
+        CONS(noPointOnOrigin());
     }
 
     void Subtask1() {
@@ -72,12 +67,12 @@ private:
                 && (lo <= coord[1]) && (coord[1] <= hi);
         });
     }
-    bool baloonCenterIsNotOnPoint() {
+    bool noPointOnOrigin() {
         for (int i = 0; i < coords.size(); i++) {
             int x = coords[i][0];
             int y = coords[i][1];
 
-            if ((x == baloonX) && (y == baloonY)) return false;
+            if ((x == 0) && (y == 0)) return false;
         }
         return true;
     }
@@ -89,43 +84,76 @@ protected:
         coords.clear();
     }
 
+    void SampleTestCase1() {
+        Subtasks({1, 2});
+        Input({
+            "1 3",
+            "2 4",
+        });
+        Output({
+            "103.9230484541327"
+        });
+    }
+
+    void SampleTestCase2() {
+        Subtasks({2});
+        Input({
+            "2 3",
+            "2 2",
+            "2 4"
+        });
+        Output({
+            "41.56921938165307"
+        });
+    }
+
+    void SampleTestCase3() {
+        Subtasks({2});
+        Input({
+            "4 4",
+            "-2 -2",
+            "2 -2",
+            "-2 2",
+            "2 2"
+        });
+        Output({
+            "32"
+        });
+    }
+
     void TestGroup1() {
         Subtasks({1, 2});
 
-        int baseX = 50;
-        int baseY = 60;
         int delta = 40;
 
         // All 8 directions
-        CASE(N = 1, M = 3, baloonX = baseX, baloonY = baseY, coords = getSingleCoord(baseX, baseY + delta));
-        CASE(N = 1, M = 3, baloonX = baseX, baloonY = baseY, coords = getSingleCoord(baseX, baseY - delta));
-        CASE(N = 1, M = 3, baloonX = baseX, baloonY = baseY, coords = getSingleCoord(baseX + delta, baseY));
-        CASE(N = 1, M = 3, baloonX = baseX, baloonY = baseY, coords = getSingleCoord(baseX - delta, baseY));
-        CASE(N = 1, M = 3, baloonX = baseX, baloonY = baseY, coords = getSingleCoord(baseX + delta, baseY + delta));
-        CASE(N = 1, M = 3, baloonX = baseX, baloonY = baseY, coords = getSingleCoord(baseX + delta, baseY - delta));
-        CASE(N = 1, M = 3, baloonX = baseX, baloonY = baseY, coords = getSingleCoord(baseX - delta, baseY + delta));
-        CASE(N = 1, M = 3, baloonX = baseX, baloonY = baseY, coords = getSingleCoord(baseX - delta, baseY - delta));
+        CASE(N = 1, M = 3, coords = getSingleCoord(0, delta));
+        CASE(N = 1, M = 3, coords = getSingleCoord(0, -delta));
+        CASE(N = 1, M = 3, coords = getSingleCoord(delta, 0));
+        CASE(N = 1, M = 3, coords = getSingleCoord(-delta, 0));
+        CASE(N = 1, M = 3, coords = getSingleCoord(delta, delta));
+        CASE(N = 1, M = 3, coords = getSingleCoord(delta, -delta));
+        CASE(N = 1, M = 3, coords = getSingleCoord(-delta, delta));
+        CASE(N = 1, M = 3, coords = getSingleCoord(-delta, -delta));
 
         // Overflow trap
         int bigDelta = 900 * 1000 * 1000;
-        CASE(N = 1, M = 3, baloonX = baseX, baloonY = baseY, coords = getSingleCoord(baseX + bigDelta, baseY + bigDelta));
+        CASE(N = 1, M = 3, coords = getSingleCoord(bigDelta, bigDelta));
     }
 
     void TestGroup2() {
         Subtasks({1, 2});
 
-        int baseX = 50;
-        int baseY = 60;
         int delta = 40;
 
         // Various polygon sides
-        CASE(N = 1, M = 3, baloonX = baseX, baloonY = baseY, coords = getSingleCoord(baseX, baseY + delta));
-        CASE(N = 1, M = 4, baloonX = baseX, baloonY = baseY, coords = getSingleCoord(baseX, baseY - delta));
-        CASE(N = 1, M = 5, baloonX = baseX, baloonY = baseY, coords = getSingleCoord(baseX + delta, baseY));
-        CASE(N = 1, M = 6, baloonX = baseX, baloonY = baseY, coords = getSingleCoord(baseX - delta, baseY));
-        CASE(N = 1, M = 8, baloonX = baseX, baloonY = baseY, coords = getSingleCoord(baseX + delta, baseY + delta));
-        CASE(N = 1, M = 9, baloonX = baseX, baloonY = baseY, coords = getSingleCoord(baseX + delta, baseY - delta));
-        CASE(N = 1, M = 10, baloonX = baseX, baloonY = baseY, coords = getSingleCoord(baseX - delta, baseY + delta));
+        CASE(N = 1, M = 3, coords = getSingleCoord(0, delta));
+        CASE(N = 1, M = 4, coords = getSingleCoord(0, -delta));
+        CASE(N = 1, M = 5, coords = getSingleCoord(delta, 0));
+        CASE(N = 1, M = 6, coords = getSingleCoord(-delta, 0));
+        CASE(N = 1, M = 8, coords = getSingleCoord(delta, delta));
+        CASE(N = 1, M = 9, coords = getSingleCoord(delta, -delta));
+        CASE(N = 1, M = 10, coords = getSingleCoord(-delta, delta));
     }
 
     void TestGroup3() {
@@ -184,11 +212,11 @@ private:
         return result;
     }
 
-    // Generate N+1 distinct random points, assign 1 of them as baloon coordinate
+    // Generate N distinct random points
     void randomCase() {
         set<vector<int>> points;
 
-        while (points.size() < N + 1) {
+        while (points.size() < N) {
             vector<int> point;
             point.push_back(rnd.nextInt(0, MAX_COORD));
             point.push_back(rnd.nextInt(0, MAX_COORD));
@@ -199,48 +227,38 @@ private:
         for (auto p : points) {
             coords.push_back(p);
         }
-
-        baloonX = coords.back()[0];
-        baloonY = coords.back()[1];
-        coords.pop_back();
     }
 
     // (pA, pB, pC) must be phytagorean triplet
     void equiDistanceCase(ll pA, ll pB, ll pC) {
         assert(pA*pA + pB*pB == pC*pC);
 
-        int baseX = rnd.nextInt(pC, MAX_COORD - pC);
-        int baseY = rnd.nextInt(pC, MAX_COORD - pC);
-
         coords.clear();
-        coords.push_back(getCoord(baseX, baseY + pC));
+        coords.push_back(getCoord(0, pC));
 
-        coords.push_back(getCoord(baseX + pA, baseY + pB));
-        coords.push_back(getCoord(baseX + pB, baseY + pA));
+        coords.push_back(getCoord(pA, pB));
+        coords.push_back(getCoord(pB, pA));
 
-        coords.push_back(getCoord(baseX + pC, baseY));
+        coords.push_back(getCoord(pC, 0));
 
-        coords.push_back(getCoord(baseX - pB, baseY + pA));
-        coords.push_back(getCoord(baseX - pA, baseY + pB));
+        coords.push_back(getCoord(-pB, pA));
+        coords.push_back(getCoord(-pA, pB));
 
-        coords.push_back(getCoord(baseX - pC, baseY));
+        coords.push_back(getCoord(-pC, 0));
 
-        coords.push_back(getCoord(baseX - pA, baseY - pB));
-        coords.push_back(getCoord(baseX - pB, baseY - pA));
+        coords.push_back(getCoord(-pA, -pB));
+        coords.push_back(getCoord(-pB, -pA));
 
-        coords.push_back(getCoord(baseX - pC, baseY));
+        coords.push_back(getCoord(0, -pC));
 
-        coords.push_back(getCoord(baseX - pB, baseY + pA));
-        coords.push_back(getCoord(baseX - pA, baseY + pB));
+        coords.push_back(getCoord(-pB, pA));
+        coords.push_back(getCoord(-pA, pB));
 
         N = coords.size();
     }
 
     // Generate N points with distance to base coords roughly between [distance-noise, distance+noise]
     void asteroidBeltCase(int distance, int noise) {
-        int baseX = rnd.nextInt(distance + noise, MAX_COORD - distance - noise);
-        int baseY = rnd.nextInt(distance + noise, MAX_COORD - distance - noise);
-
         for (int i = 0; i < N; i++) {
             double rad = rnd.nextDouble(1.0) * 2*PI;
 
@@ -248,8 +266,8 @@ private:
             int dx = (int)(distance * cos(rad));
             int dy = (int)(distance * sin(rad));
 
-            int x = clamp(0, MAX_COORD, baseX + dx);
-            int y = clamp(0, MAX_COORD, baseY + dy);
+            int x = clamp(MIN_COORD, MAX_COORD, dx);
+            int y = clamp(MAX_COORD, MAX_COORD, dy);
             coords.push_back(getCoord(x, y));
         }
     }
@@ -260,8 +278,8 @@ private:
             coords[i][1] += rnd.nextInt(-maxNoise, maxNoise);
 
             // Normalize
-            coords[i][0] = clamp(0, MAX_COORD, coords[i][0]);
-            coords[i][1] = clamp(0, MAX_COORD, coords[i][1]);
+            coords[i][0] = clamp(MIN_COORD, MAX_COORD, coords[i][0]);
+            coords[i][1] = clamp(MIN_COORD, MAX_COORD, coords[i][1]);
         }
     }
 

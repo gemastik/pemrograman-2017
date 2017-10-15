@@ -22,13 +22,12 @@ protected:
     }
 
     void OutputFormat1() {
-        LINES(res);
+        LINE(res % SIZE(N));
     }
 
     void OutputFormat2() {
         LINE(res2);
     }
-
 
     void StyleConfig() {
         CustomScorer();
@@ -39,7 +38,7 @@ protected:
     }
 
     void MultipleTestCasesConstraints() {
-        CONS(1 <= T && T <= 20);
+        CONS(1 <= T && T <= 10);
     }
 
     void Subtask1() {
@@ -50,7 +49,7 @@ protected:
     }
 
     void Subtask2() {
-        CONS(1 <= N && N <= 20000);
+        CONS(1 <= N && N <= 50000);
         CONS(0 <= A && A <= MAX_INT);
         CONS(0 <= B && B <= MAX_INT);
         CONS(0 <= C && C <= MAX_INT);
@@ -73,11 +72,18 @@ protected:
         Input({
             "2 8 14 6"
         });
+
+    }
+
+    void SampleTestCase2() {
         // impossible
         Subtasks({1, 2});
         Input({
             "2 8 14 4"
         });
+    }
+
+    void SampleTestCase3() {
         Subtasks({2});
         Input({
             "3 8 14 4"

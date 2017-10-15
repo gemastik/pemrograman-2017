@@ -69,16 +69,19 @@ protected:
         Input({"2 2",
               "10 12"});
         Output({"12"});
-        
-	Input({"2 1",
-              "10 12"});   
-    	Output({"22"});
     }
 
     void SampleTestCase2() {
+        Subtasks({1, 2});
+        Input({"2 1",
+              "10 12"});
+    	Output({"22"});
+    }
+
+    void SampleTestCase3() {
         Subtasks({2});
         Input({"3 2",
-              "3 2 1"});   
+              "3 2 1"});
     	Output({"3"});
     }
 
@@ -113,6 +116,6 @@ protected:
         CASE(N=rnd.nextInt(50000, 100000), K=rnd.nextInt(2000, N),
              M = rand_ints(N, K, rnd.nextInt(0, K), 2000, N));
         CASE(N=rnd.nextInt(50000, 100000), K=rnd.nextInt(1, 100),
-             M = rand_ints(N, K, rnd.nextInt(0, K), 50000, 100000));     
+             M = rand_ints(N, K, rnd.nextInt(0, K), 50000, 100000));
     }
 };

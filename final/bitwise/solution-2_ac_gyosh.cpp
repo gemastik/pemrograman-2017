@@ -1,5 +1,17 @@
-#include <bits/stdc++.h>
-
+#include <cstdio>
+#include <algorithm>
+#include <iostream>
+#include <vector>
+#include <cstring>
+#include <set>
+#include <utility>
+#include <cstdlib>
+#include <cmath>
+#include <queue>
+#include <stack>
+#include <string>
+#include <map>
+#include <unordered_map>
 using namespace std;
 
 typedef long long LL;
@@ -154,10 +166,11 @@ void solve() {
     }
   }
 
-  printf("%d\n", (int)ans.size());
-  for (int i = 0; i < ans.size(); i++) {
-    printf("%d\n", ans[i]);
+  printf("%d", ans[0]);
+  for (int i = 1; i < ans.size(); i++) {
+    printf(" %d", ans[i]);
   }
+  printf("\n");
 }
 
 int main() {

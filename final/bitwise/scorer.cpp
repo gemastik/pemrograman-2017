@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <iostream>
 using namespace std;
 
 int wa() {
@@ -21,28 +22,33 @@ int main(int argc, char** argv) {
     for (int i = 0; i < T; i++) {
         int out, con;
 
+        int N, t_A, t_B, t_C;
+        fscanf(tc_in, "%d%d%d%d", &N, &t_A, &t_B, &t_C);
         fscanf(tc_out, "%d", &out);
 
         if (fscanf(tc_con, "%d", &con) != 1) return wa();
         if (out == -1 && con != -1) return wa();
-        if (out == -1 && con == -1 && fscanf(tc_con, "%d", &con) == 1) return wa();// if bleber
+        if (out == -1 && con == -1) continue;
         if (con <= -1) return wa();
 
-        int N, t_A, t_B, t_C;
         int A = con;
         int B = con;
         int C = con;
 
-        fscanf(tc_in, "%d%d%d%d", &N, &t_A, &t_B, &t_C);
         for (int i=0;i<N-1;i++){
+            int dummy;
+            fscanf(tc_out, "%d", &dummy);
             if (fscanf(tc_con, "%d", &con) != 1) return wa();
             if (con <= -1) return wa();
+
             A &= con;
             B |= con;
             C ^= con;
         }
-        if (fscanf(tc_con, "%d", &con) == 1) return wa();//if bleber
         if (A != t_A || B != t_B || C != t_C) return wa();
     }
+
+    int con;
+    if (fscanf(tc_con, "%d", &con) == 1) return wa();//if bleber
     return ac();
 }

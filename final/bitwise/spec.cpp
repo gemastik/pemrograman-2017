@@ -72,22 +72,24 @@ protected:
         Input({
             "2 8 14 6"
         });
-
+        Output({"14 8"});
     }
 
     void SampleTestCase2() {
         // impossible
         Subtasks({1, 2});
         Input({
-            "2 8 14 4"
+            "2 4 6 6"
         });
+        Output({"-1"});
     }
 
     void SampleTestCase3() {
         Subtasks({2});
         Input({
-            "3 8 14 4"
+            "3 4 6 6"
         });
+        Output({"6 4 4"});
     }
 
     void TestGroup1() {
@@ -103,7 +105,10 @@ protected:
 
         CASE(N = 2, A = 0, B = 145661, C = 145661);
         CASE(N = 2, A = 0, B = 145661, C = 145660);
+    }
 
+    void TestGroup2() {
+        Subtasks({1, 2});
         CASE(N = 2, A = BIN_MILLION, B = BIN_MILLION, C = BIN_MILLION);
         CASE(N = 2, A = BIN_MILLION, B = 0, C = 0);
         CASE(N = 2, A = 0, B = BIN_MILLION, C = 0);
@@ -125,18 +130,18 @@ protected:
         CASE(N = 2, A = 0b1101000001, B = 0b1111110001, C = 0b1111110001); // all success + 1 fail
     }
 
-    void TestGroup2() {
+    void TestGroup3() {
         Subtasks({1, 2});
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 2; i++){
             CASE(N = 2, A = smallRand(), B = smallRand(), C = smallRand());
             CASE(N = 2, A = smallRand(), B = smallRand(), C = smallRand());
-            CASE(N = 2, A = smallRand(), B = smallRand(), C = A ^ B);
-            CASE(N = 2, A = smallRand(), C = smallRand(), B = A ^ C);
-            CASE(N = 2, B = smallRand(), C = smallRand(), A = B ^ C);
+            CASE(N = 2, A = smallRand(), B = smallRand(), A &= B, C = A ^ B);
+            CASE(N = 2, A = smallRand(), C = smallRand(), A &= C,  B = A ^ C);
+            CASE(N = 2, B = smallRand(), C = smallRand(), B |= C, A = B ^ C);
         }
     }
 
-    void TestGroup3() {
+    void TestGroup4() {
         Subtasks({2});
         //zonk
         CASE(N = 1, A = 321, B = 321, C = 321);
@@ -153,6 +158,10 @@ protected:
         // genap
         CASE(N = 20000, A = 0b1111000000, B = 0b1100110000, C = 0b1010101000); // all bit combinations
         CASE(N = 20000, A = 0b1111000001, B = 0b1111110001, C = 0b1111110001); // success bit only
+    }
+
+    void TestGroup5(){
+        Subtasks({2});
         CASE(N = 19998, A = 0b1111000000, B = 0b1000000000, C = 0b0010111111); // fail bit only
         CASE(N = 10004, A = 0b1101000001, B = 0b1111110001, C = 0b1111110001); // all success + 1 fail
 
@@ -162,32 +171,35 @@ protected:
         CASE(N = 9999, A = 0b1111000000, B = 0b1000000000, C = 0b0010111111); // fail bit only
         CASE(N = 12345, A = 0b1101000001, B = 0b1111110001, C = 0b1111110001); // all success + 1 fail
 
-        CASE(N = 20000, A = MAX_INT, B = MAX_INT, C = MAX_INT);
-        CASE(N = 20000, A = MAX_INT, B = 0, C = 0);
-        CASE(N = 20000, A = 0, B = MAX_INT, C = 0);
-        CASE(N = 20000, A = 0, B = 0, C = MAX_INT);
+        CASE(N = 50000, A = MAX_INT, B = MAX_INT, C = MAX_INT);
+        CASE(N = 50000, A = MAX_INT, B = 0, C = 0);
+        CASE(N = 50000, A = 0, B = MAX_INT, C = 0);
+        CASE(N = 50000, A = 0, B = 0, C = MAX_INT);
     }
 
-    void TestGroup4() {
+    void TestGroup6() {
         Subtasks({2});
         for (int i = 0; i < 2; i++){
             CASE(N = 3, A = rand(), B = rand(), C = rand());
             CASE(N = 3, A = rand(), B = rand(), C = rand());
-            CASE(N = 3, A = rand(), B = rand(), C = A ^ B);
-            CASE(N = 3, A = rand(), C = rand(), B = A ^ C);
-            CASE(N = 3, B = rand(), C = rand(), C = B ^ C);
-        }
-
-        for (int i = 1; i <= 2; i++){
-            CASE(N = (rnd.nextInt(20000, 39000)/2) + i, A = rand(), B = rand(), C = rand());
-            CASE(N = (rnd.nextInt(20000, 39000)/2) + i, A = rand(), B = rand(), C = rand());
-            CASE(N = (rnd.nextInt(20000, 39000)/2) + i, A = rand(), B = rand(), C = A ^ B);
-            CASE(N = (rnd.nextInt(20000, 39000)/2) + i, A = rand(), C = rand(), B = A ^ C);
-            CASE(N = (rnd.nextInt(20000, 39000)/2) + i, B = rand(), C = rand(), C = B ^ C);
+            CASE(N = 3, A = rand(), B = rand(), A &= B, C = A ^ B);
+            CASE(N = 3, A = rand(), C = rand(), A &= C, B = A ^ C);
+            CASE(N = 3, B = rand(), C = rand(), B |= C, A = B ^ C);
         }
     }
 
-     void TestGroup5() {
+    void TestGroup7() {
+        Subtasks({2});
+        for (int i = 1; i <= 2; i++){
+            CASE(N = (rnd.nextInt(90000, 99000)/2) + i, A = rand(), B = rand(), C = rand());
+            CASE(N = (rnd.nextInt(90000, 99000)/2) + i, A = rand(), B = rand(), C = rand());
+            CASE(N = (rnd.nextInt(90000, 99000)/2) + i, A = rand(), B = rand(), A &= B, C = A ^ B);
+            CASE(N = (rnd.nextInt(90000, 99000)/2) + i, A = rand(), C = rand(), A &= C, B = A ^ C);
+            CASE(N = (rnd.nextInt(90000, 99000)/2) + i, B = rand(), C = rand(), B |= C, A = B ^ C);
+        }
+    }
+
+     void TestGroup8() {
         Subtasks({2});
 
         CASE(N = 2, A = MAX_INT, B = MAX_INT, C = MAX_INT);
@@ -196,6 +208,4 @@ protected:
         CASE(N = 2, A = 0, B = 0, C = MAX_INT);
     }
 };
-
-
 

@@ -1,7 +1,20 @@
 /*
 Reason for WA: printing ridiculously too many output, intending to take down server
  */
-#include <bits/stdc++.h>
+#include <cstdio>
+#include <algorithm>
+#include <iostream>
+#include <vector>
+#include <cstring>
+#include <set>
+#include <utility>
+#include <cstdlib>
+#include <cmath>
+#include <queue>
+#include <stack>
+#include <string>
+#include <map>
+#include <unordered_map>
 
 using namespace std;
 
@@ -130,10 +143,11 @@ void solve() {
 
   int multiplier = 100000;
 
-  printf("%d\n", (int)ans.size()*multiplier);
-  for (int i = 0; i < ans.size()*multiplier; i++) {
-    printf("%d\n", ans[i % ans.size()]);
+  printf("%d", ans[0]);
+  for (int i = 1; i < ans.size()*multiplier; i++) {
+    printf(" %d", ans[i % ans.size()]);
   }
+  printf("\n");
 }
 
 int main() {

@@ -1,4 +1,17 @@
-#include <bits/stdc++.h>
+#include <cstdio>
+#include <algorithm>
+#include <iostream>
+#include <vector>
+#include <cstring>
+#include <set>
+#include <utility>
+#include <cstdlib>
+#include <cmath>
+#include <queue>
+#include <stack>
+#include <string>
+#include <map>
+#include <unordered_map>
 
 using namespace std;
 
@@ -30,7 +43,7 @@ void solve() {
   if (!hasSolution) {
     printf("-1\n");
   } else {
-    printf("%d\n%d\n", solA, solB);
+    printf("%d %d\n", solA, solB);
   }
 }
 

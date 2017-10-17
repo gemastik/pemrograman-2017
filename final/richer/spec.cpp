@@ -65,6 +65,18 @@ private:
 
 class TestSpec : public BaseTestSpec<ProblemSpec> {
 protected:
+    void SampleTestCase1() {
+        Subtasks({1, 2});
+        Input({
+            "6",
+            "1 1 1 4 4",
+            "3 6 1 4 2 1"
+        });
+        Output({
+            "4"
+        });
+    }
+
     /*
     Note: the larger a node's index, the deeper it is
      */

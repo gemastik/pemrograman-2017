@@ -1,5 +1,5 @@
 /*
-Reason for WA: printing ridiculously too many output, intending to take down server
+Reason for WA: ignoring the fact that A=0, B=1, C=0 needs at least 3 numbers ([0, 1, 1])
  */
 #include <cstdio>
 #include <algorithm>
@@ -15,7 +15,6 @@ Reason for WA: printing ridiculously too many output, intending to take down ser
 #include <string>
 #include <map>
 #include <unordered_map>
-
 using namespace std;
 
 typedef long long LL;
@@ -51,11 +50,6 @@ int setBit(int a, int x, int v) {
 void solve() {
   scanf("%d %d %d %d", &N, &A, &B, &C);
 
-  if ((A == B) && (A == C) && (B == C)) {
-    printf("1\n%d\n", A);
-    return;
-  }
-
   // Check possibility
   bool possible = true;
   bool mustFull1Even = false;
@@ -80,8 +74,13 @@ void solve() {
     }
   }
 
-  // Can't satisfy both?
   if (mustFull1Even && mustFull1Odd) {
+    possible = false;
+  }
+  if (mustFull1Even && (N % 2 != 0)) {
+    possible = false;
+  }
+  if (mustFull1Odd && (N % 2 != 1)) {
     possible = false;
   }
 
@@ -91,61 +90,88 @@ void solve() {
   }
 
   vector<int> ans;
-  int n; // Lowest possible number of elements to satisfy problem's needs
-  if (mustFull1Odd) {
-    n = 3;
+
+  // Put minimum solution to ans
+  if ((A == B) && (A == C) && (B == C)) {
+    ans.push_back(A);
   } else {
-    n = 2;
-  }
-  for (int i = 0; i < n; i++) {
-    ans.push_back(0);
+    int n; // Lowest possible number of elements to satisfy problem's needs
+    if (mustFull1Odd) {
+      n = 3;
+    } else {
+      n = 2;
+    }
+
+    for (int i = 0; i < n; i++) {
+      ans.push_back(0);
+    }
+
+    for (int b = 0; b < MAX_BIT; b++) {
+      int bitA = getBit(A, b);
+      int bitB = getBit(B, b);
+      int bitC = getBit(C, b);
+
+      if ((bitA == 0) && (bitB == 0) && (bitC == 0)) {
+        // Full 0
+        for (int i = 0; i < ans.size(); i++) {
+          ans[i] = setBit(ans[i], b, 0);
+        }
+
+      } else if ((bitA == 0) && (bitB == 1) && (bitC == 0)) {
+        // Even number of 1s
+        for (int i = 0; i < 2; i++) {
+          ans[i] = setBit(ans[i], b, 1);
+        }
+        for (int i = 2; i < ans.size(); i++) {
+          ans[i] = setBit(ans[i], b, 0);
+        }
+
+      } else if ((bitA == 0) && (bitB == 1) && (bitC == 1)) {
+        // Odd number of 1s
+        ans[0] = setBit(ans[0], b, 1);
+        for (int i = 1; i < ans.size(); i++) {
+          ans[i] = setBit(ans[i], b, 0);
+        }
+
+      } else if ((bitA == 1) && (bitB == 1)) {
+        // Full 1, odd or even already handled
+        for (int i = 0; i < ans.size(); i++) {
+          ans[i] = setBit(ans[i], b, 1);
+        }
+      }
+    }
   }
 
+  // Add filler to N
+  int fillerIdxStart = ans.size();
+  for (int i = fillerIdxStart; i < N; i++) {
+    ans.push_back(0);
+  }
   for (int b = 0; b < MAX_BIT; b++) {
     int bitA = getBit(A, b);
     int bitB = getBit(B, b);
     int bitC = getBit(C, b);
 
     if ((bitA == 0) && (bitB == 0) && (bitC == 0)) {
-      // Full 0
-      for (int i = 0; i < ans.size(); i++) {
+      for (int i = fillerIdxStart; i < N; i++) {
         ans[i] = setBit(ans[i], b, 0);
       }
 
-    } else if ((bitA == 0) && (bitB == 1) && (bitC == 0)) {
-      // Even number of 1s
-      for (int i = 0; i < 2; i++) {
-        ans[i] = setBit(ans[i], b, 1);
-      }
-      for (int i = 2; i < ans.size(); i++) {
-        ans[i] = setBit(ans[i], b, 0);
-      }
-
-    } else if ((bitA == 0) && (bitB == 1) && (bitC == 1)) {
-      // Odd number of 1s
-      ans[0] = setBit(ans[0], b, 1);
-      for (int i = 1; i < ans.size(); i++) {
+    } else if ((bitA == 0) && (bitB == 1)) {
+      for (int i = fillerIdxStart; i < N; i++) {
         ans[i] = setBit(ans[i], b, 0);
       }
 
     } else if ((bitA == 1) && (bitB == 1)) {
-      // Full 1, odd or even already handled
-      for (int i = 0; i < ans.size(); i++) {
+      for (int i = fillerIdxStart; i < N; i++) {
         ans[i] = setBit(ans[i], b, 1);
       }
     }
   }
 
-  if (ans.size() > N) {
-    printf("-1\n");
-    return;
-  }
-
-  int multiplier = 100000;
-
   printf("%d", ans[0]);
-  for (int i = 1; i < ans.size()*multiplier; i++) {
-    printf(" %d", ans[i % ans.size()]);
+  for (int i = 1; i < ans.size(); i++) {
+    printf(" %d", ans[i]);
   }
   printf("\n");
 }

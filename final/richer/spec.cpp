@@ -43,11 +43,11 @@ protected:
     }
 
     void Subtask1() {
-        CONS(1 <= N && N <= 1000);
+        CONS(2 <= N && N <= 1000);
     }
 
     void Subtask2() {
-        CONS(1 <= N && N <= 100000);
+        CONS(2 <= N && N <= 100000);
     }
 
 private:
@@ -90,7 +90,6 @@ protected:
     void TestGroup1() {
         Subtasks({1, 2});
 
-        CASE(singletonTree(), randomRichness());
         CASE(linearTree(500), randomRichness());
         CASE(kAryTree(500, 2, 10), randomRichness());
         CASE(kAryTree(500, 4, 30), randomRichness());
@@ -107,11 +106,6 @@ protected:
         CASE(kAryTree(50001, 50000, 0), randomRichness()); // Shallow tree
         CASE(kAryTree(100000, 3, 50), randomRichness()); // Deep tree
         CASE(randomTree(100000), randomRichness());
-    }
-
-    void singletonTree() {
-        N = 1;
-        P.clear();
     }
 
     void linearTree(int n) {

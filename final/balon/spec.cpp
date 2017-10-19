@@ -52,7 +52,7 @@ protected:
     }
 
     void Subtask2() {
-        CONS(1 <= N && N <= 100000);
+        CONS(1 <= N && N <= 50000);
     }
 
 private:
@@ -182,18 +182,18 @@ protected:
         Subtasks({2});
 
         for (int i = 3; i <= 10; i++) {
-            CASE(N = 1000, M = i, asteroidBeltCase(100000, 5));
+            CASE(N = 1000, M = i, asteroidBeltCase(50000, 5));
         }
-        CASE(N = 30000, M = 4, asteroidBeltCase(100000, 5));
+        CASE(N = 30000, M = 4, asteroidBeltCase(50000, 5));
     }
 
     void TestGroup6() {
         Subtasks({2});
 
         for (int i = 3; i <= 10; i++) {
-            CASE(N = 1000, M = i, asteroidBeltCase(100000, 1000));
+            CASE(N = 1000, M = i, asteroidBeltCase(50000, 1000));
         }
-        CASE(N = 30000, M = 4, asteroidBeltCase(100000, 1000));
+        CASE(N = 30000, M = 4, asteroidBeltCase(50000, 1000));
     }
 
 private:

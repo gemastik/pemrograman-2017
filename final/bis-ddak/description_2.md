@@ -4,7 +4,7 @@ Terdapat N kota di Negeri Asgem, yang dinomori dari 1 hingga N. Masyarakat Asgem
 
 Negeri Astik menawarkan tim-tim sirkus keliling untuk beroperasi di Negeri Asgem. Setiap tim sirkus keliling memiliki rute tertentu yang harus memenuhi seluruh syarat di bawah ini:
 
-- Melalui 1 hingga N kota. Misalkan X adalah banyaknya kota yang dilalui oleh rute tersebut.
+- Melalui 2 hingga N kota. Misalkan X adalah banyaknya kota yang dilalui oleh rute tersebut.
 - Rute tersebut sirkular: secara berurutan, mulai dari kota K[1], kemudian menempuh sebuah ruas jalan menuju kota K[2], ..., kemudian menempuh sebuah ruas jalan menuju kota K[X], kemudian menempuh sebuah ruas jalan menuju kota K[1], dan seterusnya.
 - {K[1], K[2], ..., K[X]} adalah kota-kota yang berbeda-beda.
 
@@ -49,7 +49,7 @@ dengan:
 - C merupakan anggaran tahunan pertunjukan sirkus minimum.
 - R merupakan banyaknya tim sirkus keliling yang direkrut.
 - X[i] merupakan banyaknya kota yang dilalui oleh rute tim sirkus keliling ke-i.
-- K[i][j] merupakan nomor kota ke-j yang pada urutan kota pada rute tim sirkus keliling ke-i.
+- K[i][j] merupakan nomor kota urutan ke-j pada rute tim sirkus keliling ke-i.
 
 Jika terdapat lebih dari satu cara yang menghasilkan anggaran minimum yang sama, keluarkan yang mana saja. Perhatikan bahwa Pak Chanek tidak harus meminimumkan banyaknya tim sirkus keliling yang direkrut.
 
@@ -90,8 +90,8 @@ Jika terdapat lebih dari satu cara yang menghasilkan anggaran minimum yang sama,
 3 1 2 3
 3 0
 4 2
-2 1 2
 2 3 4
+2 2 1
 ```
 
 ### Penjelasan

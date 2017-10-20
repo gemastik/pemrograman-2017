@@ -61,6 +61,7 @@ Jika terdapat lebih dari satu cara yang menghasilkan anggaran minimum yang sama,
 9 10
 1 2 3
 2 1 4
+3 6
 2 2 2
 1 2 1
 2 3 1
@@ -95,7 +96,6 @@ Jika terdapat lebih dari satu cara yang menghasilkan anggaran minimum yang sama,
 
 ### Penjelasan
 
-// TODO(sokokaleb)
 
 ### Batasan
 

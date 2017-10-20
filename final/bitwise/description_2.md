@@ -4,8 +4,8 @@ Carilah N bilangan bulat S[1], S[2], ..., S[N] yang memenuhi seluruh syarat beri
 
 - 0 ≤ S[i] < 2^31
 - S[1] AND S[2] AND ... AND S[N] = A
-- S[1] OR S[2] OR ..., OR S[N] = B
-- S[1] XOR S[2] XOR ... OR S[N] = C
+- S[1] OR S[2] OR ... OR S[N] = B
+- S[1] XOR S[2] XOR ... XOR S[N] = C
 
 dengan AND, OR, XOR merupakan operasi _bitwise_ `&`, `|`, dan `^` secara berturut-turut pada C, C++, maupun Java.
 

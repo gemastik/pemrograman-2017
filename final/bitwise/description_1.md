@@ -1,11 +1,11 @@
-# Operasi Bitwise (Sulit)
+# Operasi Bitwise (Mudah)
 
 Carilah N bilangan bulat S[1], S[2], ..., S[N] yang memenuhi seluruh syarat berikut ini:
 
 - 0 ≤ S[i] < 2^31
 - S[1] AND S[2] AND ... AND S[N] = A
-- S[1] OR S[2] OR ..., OR S[N] = B
-- S[1] XOR S[2] XOR ... OR S[N] = C
+- S[1] OR S[2] OR ... OR S[N] = B
+- S[1] XOR S[2] XOR ... XOR S[N] = C
 
 dengan AND, OR, XOR merupakan operasi _bitwise_ `&`, `|`, dan `^` secara berturut-turut pada C, C++, maupun Java.
 
@@ -56,7 +56,7 @@ Jika terdapat lebih dari satu solusi, keluarkan yang mana saja.
 
 ### Batasan Khusus Versi Mudah
 
-**Soal ini adalah soal versi sulit**. Batasan khusus untuk soal versi sulit:
+**Soal ini adalah soal versi mudah**. Batasan khusus untuk soal versi mudah:
 
 - N = 2
 - 0 ≤ A, B, C < 2^20

@@ -41,8 +41,8 @@ protected:
     }
 
     void Constraints() {
-        CONS(1 <= N && N <= 20000);
-        CONS(3 <= M && M <= 20000);
+        CONS(1 <= N && N <= 50000);
+        CONS(3 <= M && M <= 50000);
         CONS(K <= N);
     }
 
@@ -111,17 +111,17 @@ protected:
         CASE(N = 5, M = 3, K = 2);
         CASE(N = 3, M = 4, K = 2);
         CASE(N = 6, M = 3, K = 2);
-        CASE(N = 19999, M = 3, K = 2);
-        CASE(N = 19999, M = 4, K = 2);
-        CASE(N = 19999, M = 20000, K = 2);
-        CASE(N = 20000, M = 3, K = 2);
-        CASE(N = 20000, M = 20000, K = 2);
+        CASE(N = 49999, M = 3, K = 2);
+        CASE(N = 49999, M = 4, K = 2);
+        CASE(N = 49999, M = 50000, K = 2);
+        CASE(N = 50000, M = 3, K = 2);
+        CASE(N = 50000, M = 50000, K = 2);
     }
 
     void TestGroup2() {
         Subtasks({2});
         CASE(N = 1, M = 3, K = 1);
-        CASE(N = 20000, M = 20000, K = 1);
+        CASE(N = 50000, M = 50000, K = 1);
         CASE(N = 3, M = 3, K = 3); // sisa = 0
         CASE(N = 9901, M = 100, K = 99); // sisa = 1, possible
         CASE(N = 19999, M = 19999, K = 10000); // impossible
@@ -135,16 +135,16 @@ protected:
     void TestGroup3() {
         Subtasks({2});
         //gede2 semua
-        CASE(N = 20000, M = 20000, K = 19997);
-        CASE(N = 19865, M = 20000, K = 1337);
-        CASE(N = 19777, M = 20000, K = 999);
-        CASE(N = 18900, M = 20000, K = 12345);
-        CASE(N = 15000, M = 20000, K = 200);
-        CASE(N = 20000, M = 3, K = 3);
-        CASE(N = 19000, M = 20, K = 19);
-        CASE(N = 18766, M = 50, K = 45);
-        CASE(N = 19997, M = 4, K = 3);
-        CASE(N = 19993, M = 7, K = 6);
+        CASE(N = 50000, M = 50000, K = 39997);
+        CASE(N = 39865, M = 40000, K = 1337);
+        CASE(N = 39777, M = 50000, K = 999);
+        CASE(N = 38900, M = 40000, K = 32345);
+        CASE(N = 35000, M = 50000, K = 200);
+        CASE(N = 50000, M = 3, K = 3);
+        CASE(N = 49000, M = 20, K = 19);
+        CASE(N = 48766, M = 50, K = 45);
+        CASE(N = 49997, M = 4, K = 3);
+        CASE(N = 49993, M = 7, K = 6);
     }
 };
 

@@ -158,6 +158,23 @@ protected:
         });
     }
 
+    void SampleTestCase4() {
+        Subtasks({1, 2});
+        Input({
+            "4 4",
+            "2 2 2 2",
+            "1 2 1",
+            "2 1 1",
+            "3 4 1",
+            "4 3 1"
+        });
+        Output({
+            "4 2",
+            "2 1 2",
+            "2 3 4"
+        });
+    }
+
     void TestGroup1() {
         Subtasks({1, 2});
 

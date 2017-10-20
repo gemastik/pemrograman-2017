@@ -56,7 +56,7 @@ Jika terdapat lebih dari satu cara yang menghasilkan anggaran minimum yang sama,
 ### Contoh Masukan
 
 ```
-3
+4
 2 2
 9 10
 1 2 3
@@ -72,6 +72,12 @@ Jika terdapat lebih dari satu cara yang menghasilkan anggaran minimum yang sama,
 1 2
 1 2 3
 2 1 4
+4 4
+2 2 2 2
+1 2 1
+2 1 1
+3 4 1
+4 3 1
 ```
 
 ### (Salah Satu) Contoh Keluaran
@@ -82,6 +88,9 @@ Jika terdapat lebih dari satu cara yang menghasilkan anggaran minimum yang sama,
 3 1
 3 1 2 3
 3 0
+4 2
+2 1 2
+2 3 4
 ```
 
 ### Penjelasan

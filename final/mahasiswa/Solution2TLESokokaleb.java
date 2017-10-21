@@ -28,7 +28,6 @@ public class Solution2TLESokokaleb {
         }
 
         void assign(int m, int K) {
-            System.out.println(m);
             for (int i = 0; i < m; ++i) {
                 int taken = -1;
                 if (students.isEmpty()) {

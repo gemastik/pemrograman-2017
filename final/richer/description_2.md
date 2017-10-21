@@ -2,7 +2,7 @@
 
 Perusahaan Astik terdiri atas N karyawan, yang dinomori dari 1 hingga N. Setiap karyawan, kecuali karyawan 1, memiliki tepat seorang manajer, yang juga merupakan salah satu dari N karyawan tersebut. Manajer karyawan i adalah karyawan P[i]. Hubungan manajer-karyawan ini membentuk sebuah struktur _tree_ yang berakar pada karyawan 1.
 
-Karyawan j adalah atasan dari karyawan i apabila j merupakan salah satu dari {P[i], P[P[i]], P[P[P[i]]] ..., 1}.
+Karyawan j adalah atasan dari karyawan i apabila j merupakan salah satu dari {P[i], P[P[i]], P[P[P[i]]], ..., 1}.
 
 Pak Chanek adalah auditor keuangan untuk perusahaan Astik. Setiap karyawan melaporkan harta kekayaan masing-masing kepada Pak Chanek. Karyawan ke-i memiliki harta sebesar R[i].
 

@@ -1,11 +1,11 @@
 /**
- * sokokaleb's AC solution to problem mahasiswa, hard.
+ * sokokaleb's TLE solution to problem mahasiswa, hard.
  */
 
 import java.io.*;
 import java.util.*;
 
-public class Solution2ACSokokaleb {
+public class Solution2TLESokokaleb {
 
     static int N, K;
     static int[] M = new int[100005];

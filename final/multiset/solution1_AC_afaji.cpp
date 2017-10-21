@@ -25,7 +25,7 @@
 using namespace std;
 const int MAXN = 100000;
 set<int> res;
-int cnt[MAXN + 100];
+ll cnt[MAXN + 100];
 
 
 void solve(){
@@ -42,15 +42,15 @@ void solve(){
 			int l;
 			cin>>l>>l>>K;
 			if (l > MAXN) continue;
-			cnt[l]++;
-			if (cnt[l] == 1) res.erase(l);
+			cnt[l]+=K;
+			if (cnt[l] > 0) res.erase(l);
 		}
 		if (q == 2){
 			int l;
 			cin>>l>>l>>K;
 			if (l > MAXN) continue;
-			if (cnt[l] == 1) res.insert(l);
-			cnt[l] = max(cnt[l] - 1, 0);
+			cnt[l] = max(cnt[l] - K, 0LL);
+			if (cnt[l] == 0) res.insert(l);
 		}
 		cout<< *res.begin() <<endl;
 	}

@@ -27,11 +27,11 @@ using namespace std;
 const int MAXN = 150003;
 const int SQRSIZE = 390;
 
-int arr[MAXN + 1];
-int block[SQRSIZE];
-int nett[SQRSIZE];
-int drop[SQRSIZE];
-int lowest[SQRSIZE];
+ll arr[MAXN + 1];
+ll block[SQRSIZE];
+ll nett[SQRSIZE];
+ll drop[SQRSIZE];
+ll lowest[SQRSIZE];
 
 unordered_map<int,int> revid;
 void init(){
@@ -43,24 +43,27 @@ void init(){
 
 }
 
-void updateLowest(int idx){
+inline void updateLowest(int idx){
 	lowest[idx] = 99999999;
 	for (int i=0;i<SQRSIZE;i++)
 		lowest[idx] = min(lowest[idx], arr[idx * SQRSIZE + i]);
 }
-
-void updateBlock(int idx){
+inline ll maks(ll a, ll b){
+	if (a > b) return a;
+	return b;
+}
+inline void updateBlock(int idx){
 	for (int i=0;i<SQRSIZE;i++){
-		arr[idx * SQRSIZE + i] = max(max(arr[idx * SQRSIZE + i] + drop[idx], 0) - drop[idx] + nett[idx], 0);
+		arr[idx * SQRSIZE + i] = maks(maks(arr[idx * SQRSIZE + i] + drop[idx], 0) - drop[idx] + nett[idx], 0);
 	}
 	nett[idx] = 0;
 	drop[idx] = 0;
 	updateLowest(idx);
 }
 
-int query(){
+inline int query(){
 	for (int i=0;i<SQRSIZE;i++){
-		int low = max(lowest[i] + drop[i], 0) - drop[i] + nett[i];
+		int low = maks(lowest[i] + drop[i], 0) - drop[i] + nett[i];
 		if (low > 0) continue;
 
 		updateBlock(i);
@@ -71,13 +74,13 @@ int query(){
 	return -1;
 }
 
-void update(int l, int r, int v){
+inline void update(int l, int r, int v){
 	int front_ID = l/SQRSIZE;
 	int back_ID = r/SQRSIZE;
 	updateBlock(front_ID);
 	if (front_ID != back_ID) updateBlock(back_ID);
 	while (l < r && l % SQRSIZE != 0 && l != 0) {
-    	arr[l] = max(arr[l] + v, 0);
+    	arr[l] = maks(arr[l] + v, 0);
     	l++;
     }
     while (l + SQRSIZE <= r){
@@ -87,7 +90,7 @@ void update(int l, int r, int v){
         l += SQRSIZE;
     }
     while (l<=r) {
-		arr[l] = max(arr[l] + v, 0);
+		arr[l] = maks(arr[l] + v, 0);
     	l++;
     }
     updateLowest(front_ID);
@@ -97,7 +100,7 @@ void update(int l, int r, int v){
 int Q[100005], L[100005], R[100005], K[100005];
 set<int> ids;
 int backid[150005];
-void solve(){
+inline void solve(){
 	int N;
 	cin>>N;
 	init();

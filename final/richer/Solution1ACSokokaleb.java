@@ -30,7 +30,7 @@ public class Solution1ACSokokaleb {
         }
 
         void update(int x, int val) {
-            x = 100000 - x;
+            x = 100001 - x;
             ++x;
             for (; x < MAX_K; x += (x & -x)) {
                 bit[x] += val;
@@ -38,7 +38,7 @@ public class Solution1ACSokokaleb {
         }
 
         int read(int x) {
-            x = 100000 - x;
+            x = 100001 - x;
             int res = 0;
             ++x;
             for (; x > 0; x -= (x & -x)) {
@@ -62,7 +62,7 @@ public class Solution1ACSokokaleb {
 
         if (u < target) {
             int usedRichness = Math.max(K[u], K[target]);
-            res += ft.read(usedRichness);
+            res += ft.read(usedRichness + 1);
         }
 
         for (int v : adj.get(u)) {
@@ -79,7 +79,7 @@ public class Solution1ACSokokaleb {
         long res = 0L;
 
         int usedRichness = Math.max(K[u], K[target]);
-        res += ft.read(usedRichness);
+        res += ft.read(usedRichness + 1);
 
         ft.update(K[u], 1);
 

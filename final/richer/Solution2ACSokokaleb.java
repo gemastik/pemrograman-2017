@@ -107,7 +107,7 @@ public class Solution2ACSokokaleb {
                 }
             }
 
-            long tmp = ft.read(out[idx]) - ft.read(in[idx]);
+            long tmp = ft.read(out[idx] - 1) - ft.read(in[idx]);
             ans += (tmp * (tmp - 1)) >> 1;
 
             lstK = K[idx];

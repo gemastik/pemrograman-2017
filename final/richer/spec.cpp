@@ -96,6 +96,7 @@ protected:
         CASE(randomTree(500), ascRichness());
         CASE(randomTree(500), descRichness());
         CASE(randomTree(1000), randomRichness());
+        CASE(chevronTree(1000, 2), randomRichness());
     }
 
     void TestGroup2() {
@@ -106,6 +107,7 @@ protected:
         CASE(kAryTree(50001, 50000, 0), randomRichness()); // Shallow tree
         CASE(kAryTree(100000, 3, 50), randomRichness()); // Deep tree
         CASE(randomTree(100000), randomRichness());
+        CASE(chevronTree(100000, 2), randomRichness());
     }
 
     void linearTree(int n) {
@@ -132,8 +134,11 @@ protected:
         vector<int> child[n];
         int nextIdx = 1;
         for (int i = 0; i < n; i++) {
+            bool hadKid = false;
             for (int j = 0; j < k; j++) {
-                if ((nextIdx < n) && (rnd.nextInt(1, 100) > holePercentage)) {
+                bool lastChanceToHaveKid = !hadKid && (j == k-1);
+                if ((nextIdx < n) && ((rnd.nextInt(1, 100) > holePercentage) || lastChanceToHaveKid)) {
+                    hadKid = true;
                     child[i].push_back(nextIdx);
                     nextIdx++;
                 }
@@ -146,6 +151,29 @@ protected:
         for (int i = 0; i < n; i++) {
             for (int c : child[i]) {
                 P[c-1] = i+1;
+            }
+        }
+    }
+
+    void chevronTree(int n, int noisePercentage) {
+        N = n;
+        P.clear();
+
+        int lastChild1 = 1;
+        int lastChild2 = 1;
+        for (int i = 2; i <= N; i++) {
+            if (rnd.nextInt(1, 100) <= noisePercentage) {
+                // Add noise
+                P.push_back(rnd.nextInt(1, i-1));
+            } else {
+                // Add node to chevron's edge
+                if (rnd.nextInt(1, 2) == 1) {
+                    P.push_back(lastChild1);
+                    lastChild1 = i;
+                } else {
+                    P.push_back(lastChild2);
+                    lastChild2 = i;
+                }
             }
         }
     }

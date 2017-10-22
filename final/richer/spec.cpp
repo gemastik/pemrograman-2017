@@ -43,7 +43,7 @@ protected:
     }
 
     void Subtask1() {
-        CONS(2 <= N && N <= 1000);
+        CONS(2 <= N && N <= 2000);
     }
 
     void Subtask2() {
@@ -90,13 +90,15 @@ protected:
     void TestGroup1() {
         Subtasks({1, 2});
 
-        CASE(linearTree(500), randomRichness());
-        CASE(kAryTree(500, 2, 10), randomRichness());
-        CASE(kAryTree(500, 4, 30), randomRichness());
-        CASE(randomTree(500), ascRichness());
-        CASE(randomTree(500), descRichness());
-        CASE(randomTree(1000), randomRichness());
-        CASE(chevronTree(1000, 2), randomRichness());
+        CASE(linearTree(2000), randomRichness());
+        CASE(linearTree(2000), descRichness()); // Max answer
+        CASE(kAryTree(2000, 2, 10), randomRichness());
+        CASE(kAryTree(2000, 4, 30), randomRichness());
+        CASE(randomTree(2000), ascRichness());
+        CASE(randomTree(2000), descRichness());
+        CASE(randomTree(2000), randomRichness());
+        CASE(chevronTree(2000, 0), randomRichness());
+        CASE(chevronTree(2000, 2), randomRichness());
     }
 
     void TestGroup2() {

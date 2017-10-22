@@ -67,4 +67,4 @@ Maka, jumlahannya adalah 1 + 1 + 2 = 4.
 
 **Soal ini adalah soal versi mudah**. Batasan khusus untuk soal versi mudah:
 
-- 2 ≤ N ≤ 1.000
+- 2 ≤ N ≤ 2.000

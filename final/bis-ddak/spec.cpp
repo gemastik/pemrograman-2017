@@ -318,6 +318,12 @@ private:
             indices[i] = i + 1;
         }
         rnd.shuffle(indices.begin(), indices.end());
+        vi tmp_cost;
+        tmp_cost.assign((int) LOOP_COST.size(), 0);
+        for (int i = 0; i < (int) LOOP_COST.size(); ++i) {
+            tmp_cost[indices[i] - 1] = LOOP_COST[i];
+        }
+        LOOP_COST = tmp_cost;
 
         for (int i = 0; i < M; ++i) {
             int& u = U[i];

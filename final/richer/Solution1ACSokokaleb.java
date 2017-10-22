@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.*;
 
 public class Solution1ACSokokaleb {
-    private static final int MAX_N = 1005;
+    private static final int MAX_N = 2005;
     private static final int MAX_K = 100005;
     
     static int N;

@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <cmath>
+#include <limits>
 
 using namespace std;
 
@@ -13,6 +14,17 @@ int wa() {
 int ac() {
     printf("AC\n");
     return 0;
+}
+
+bool isNaN(double x) {
+    return x != x;
+}
+
+bool isInf(double x) {
+    double max_value = std::numeric_limits<double>::max();
+    double min_value = std::numeric_limits<double>::lowest();
+
+    return !(min_value <= x && x <= max_value);
 }
 
 int main(int argc, char** argv) {
@@ -29,8 +41,8 @@ int main(int argc, char** argv) {
 
         if (fscanf(tc_con, "%lf", &con) != 1) wa();
 
-        // Check for abnormal value
-        if (isnan(con) || isinf(con)) return wa();
+        // Check for abnormal value (nan/inf)
+        if (isNaN(con) || isInf(con)) return wa();
 
         double abs_error = fabs(out - con);
         double rel_error = fabs(out - con) / out;

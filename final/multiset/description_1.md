@@ -44,11 +44,32 @@ G[N]
 
 ### Contoh Masukan
 
-TBA
+```
+1
+4
+1 1 1 1
+1 3 3 2
+1 2 2 1
+2 1 1 1
+```
 
 ### Contoh Keluaran
 
-TBA
+```
+2
+2
+4
+1
+```
+
+### Penjelasan
+
+Mula-mula tidak terdapat bilangan pada papan tulis. Terdapat 4 aksi yang dilakukan oleh Pak Grandi:
+
+- Menuliskan 1 buah bilangan 1: di papan tulis terdapat [1], sehingga G[1] = 2.
+- Menuliskan 2 buah bilangan 3: di papan tulis terdapat [1 3 3], sehingga G[2] = 2.
+- Menuliskan 1 buah bilangan 2: di papan tulis terdapat [1 3 3 2], sehingga G[3] = 4.
+- Menghapus 1 buah bilangan 1: di papan tulis terdapat [3 3 2], sehingga G[4] = 1.
 
 ### Batasan
 

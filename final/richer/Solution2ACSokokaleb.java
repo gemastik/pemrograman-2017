@@ -14,7 +14,9 @@ public class Solution2ACSokokaleb {
     
     static int N;
     static int[] K = new int[MAX_N];
-    static ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+    static int[] nextSibling = new int[MAX_N];
+    static int[] firstChild = new int[MAX_N];
+    static int[] lastChild = new int[MAX_N];
    
     private static final Comparator<Integer> BY_K_COMPARATOR = new Comparator<Integer>() {
         @Override
@@ -56,24 +58,41 @@ public class Solution2ACSokokaleb {
     static int[] in = new int[MAX_N];
     static int[] out = new int[MAX_N];
     static int dfsOrder;
+
+    static int[] stack = new int[MAX_N * 2];
+    static int stackSize = 0;
+    static BitSet bs = new BitSet(MAX_N);
     
     static void dfs(int u) {
-        in[u] = dfsOrder++;
+        bs.clear();
+        stackSize = 0;
+        stack[stackSize++] = u;
+        dfsOrder = 0;
 
-        for (int v : adj.get(u)) {
-            dfs(v);
+        while (stackSize > 0) {
+            u = stack[--stackSize];
+            if (!bs.get(u)) {
+                bs.set(u, true);
+                in[u] = dfsOrder++;
+                stack[stackSize++] = u;
+                int v = firstChild[u];
+                while (v != -1) {
+                    stack[stackSize++] = v;
+                    v = nextSibling[v];
+                }
+            } else {
+                bs.set(u, false);
+                out[u] = dfsOrder;
+            }
         }
-
-        out[u] = dfsOrder;
     }
 
     static Integer[] idxByK = new Integer[MAX_N];
 
     static void prepare(int N) {
-        adj.clear();
-        for (int i = 0; i < N; ++i) {
-            adj.add(new ArrayList<>());
-        }
+        Arrays.fill(nextSibling, -1);
+        Arrays.fill(firstChild, -1);
+        Arrays.fill(lastChild, -1);
         ft.reset();
     }
 
@@ -82,7 +101,12 @@ public class Solution2ACSokokaleb {
         prepare(N);
         for (int i = 1; i < N; ++i) {
             int p = reader.getInt() - 1;
-            adj.get(p).add(i);
+            if (lastChild[p] == -1) {
+                firstChild[p] = i;
+            } else {
+                nextSibling[lastChild[p]] = i;
+            }
+            lastChild[p] = i;
         }
         for (int i = 0; i < N; ++i) {
             K[i] = reader.getInt();

@@ -7,9 +7,8 @@ using namespace std;
 template<typename T>
 inline bool inRange(const T& z, const T& lb, const T& ub) { return lb <= z && z <= ub; }
 
-const int MAX_N = 500;
+const int MAX_N = 250;
 const int SMALL_MAX_N = 12;
-const int MAX_M = 50000;
 const int MAX_EDGE_COST = 2000000000 / MAX_N;
 
 class ProblemSpec : public BaseProblemSpec {
@@ -53,7 +52,6 @@ protected:
 
     void Constraints() {
         CONS(inRange(M, 0, N * (N - 1)));
-        CONS(inRange(M, 0, MAX_M));
         CONS(all_of(LOOP_COST.begin(), LOOP_COST.end(), [&](int w) { return inRange(w, 1, MAX_EDGE_COST); }));
         CONS(all_of(W.begin(), W.end(), [&](int w) { return inRange(w, 1, MAX_EDGE_COST); }));
         CONS(all_of(U.begin(), U.end(), [&](int u) { return inRange(u, 1, N); }));
@@ -347,7 +345,7 @@ private:
         rnd.shuffle(unused_edges.begin(), unused_edges.end());
 
         M = (int) U.size();
-        int limitEdges = min(MAX_M, (int) unused_edges.size());
+        int limitEdges = min(N * (N - 1), (int) unused_edges.size());
         int limitM = M + rnd.nextInt((limitEdges - M) * 2 / 3, limitEdges - M);
         limitM = min(limitM, (int) unused_edges.size());
         for (int i = 0; i < limitM - M; ++i) {
@@ -385,7 +383,7 @@ private:
                 }
             }
         } else {
-            M = rnd.nextInt(N, MAX_M);
+            M = rnd.nextInt(N, N * (N - 1));
             M = min(M, N * (N - 1) / 2);
             vector<pair<int, int>> pairs;
             for (int i = 1; i <= N; ++i) {

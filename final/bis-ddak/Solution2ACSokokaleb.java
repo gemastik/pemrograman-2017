@@ -69,7 +69,6 @@ public class Solution2ACSokokaleb {
                 delta = Math.min(delta, slack[v]);
             }
         }
-        System.out.println(delta);
         for (int i = 0; i < N; ++i) {
             if (T.get(i)) {
                 ly[i] += delta;

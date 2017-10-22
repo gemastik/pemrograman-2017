@@ -141,7 +141,7 @@ int main(int argc, char** argv) {
 
         tc_out >> tc_ans_cost;
         read(con_ans_cost);
-
+        
         check(tc_ans_cost == con_ans_cost);
 
         in_circuit.reset();
@@ -183,13 +183,13 @@ int main(int argc, char** argv) {
 
         check(con_ans_cost == 0);
 
-        // exhaust the tc's input for this tc
+        // exhaust the tc's output for this tc
         int x;
-        tc_in >> x;
+        tc_out >> x;
         for (int z = 0, _ = x; z < _; ++z) {
-            tc_in >> x;
+            tc_out >> x;
             for (int i = 0, __ = x; i < __; ++i) {
-                tc_in >> x;
+                tc_out >> x;
             }
         }
     }

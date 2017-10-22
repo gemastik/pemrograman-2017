@@ -50,8 +50,9 @@ public class Solution2ACSokokaleb {
         }
 
         static void reset(int node, int l, int r) {
-            nodes[node].down = 0;
-            nodes[node].up = 0;
+            nodes[node].down = 0L;
+            nodes[node].up = 0L;
+            nodes[node].lowest = 0L;
 
             if (l == r) {
                 return ;

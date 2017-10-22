@@ -57,6 +57,13 @@ double area(double t){
 
 }
 
+double rad(double t){
+	double deg = 360.0 / K;
+	double r = t / cos(deg * 0.5 * PI / 180.0);
+	return r;
+}
+
+
 void solve(){
 	points.clear();
 	cin>>N>>K;
@@ -80,7 +87,7 @@ void solve(){
 		else
 			hi = right;
 	}
-	cout<<area(check(lo))<<endl;
+	cout<<setprecision(99)<<rad(check(lo))<<endl;
 }
 
 int main(){

@@ -33,12 +33,18 @@ double area(double t){
 
 }
 
+double rad(double t){
+	double deg = 360.0 / K;
+	double r = t / cos(deg * 0.5 * PI / 180.0);
+	return r;
+}
+
 void solve(){
 	cin>>N>>K;
 	int x,y;
 	cin>>x>>y;
 
-	cout<<area(hypot(x,y))<<endl;
+	cout<<setprecision(99)<<rad(hypot(x,y))<<endl;
 }
 
 int main(){

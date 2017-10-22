@@ -8,7 +8,7 @@ Apabila dipompa, balon akan terus mengembang dengan titik pusat (0, 0), sampai s
 
 Sebelum memompa, Pak Chanek dapat merotasi balon kempes tersebut sesuka hati.
 
-Tentukan luas terbesar balon yang mungkin setelah dipompa!
+Tentukan jarak titik pusat balon ke titik sudut balon terbesar yang mungkin setelah dipompa!
 
 ### Format Masukan
 
@@ -25,7 +25,7 @@ X[N] Y[N]
 
 ### Format Keluaran
 
-Untuk setiap kasus uji, keluarkan sebuah baris berisi luas terbesar balon yang mungkin setelah dipompa. Jawaban akan dianggap benar apabila memiliki selisih absolut atau relatif dengan jawaban juri paling banyak sebesar 10^-8.
+Untuk setiap kasus uji, keluarkan sebuah baris berisi jarak titik pusat balon ke titik sudut balon terbesar yang mungkin setelah dipompa. Jawaban akan dianggap benar apabila memiliki selisih absolut atau relatif dengan jawaban juri paling banyak sebesar 10^-8.
 
 ### Contoh Masukan
 
@@ -38,7 +38,7 @@ Untuk setiap kasus uji, keluarkan sebuah baris berisi luas terbesar balon yang m
 ### Contoh Keluaran
 
 ```
-103.9230484541327
+8.944271909999
 ```
 
 ### Penjelasan
@@ -51,7 +51,7 @@ Berikut ini adalah ilustrasi untuk contoh tersebut:
 
 - 1 ≤ T ≤ 10
 - 3 ≤ M ≤ 10
-- -1.000.000.000 ≤ X[i], Y[i] ≤ 1.000.000.000
+- -1.000.000 ≤ X[i], Y[i] ≤ 1.000.000
 - (0, 0), (X[1], Y[1]), (X[2], Y[2]), ..., (X[N], Y[N]) dijamin merupakan titik-titik yang berbeda-beda
 
 ### Batasan Khusus Versi Mudah

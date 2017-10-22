@@ -4,8 +4,8 @@
 using namespace tcframe;
 using namespace std;
 
-const int MIN_COORD = -1000000000;
-const int MAX_COORD = 1000000000;
+const int MIN_COORD = -1000000;
+const int MAX_COORD = 1000000;
 const double PI = acos(-1.0);
 
 typedef long long ll;
@@ -91,7 +91,7 @@ protected:
             "2 4",
         });
         Output({
-            "103.9230484541327"
+            "8.944271909999"
         });
     }
 
@@ -103,7 +103,7 @@ protected:
             "2 4"
         });
         Output({
-            "41.56921938165307"
+            "5.656854249492"
         });
     }
 
@@ -117,7 +117,7 @@ protected:
             "2 2"
         });
         Output({
-            "32"
+            "4"
         });
     }
 
@@ -136,8 +136,7 @@ protected:
         CASE(N = 1, M = 3, coords = getSingleCoord(-delta, delta));
         CASE(N = 1, M = 3, coords = getSingleCoord(-delta, -delta));
 
-        // Overflow trap
-        int bigDelta = 900 * 1000 * 1000;
+        int bigDelta = MAX_COORD;
         CASE(N = 1, M = 3, coords = getSingleCoord(bigDelta, bigDelta));
     }
 
@@ -181,19 +180,21 @@ protected:
     void TestGroup5() {
         Subtasks({2});
 
+        // Asteroid mepet2
         for (int i = 3; i <= 10; i++) {
-            CASE(N = 1000, M = i, asteroidBeltCase(50000, 5));
+            CASE(N = 1000, M = i, asteroidBeltCase(MAX_COORD, 5));
         }
-        CASE(N = 30000, M = 4, asteroidBeltCase(50000, 5));
+        CASE(N = 30000, M = 4, asteroidBeltCase(MAX_COORD, 5));
     }
 
     void TestGroup6() {
         Subtasks({2});
 
+        // Asteroid renggang2
         for (int i = 3; i <= 10; i++) {
-            CASE(N = 1000, M = i, asteroidBeltCase(50000, 1000));
+            CASE(N = 1000, M = i, asteroidBeltCase(MAX_COORD, 2000));
         }
-        CASE(N = 30000, M = 4, asteroidBeltCase(50000, 1000));
+        CASE(N = 30000, M = 4, asteroidBeltCase(MAX_COORD, 2000));
     }
 
 private:
@@ -218,8 +219,8 @@ private:
 
         while (points.size() < N) {
             vector<int> point;
-            point.push_back(rnd.nextInt(0, MAX_COORD));
-            point.push_back(rnd.nextInt(0, MAX_COORD));
+            point.push_back(rnd.nextInt(MIN_COORD, MAX_COORD));
+            point.push_back(rnd.nextInt(MIN_COORD, MAX_COORD));
             points.insert(point);
         }
 
@@ -267,7 +268,7 @@ private:
             int dy = (int)(distance * sin(rad));
 
             int x = clamp(MIN_COORD, MAX_COORD, dx);
-            int y = clamp(MAX_COORD, MAX_COORD, dy);
+            int y = clamp(MIN_COORD, MAX_COORD, dy);
             coords.push_back(getCoord(x, y));
         }
     }

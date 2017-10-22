@@ -3,6 +3,8 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include <algorithm>
+#include <cstring>
 using namespace std;
 
 int wa() {
@@ -42,7 +44,7 @@ int main(int argc, char** argv) {
             int a,b,c;
             //dummy
             fscanf(tc_out, "%d%d%d", &a, &b, &c);
-            if (fscanf(tc_con, "%d%d%d", &a, &b, &c) != 3) wa();\
+            if (fscanf(tc_con, "%d%d%d", &a, &b, &c) != 3) wa();
             if (a <= 0 || a > M) wa();
             if (b <= 0 || b > M) wa();
             if (c <= 0 || c > M) wa();

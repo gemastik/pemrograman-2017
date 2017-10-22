@@ -49,8 +49,6 @@ dengan G[i], S[i], B[i] masing-masing merupakan nomor universitas yang mendapatk
 2
 3 3 2
 5 10 2
-4 3 3
-8 6 3
 ```
 
 ### (Salah Satu) Contoh Keluaran

@@ -102,7 +102,6 @@ void precomp(){
 }
 
 void solve(){
-    std::ios::sync_with_stdio(false);
     cin>>N>>M;
     cin>>S;
 
@@ -122,6 +121,7 @@ void solve(){
 }
 
 int main(){
+    std::ios::sync_with_stdio(false);
     int T;
     cin>>T;
     precomp();

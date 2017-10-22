@@ -149,7 +149,7 @@ public class Solution1ACSokokaleb {
 
             if (initialRes == resultDpTsp + resultDpCircuit) {
                 ArrayList<Integer> result = new ArrayList<>();
-                traceDpTsp(lowestBitPosition, lowestBitPosition, subMask, result);
+                traceDpTsp(lowestBitPosition, lowestBitPosition, mask, result);
                 circuits.add(result);
 
                 traceDpCircuit(mask ^ subMask);

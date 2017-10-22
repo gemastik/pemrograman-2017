@@ -137,7 +137,9 @@ public class Solution2ACSokokaleb {
                 if (to[i] != i) {
                     ArrayList<Integer> alis = new ArrayList<>();
                     dfs(i, alis);
-                    circuits.add(alis);
+                    if (alis.size() > 1) {
+                        circuits.add(alis);
+                    }
                 }
             }
         }

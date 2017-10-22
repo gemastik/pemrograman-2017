@@ -39,7 +39,7 @@ vector<vector<long long>> matmul(vector<vector<long long>> m1, vector<vector<lon
     int C = m2[0].size();
     vector<vector<long long>> res;
     res.resize(A, vector<long long>(C,0));
-    
+
     for (int i=0;i<A;i++)
         for (int j=0;j<C;j++)
             for (int k=0;k<B;k++){
@@ -53,7 +53,7 @@ vector<vector<long long>> matpow(vector<vector<long long>> m, int P) {
     vector<vector<long long>> res;
     res.resize(dim, vector<long long>(dim,0));
 
-    for (int i=0;i<dim;i++) res[i][i] = 1; 
+    for (int i=0;i<dim;i++) res[i][i] = 1;
     if (P == 0) return res;
     if (P == 1) return m;
     vector<vector<long long>> half = matpow(m , P/2);
@@ -94,15 +94,15 @@ void precomp(){
                     total_ways[ii][mask] = (total_ways[ii][mask] + dp[i][mask][j]) % MOD;
                 }
             }
-        } 
+        }
     }
     for (int mask=0; mask <= 31; mask++)
         for (int i=1;i<=M;i++)
-            total_ways[i][mask] += total_ways[i-1][mask];
+            (total_ways[i][mask] += total_ways[i-1][mask]) %= MOD;
 }
 
 void solve(){
-    std::ios::sync_with_stdio(false); 
+    std::ios::sync_with_stdio(false);
     cin>>N>>M;
     cin>>S;
 

@@ -31,7 +31,7 @@ ll cnt[MAXN + 100];
 void solve(){
 	res.clear();
 	memset(cnt, 0, sizeof(cnt));
-	for (int i=1;i<=MAXN+5;i++) res.insert(i);
+	for (int i=1;i<=MAXN*2;i++) res.insert(i);
 	int N;
 	cin>>N;
 	while(N--){
@@ -41,24 +41,25 @@ void solve(){
 		if (q == 1){
 			int l;
 			cin>>l>>l>>K;
-			if (l > MAXN) continue;
-			cnt[l]+=K;
-			if (cnt[l] > 0) res.erase(l);
+			if (l < MAXN) {
+				cnt[l]+=K;
+				if (cnt[l] > 0 && res.count(l)) res.erase(l);
+			}
 		}
 		if (q == 2){
 			int l;
 			cin>>l>>l>>K;
-			if (l > MAXN) continue;
-			cnt[l] = max(cnt[l] - K, 0LL);
-			if (cnt[l] == 0) res.insert(l);
+			if (l < MAXN) {
+				cnt[l] = max(cnt[l] - K, 0LL);
+				if (cnt[l] == 0) res.insert(l);
+			}
 		}
 		cout<< *res.begin() <<endl;
 	}
-	
 }
 
 int main(){
-	ios_base::sync_with_stdio(false);
+	//ios_base::sync_with_stdio(false);
 	int T;
 	cin>>T;
 	while (T--) solve();

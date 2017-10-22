@@ -25,13 +25,14 @@
 #define pff pair<double,double>
 using namespace std;
 const int MAXN = 150003;
-const int SQRSIZE = 390;
+const int MAXSQRSIZE = 320;
+int SQRSIZE = 320;
 
 ll arr[MAXN + 1];
-ll block[SQRSIZE];
-ll nett[SQRSIZE];
-ll drop[SQRSIZE];
-ll lowest[SQRSIZE];
+ll block[MAXSQRSIZE + 5];
+ll nett[MAXSQRSIZE + 5];
+ll drop[MAXSQRSIZE + 5];
+ll lowest[MAXSQRSIZE + 5];
 
 unordered_map<int,int> revid;
 void init(){
@@ -44,7 +45,7 @@ void init(){
 }
 
 inline void updateLowest(int idx){
-	lowest[idx] = 99999999;
+	lowest[idx] = 1000000000000000LL;
 	for (int i=0;i<SQRSIZE;i++)
 		lowest[idx] = min(lowest[idx], arr[idx * SQRSIZE + i]);
 }
@@ -58,7 +59,6 @@ inline void updateBlock(int idx){
 	}
 	nett[idx] = 0;
 	drop[idx] = 0;
-	updateLowest(idx);
 }
 
 inline int query(){
@@ -67,11 +67,12 @@ inline int query(){
 		if (low > 0) continue;
 
 		updateBlock(i);
+    	updateLowest(i);
 		for (int j=0;j<SQRSIZE;j++){
 			if (arr[i * SQRSIZE + j] == 0) return i * SQRSIZE + j;
 		}
 	}
-	return -1;
+	return 0;
 }
 
 inline void update(int l, int r, int v){
@@ -104,6 +105,8 @@ inline void solve(){
 	int N;
 	cin>>N;
 	init();
+	ids.clear();
+	revid.clear();
 	ids.insert(1);
 	for (int i=0;i<N;i++) {
 		cin>>Q[i]>>L[i]>>R[i]>>K[i];
@@ -112,13 +115,14 @@ inline void solve(){
 		ids.insert(R[i] + 1);
 	}
 	int MN = 0;
+
 	for (int i: ids){
 		revid[i] = MN;
 		backid[MN++] = i;
 	}
 	for (int i=0;i<N;i++){
 		int q = Q[i];
-		int l,r, k;
+		int l,r,k;
 		l = revid[L[i]];
 		r = revid[R[i]];
 		k = K[i];

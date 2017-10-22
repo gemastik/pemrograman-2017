@@ -25,8 +25,8 @@
 #define pff pair<double,double>
 using namespace std;
 
-unordered_map<int, int> dp;
-unordered_map<int, int> vis;
+unordered_map<string, int> dp;
+unordered_map<string, int> vis;
 
 int grundy(string s){
 	int h = 0;

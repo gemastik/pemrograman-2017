@@ -4,13 +4,15 @@ Suatu komunitas pelawak terdiri atas N anggota, yang dinomori dari 1 hingga N. S
 
 Setiap pelawak memiliki akun media sosial. Akun media sosial setiap pelawak memiliki oleh nol atau lebih pengikut. Terdapat M informasi pengikut akun media sosial, yang masing-masing menyatakan bahwa akun media sosial pelawak U[i] diikuti oleh akun media sosial pelawak V[i].
 
-Pelawak-pelawak tersebut senang menuliskan lawakan pada akun media sosial masing-masing. Setiap kali seorang pelawak menuliskan lawakan, pengikut-pengikutnya di media sosial akan langsung membaca lawakan tersebut. Untuk setiap pengikut, jika ia belum pernah membaca lawakan tersebut dan ia menyukai lawakan tersebut, maka ia akan menulis ulang lawakan tersebut pada akun media sosialnya. Proses ini berulang terus sampai tidak ada lagi pelawak yang menulis lawakan pada akun media sosialnya.
+Pelawak-pelawak tersebut senang menuliskan lawakan pada akun media sosial masing-masing. Setiap kali seorang pelawak menuliskan lawakan, pengikut-pengikutnya di media sosial akan langsung membaca lawakan tersebut. Untuk setiap pengikut, jika menyukai lawakan tersebut, maka ia akan menulis ulang lawakan tersebut keesokan harinya pada akun media sosialnya. Pelawak tetap akan menulis ulang lawakan sekalipun sebelumnya ia telah mengetahui lawakan tersebut.
 
-Sekarang, terdapat Q buah pertanyaan. Pertanyaan ke-i berbunyi: jika pelawak X[i] menulis lawakan dengan tingkat kelucuan H[i], pada akhirnya ada berapa pelawak yang pernah menulis lawakan tersebut?
+Sebuah lawakan dikatakan abadi apabila lawakan tersebut akan terus beredar dari hari ke hari, tanpa pernah berakhir.
+
+Sekarang, terdapat Q buah pertanyaan. Pertanyaan ke-i berbunyi: jika pelawak X[i] menulis lawakan dengan tingkat kelucuan H[i], apakah lawakan tersebut akan menjadi abadi?
 
 ### Format Masukan
 
-Baris pertama berisi sebuah bilangan bulat T yang menyatakan banyaknya kasus uji. Baris-baris berikutnya berisi T kasus uji, yang masing-masing diberikan dalam format berikut ini:
+Masukan diberikan dalam format berikut ini:
 
 ```
 N M
@@ -31,46 +33,49 @@ X[Q] H[Q]
 
 ### Format Keluaran
 
-Untuk setiap kasus uji, keluarkan Q buah baris. Baris ke-i berisi jawaban dari pertanyaan ke-i.
+Keluarkan Q buah baris. Baris ke-i berisi jawaban dari pertanyaan ke-i, yaitu salah satu dari:
+
+- "Ya", apabila akan menjadi abadi.
+- "Tidak", apabila tidak akan menjadi abadi.
 
 ### Contoh Masukan
 
 ```
-1
 5 5
-20 10 50 60 40
-80 50 90 80 60
+50 10 80 25 80
+99 90 90 90 95
 1 2
 1 3
 2 4
-2 5
+4 5
 5 2
 3
-1 45
-2 45
-1 70
+1 85
+2 50
+5 85
 ```
 
 ### Contoh Keluaran
 
 ```
-5
-3
-3
+Ya
+Tidak
+Ya
 ```
 
 ### Penjelasan
 
-Pada pertanyaan pertama, pada akhirnya seluruh pelawak akan menulis lawakan yang mulanya ditulis oleh pelawak 1.
+Pada pertanyaan pertama, lawakan akan beredar pada pelawak-pelawak {2, 4, 5} secara abadi.
 
-Pada pertanyaan kedua, pada akhirnya pelawak-pelawak {2, 4, 5} akan menulis lawakan yang mulanya ditulis oleh pelawak 2.
+Pada pertanyaan kedua, lawakan akan dibaca oleh pelawak 4 dan ia tulis ulang pada keesokan harinya. Pelawak 5 akan membacanya, tetapi tidak menuliskan ulang. Maka, persebaran lawakan ini berakhir.
 
-Pada pertanyaan pertama, pada akhirnya pelawak-pelawak {1, 2, 3} akan menulis lawakan yang mulanya ditulis oleh pelawak 1.
+Pada pertanyaan ketiga, lawakan akan beredar pada pelawak-pelawak {2, 4, 5} secara abadi.
 
 ### Batasan
 
-- 1 ≤ T ≤ 10
-- 0 ≤ A[i] ≤ B[i] ≤ 100
+- 1 ≤ N ≤ 50.000
+- 1 ≤ M ≤ 50.000
+- 1 ≤ Q ≤ 50.000
 - 1 ≤ U[i], V[i] ≤ N
 - U[i] ≠ V[i]
 - (U[i], V[i]) ≠ (U[j], V[j]) untuk setiap i ≠ j
@@ -81,6 +86,4 @@ Pada pertanyaan pertama, pada akhirnya pelawak-pelawak {1, 2, 3} akan menulis la
 
 **Soal ini adalah soal versi sulit**. Batasan khusus untuk soal versi sulit:
 
-- 1 ≤ N ≤ 100.000
-- 1 ≤ M ≤ 100.000
-- 1 ≤ Q ≤ 100.000
+- 0 ≤ A[i] ≤ B[i] ≤ 100

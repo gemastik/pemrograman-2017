@@ -30,15 +30,15 @@ void print() {
 
     for (int j = 0; j < 3; j++) {
       for (int k = 0; k < received[i][j]; k++) {
-        if (standings[p][j] != -1) {
+        while (standings[p][j] != -1) {
           // Jump
           p = (findPar(p, j) + 1) % N;
         }
         standings[p][j] = i;
 
-        if (standings[p-1][j] != -1) {
+        if (standings[(p-1+N) % N][j] != -1) {
           // Chunk them
-          par[findPar(p-1, j)][j] = findPar(p, j);
+          par[findPar((p-1+N) % N, j)][j] = findPar(p, j);
         }
 
         p = (p + 1) % N;

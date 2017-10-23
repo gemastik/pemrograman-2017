@@ -33,7 +33,7 @@ void solve(){
 	cin>>N>>M>>K;
 	if (K == 1){
 		for (int i=0;i<N;i++){
-
+			a.push_back(0); b.push_back(1); c.push_back(2);
 		}
 		done();
 		return;

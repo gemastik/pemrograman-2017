@@ -72,8 +72,8 @@ Untuk contoh pertama, semua kemungkinan S[2] yang terdiri atas 1 karakter abjad,
 
 Untuk contoh kedua, semua kemungkinan S[2] berikut ini akan memenangkan Pak Chanek:
 
-- "a", "b", ..., "z"
-- "aa", "ab", ..., "az", "bb", "bc", ..., "bz", "cc", ..., "zz"
+- "a", "b", ..., "y" (25 buah)
+- "ab", ..., "az", "ba", "bc", ..., "bz", "ca", "cb", "cd", ..., "zy" (325 buah)
 
 ### Batasan
 

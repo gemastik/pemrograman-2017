@@ -126,7 +126,7 @@ Untuk contoh keempat, anggaran sebesar 4 satuan adalah anggaran minimum yang mun
 
 - 1 ≤ T ≤ 5
 - 0 ≤ M ≤ N × (N-1)
-- 1 ≤ S[i], W[i] ≤ 4.000.000
+- 1 ≤ S[i], W[i] ≤ 8.000.000
 - 1 ≤ U[i], V[i] ≤ N
 - U[i] ≠ V[i]
 - (U[i], V[i]) ≠ (U[j], V[j]) untuk i ≠ j

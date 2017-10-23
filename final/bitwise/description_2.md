@@ -54,7 +54,7 @@ Jika terdapat lebih dari satu solusi, keluarkan yang mana saja.
 
 ### Batasan
 
-- 1 ≤ T ≤ 20
+- 1 ≤ T ≤ 10
 
 ### Batasan Khusus Versi Sulit
 

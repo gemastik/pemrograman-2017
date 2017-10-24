@@ -76,4 +76,4 @@ Berikut ini adalah ilustrasi untuk contoh ketiga:
 
 **Soal ini adalah soal versi sulit**. Batasan khusus untuk soal versi sulit:
 
-- 1 ≤ N ≤ 50.000
+- 1 ≤ N ≤ 100

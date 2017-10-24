@@ -4,6 +4,7 @@
 using namespace tcframe;
 using namespace std;
 
+const int MAX_N = 100;
 const int MIN_COORD = -1000000;
 const int MAX_COORD = 1000000;
 const double PI = acos(-1.0);
@@ -52,7 +53,7 @@ protected:
     }
 
     void Subtask2() {
-        CONS(1 <= N && N <= 50000);
+        CONS(1 <= N && N <= MAX_N);
     }
 
 private:
@@ -162,8 +163,8 @@ protected:
             CASE(N = 100, M = i, randomCase());
         }
 
-        CASE(N = 50000, M = 3, randomCase());
-        CASE(N = 50000, M = 10, randomCase());
+        CASE(N = MAX_N, M = 3, randomCase());
+        CASE(N = MAX_N, M = 10, randomCase());
     }
 
     void TestGroup4() {
@@ -182,9 +183,9 @@ protected:
 
         // Asteroid mepet2
         for (int i = 3; i <= 10; i++) {
-            CASE(N = 1000, M = i, asteroidBeltCase(MAX_COORD, 5));
+            CASE(N = min(1000, MAX_N), M = i, asteroidBeltCase(MAX_COORD, 5));
         }
-        CASE(N = 30000, M = 4, asteroidBeltCase(MAX_COORD, 5));
+        CASE(N = MAX_N, M = 4, asteroidBeltCase(MAX_COORD, 5));
     }
 
     void TestGroup6() {
@@ -192,9 +193,9 @@ protected:
 
         // Asteroid renggang2
         for (int i = 3; i <= 10; i++) {
-            CASE(N = 1000, M = i, asteroidBeltCase(MAX_COORD, 2000));
+            CASE(N = min(1000, MAX_N), M = i, asteroidBeltCase(MAX_COORD, 2000));
         }
-        CASE(N = 30000, M = 4, asteroidBeltCase(MAX_COORD, 2000));
+        CASE(N = MAX_N, M = 4, asteroidBeltCase(MAX_COORD, 2000));
     }
 
 private:

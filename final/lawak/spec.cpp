@@ -5,6 +5,7 @@ using namespace tcframe;
 using namespace std;
 
 const int MAX_N = 50000;
+const int MAX_Q = 50000;
 
 class ProblemSpec : public BaseProblemSpec {
 protected:
@@ -17,7 +18,7 @@ protected:
     int Q;
     vector<int> X, H; // node, humour
 
-    vector<int> res;
+    vector<string> res;
 
     void InputFormat() {
         LINE(N, M);
@@ -32,17 +33,11 @@ protected:
         LINES(res);
     }
 
-    void MultipleTestCasesConfig() {
-        Counter(T);
-    }
-
-    void MultipleTestCasesConstraints() {
-        CONS(1 <= T && T <= 10);
-    }
-
     void Constraints() {
-        CONS(eachElementBetween(Hmin, 0, 100));
-        CONS(eachElementBetween(Hmax, 0, 100));
+        CONS(1 <= N && N <= MAX_N);
+        CONS(1 <= M && M <= MAX_N);
+        CONS(1 <= Q && Q <= MAX_Q);
+
         CONS(eachElementLesseq(Hmin, Hmax));
 
         CONS(eachElementBetween(U, 1, N));
@@ -55,16 +50,13 @@ protected:
     }
 
     void Subtask1() {
-        CONS(1 <= N && N <= 1000);
-        CONS(1 <= M && M <= 1000);
-        CONS(1 <= Q && Q <= 1000);
-
+        CONS(eachElementBetween(Hmin, 0, 0));
+        CONS(eachElementBetween(Hmax, 100, 100));
     }
 
     void Subtask2() {
-        CONS(1 <= N && N <= MAX_N);
-        CONS(1 <= M && M <= MAX_N);
-        CONS(1 <= Q && Q <= 50000);
+        CONS(eachElementBetween(Hmin, 0, 100));
+        CONS(eachElementBetween(Hmax, 0, 100));
     }
 
 private:
@@ -104,24 +96,49 @@ class TestSpec : public BaseTestSpec<ProblemSpec> {
 protected:
     void SampleTestCase1() {
         Subtasks({1, 2});
+
         Input({
-            "5 5",
-            "20 10 50 60 40",
-            "80 50 90 80 60",
+            "6 6",
+            "0 0 0 0 0 0",
+            "100 100 100 100 100 100",
             "1 2",
             "1 3",
             "2 4",
-            "2 5",
+            "4 5",
             "5 2",
+            "3 6",
             "3",
-            "1 45",
-            "2 45",
-            "1 70"
+            "1 50",
+            "2 30",
+            "3 10"
         });
         Output({
-            "5",
+            "Ya",
+            "Ya",
+            "Tidak"
+        });
+    }
+
+    void SampleTestCase2() {
+        Subtasks({2});
+        Input({
+            "5 5",
+            "50 10 80 25 80",
+            "99 90 90 90 95",
+            "1 2",
+            "1 3",
+            "2 4",
+            "4 5",
+            "5 2",
             "3",
-            "3"
+            "1 85",
+            "2 50",
+            "5 85"
+        });
+        Output({
+            "Ya",
+            "Tidak",
+            "Ya"
         });
     }
 
@@ -144,38 +161,42 @@ protected:
     void TestGroup1() {
         Subtasks({1, 2});
 
-        // Random case
-        CASE(N = 1000, M = 1000, Q = 1000, randomGraph(100, 150, 1), randomHumour(60, 80), smartRandomQuery());
-        CASE(N = 1000, M = 1000, Q = 1000, randomGraph(100, 150, 1.2), randomHumour(60, 80), randomQuery());
-        CASE(N = 1000, M = 1000, Q = 1000, randomGraph(12, 50, 1), wavingHumour(40, 60, 0.8), randomQuery());
+        // Many singletons
+        CASE(N = 5, M = 1, Q = 20, U.push_back(1), V.push_back(2), easyHumour(), randomQuery());
 
-        // Answers close to N
-        CASE(N = 1000, M = 1000, Q = 1000, randomGraph(12, 50, 1), wavingHumour(70, 80, 0.9), smartRandomQuery());
+        CASE(N = 1000, M = 1000, Q = 1000, randomGraph(1, 2, 1), easyHumour(), randomQuery());
+        CASE(N = 1000, M = 1000, Q = 1000, randomGraph(1, 2, 1.2), easyHumour(), randomQuery());
+        CASE(N = 1000, M = 1000, Q = 1000, randomGraph(1, 3, 1.2), easyHumour(), randomQuery());
+        CASE(N = 50000, M = 50000, Q = 50000, randomGraph(1, 3, 1.2), easyHumour(), randomQuery());
 
-        // Answers close to 2
-        CASE(N = 1000, M = 1000, Q = 1000, randomGraph(12, 50, 1), wavingHumour(30, 70, 0.4), smartRandomQuery());
-
-        // Small clusters
-        CASE(N = 1000, M = 1000, Q = 1000, randomGraph(2, 15, 1), wavingHumour(30, 70, 0.7), smartRandomQuery());
-
-        // Large clusters
-        CASE(N = 1000, M = 1000, Q = 1000, randomGraph(100, 150, 1), wavingHumour(30, 40, 0.4), smartRandomQuery());
+        // Anti brute force DFS + find cycle + break
+        // Starfish case already filled the humours... but let's replace them with easyHumour
+        CASE(N = 50000, M = 50000, Q = 50000, starFishCase(1, 1, 1, 2, 2, 0, 1, 0.2), easyHumour(), randomQuery()); // ------O
+        CASE(N = 49900, M = 49900, Q = 50000, starFishCase(3, 1, 3, 5, 10, 2, 2, 0.2), easyHumour(), randomQuery()); // ------O and ------
+        CASE(N = 49900, M = 49900, Q = 50000, starFishCase(2, 4, 4, 2, 10, 1, 2, 0.2), easyHumour(), randomQuery()); // 3 armed starfish and -------
     }
 
     void TestGroup2() {
         Subtasks({2});
 
-        // Random case
-        CASE(N = 50000, M = 50000, Q = 50000, randomGraph(10000, 15000, 1), randomHumour(60, 80), smartRandomQuery());
-        CASE(N = 50000, M = 50000, Q = 50000, randomGraph(1200, 5000, 1), wavingHumour(40, 60, 0.8), randomQuery());
+        // Many singletons
+        CASE(N = 5, M = 1, Q = 20, U.push_back(1), V.push_back(2), randomHumour(60, 80), randomQuery());
 
-        // Answers close to N
-        CASE(N = 50000, M = 50000, Q = 50000, randomGraph(1200, 5000, 1), wavingHumour(70, 80, 0.9), smartRandomQuery());
+        // Random case
+        CASE(N = 1000, M = 1000, Q = 1000, randomGraph(1, 2, 1), randomHumour(60, 80), smartRandomQuery());
+        CASE(N = 1000, M = 1000, Q = 1000, randomGraph(1, 2, 1.2), randomHumour(20, 30), randomQuery());
+        CASE(N = 1000, M = 1000, Q = 1000, randomGraph(1, 3, 1.2), randomHumour(20, 30), smartRandomQuery());
+        CASE(N = 50000, M = 50000, Q = 50000, randomGraph(1, 3, 1.2), randomHumour(20, 30), smartRandomQuery());
+
+        // Anti brute force DFS + find cycle + break
+        CASE(N = 50000, M = 50000, Q = 50000, starFishCase(1, 1, 1, 2, 2, 0, 1, 0.2), randomQuery()); // ------O
+        CASE(N = 49900, M = 49900, Q = 50000, starFishCase(3, 1, 3, 5, 10, 2, 2, 0.2), randomQuery()); // ------O and ------
+        CASE(N = 49900, M = 49900, Q = 50000, starFishCase(2, 4, 4, 2, 10, 1, 2, 0.2), randomQuery()); // 3 armed starfish and -------
     }
 
 private:
     // Auxilliary data structure for test case generation
-    vector<int> adjList[100001];
+    vector<int> adjList[MAX_N];
 
     void randomGraph(int minClusterSize, int maxClusterSize, double interClusterEdgeFrac) {
         U.clear();
@@ -211,6 +232,8 @@ private:
         // Attach edges to make each nodes within cluster strongly connected
         int intraClusterEdgeUsed = 0;
         for (int i = 0; i < nodeClusters.size(); i++) {
+            if (nodeClusters[i].size() == 1) continue;
+
             for (int j = 0; j < nodeClusters[i].size(); j++) {
                 int u = nodeClusters[i][j];
                 int v = nodeClusters[i][(j+1) % nodeClusters[i].size()];
@@ -228,7 +251,7 @@ private:
             int u = nodeClusters[clusterIdx][rnd.nextInt(0, nodeClusters[clusterIdx].size()-1)];
             int v = nodeClusters[clusterIdx][rnd.nextInt(0, nodeClusters[clusterIdx].size()-1)];
 
-            if (edgeSet.count(make_pair(u, v)) == 0) {
+            if ((u != v) && (edgeSet.count(make_pair(u, v)) == 0)) {
                 edgeSet.insert(make_pair(u, v));
                 intraClusterEdgeUsed++;
             }
@@ -257,7 +280,7 @@ private:
 
             int u = nodeClusters[c1][rnd.nextInt(0, nodeClusters[c1].size()-1)];
             int v = nodeClusters[c2][rnd.nextInt(0, nodeClusters[c2].size()-1)];
-            if (edgeSet.count(make_pair(u, v)) == 0) {
+            if ((u != v) && (edgeSet.count(make_pair(u, v)) == 0)) {
                 edgeSet.insert(make_pair(u, v));
                 interClusterEdgeUsed++;
             }
@@ -271,18 +294,146 @@ private:
             V.push_back(v+1);
         }
 
-        // Construct auxilliary data structures
-        for (int i = 0; i < N; i++) {
-            adjList[i].clear();
+        constructAuxDataStructure();
+    }
+
+    /*
+    Create graph with this shape:
+             /__
+       \    /
+    -------O
+      /     \__
+             \
+     */
+    void starFishCase(int n, int minArmCount, int maxArmCount, int cycleMinSize, int cycleMaxSize, int numWithoutCycle, double cycleEdgesFactor, double armBranchingFactor) {
+        U.clear();
+        V.clear();
+        set<pair<int,int>> edgeSet;
+        int nodeLeft = N;
+        int edgeLeft = M;
+
+        // Generate cycle sizes
+        vector<int> cycleSizes;
+        int sizeLeft = N;
+        for (int i = 0; i < n; i++) {
+            if (i < numWithoutCycle) {
+                cycleSizes.push_back(1);
+            } else {
+                cycleSizes.push_back(rnd.nextInt(cycleMinSize, cycleMaxSize));
+            }
+            nodeLeft -= cycleSizes.back();
+            assert(nodeLeft >= 0); // If this line fails, please adjust the paramters to that N nodes is enough for all starfishes
         }
-        for (int i = 0; i < M; i++) {
-            int u = U[i] - 1;
-            int v = V[i] - 1;
-            adjList[u].push_back(v);
+
+        // Generate arm counts
+        vector<int> armCounts;
+        int totalArmCount = 0;
+        for (int i = 0; i < n; i++) {
+            armCounts.push_back(rnd.nextInt(minArmCount, maxArmCount));
+            totalArmCount += armCounts.back();
         }
+
+        // Assign edges to be used on cycles
+        vector<int> cycleEdges;
+        for (int i = 0; i < n; i++) {
+            int maxEdgesOnCycle = cycleSizes[i] * (cycleSizes[i]-1);
+            int sz = min((int)(cycleEdgesFactor * cycleSizes[i]), maxEdgesOnCycle);
+
+            edgeLeft -= sz;
+            assert(edgeLeft >= 0); // If this line fails, please adjust the paramters to that M edges is enough for all starfishes
+
+            cycleEdges.push_back(sz);
+        }
+
+        // Construct starfishes
+        int nextNodeIdx = 0;
+        int armNodeCount = nodeLeft / totalArmCount; // We will deduct the excess nodeLeft/edgeLeft after creating all starfishes
+        for (int i = 0; i < n; i++) {
+            vector<int> cycleNodes;
+            for (int j = 0; j < cycleSizes[i]; j++) {
+                cycleNodes.push_back(nextNodeIdx++);
+            }
+
+            // Create minimalist edges to form cycle
+            int cycleEdgeUsed = 0;
+            if (cycleNodes.size() > 1) {
+                for (int j = 0; j < cycleNodes.size(); j++) {
+                    int u = cycleNodes[j];
+                    int v = cycleNodes[(j+1) % cycleNodes.size()];
+
+                    edgeSet.insert(make_pair(u, v));
+                    cycleEdgeUsed++;
+                }
+            }
+            // Spend the remaining edges budgeted for this cycle
+            while (cycleEdgeUsed < cycleEdges[i]) {
+                int u = cycleNodes[rnd.nextInt(0, cycleNodes.size()-1)];
+                int v = cycleNodes[rnd.nextInt(0, cycleNodes.size()-1)];
+
+                if ((u != v) && (edgeSet.count(make_pair(u, v)) == 0)) {
+                    edgeSet.insert(make_pair(u, v));
+                    cycleEdgeUsed++;
+                }
+            }
+
+            // Create arms
+            for (int arm = 0; arm < armCounts[i]; arm++) {
+                int mainArmNodeCount = (int)((1.0 - armBranchingFactor) * armNodeCount);
+                int branchedArmNodeCount = armNodeCount - mainArmNodeCount;
+                vector<int> armNodes;
+                for (int j = 0; j < mainArmNodeCount; j++) {
+                    armNodes.push_back(nextNodeIdx++);
+                    nodeLeft--;
+                }
+                for (int j = 1; j < mainArmNodeCount; j++) {
+                    edgeSet.insert(make_pair(armNodes[j-1], armNodes[j]));
+                    edgeLeft--;
+                }
+                // Connect arm to cycle
+                edgeSet.insert(make_pair(armNodes.back(), cycleNodes[rnd.nextInt(0, cycleNodes.size()-1)]));
+                edgeLeft--;
+
+                // Spend branched arms
+                for (int j = 0; j < branchedArmNodeCount; j++) {
+                    nodeLeft--;
+                    int nodeIdx = nextNodeIdx++;
+
+                    edgeSet.insert(make_pair(nodeIdx, armNodes[rnd.nextInt(0, armNodes.size()-1)]));
+                    edgeLeft--;
+                }
+            }
+
+            // Set humour
+            int humourBeam = rnd.nextInt(40, 60);
+            int maxHmin = (100 - humourBeam) / 2;
+            int minHmax = 100 - maxHmin;
+            for (int j = 0; j < cycleSizes[i] + armNodeCount*armCounts[i]; j++) {
+                int hMin = rnd.nextInt(0, maxHmin);
+                int hMax = rnd.nextInt(minHmax, 100);
+                Hmin.push_back(hMin);
+                Hmax.push_back(hMax);
+            }
+        }
+
+        // Deduct excess edges
+        M -= edgeLeft;
+        N -= nodeLeft;
+        fprintf(stderr, "[%d %d] ", N, M);
+
+        // Dump all to U and V
+        for (auto pii : edgeSet) {
+            int u = pii.first;
+            int v = pii.second;
+            U.push_back(u+1);
+            V.push_back(v+1);
+        }
+
+        constructAuxDataStructure();
     }
 
     void randomHumour(int minHumourRange, int maxHumourRange) {
+        Hmin.clear();
+        Hmax.clear();
         for (int i = 0; i < N; i++) {
             int humourRange = rnd.nextInt(minHumourRange, maxHumourRange);
             int hMin = rnd.nextInt(0, 100-humourRange-1);
@@ -293,8 +444,19 @@ private:
         }
     }
 
+    void easyHumour() {
+        Hmin.clear();
+        Hmax.clear();
+        for (int i = 0; i < N; i++) {
+            Hmin.push_back(0);
+            Hmax.push_back(100);
+        }
+    }
+
     // The next node's humour range is roughly the shifted version of previous node
     void wavingHumour(int minHumourRange, int maxHumourRange, double overlapFrac) {
+        Hmin.clear();
+        Hmax.clear();
         bool visited[N];
         memset(visited, 0, sizeof(visited));
 
@@ -325,7 +487,7 @@ private:
 
     void smartRandomQuery() {
         while (X.size() < Q) {
-            // Heuristic: pick the top 33% to ensure we still about 66% nodes left to be travelled
+            // Heuristic: pick the top 33% nodes to ensure we still about 66% nodes left to be travelled
             int x = rnd.nextInt(0, N/3);
 
             for (int i = Hmin[x]; i <= Hmax[x]; i++) {
@@ -334,6 +496,18 @@ private:
 
                 if (X.size() == Q) break;
             }
+        }
+    }
+
+    // Construct auxilliary data structures used for generating humour/queries
+    void constructAuxDataStructure() {
+        for (int i = 0; i < N; i++) {
+            adjList[i].clear();
+        }
+        for (int i = 0; i < M; i++) {
+            int u = U[i] - 1;
+            int v = V[i] - 1;
+            adjList[u].push_back(v);
         }
     }
 

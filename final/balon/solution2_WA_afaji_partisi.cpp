@@ -23,6 +23,7 @@
 #define pff pair<double,double>
 #define PI 3.14159265358979323846
 #define INF 9999999999999999999999.9
+#define PARTISI 100
 using namespace std;
 
 
@@ -74,8 +75,7 @@ double rad(double t){
 }
 
 double cari(double lo, double hi){
-	int step = 50;
-	while (step--){
+	while (hi - lo > 1e-6){
 		double left= (2.0 * lo + hi) / 3.0;
 		double right = (lo + 2.0 * hi) / 3.0;
 		if (check(left) < check(right))
@@ -85,37 +85,21 @@ double cari(double lo, double hi){
 	}
 	return check(lo);
 }
-
-vector<double> partitions;
 void solve(){
 	points.clear();
 	cin>>N>>K;
-	partitions.clear();
-	partitions.push_back(0);
-
 	for (int i=0;i<N;i++){
 		int x,y;
 		cin>>x>>y;
-		double d = get_deg(x,y);
-		points.push_back({d, {x, y} });
-		//lowest point
-		double tri_deg = 360.0 / K;
-		while (d > tri_deg) d-= tri_deg;
-		
-		//turun
-		d -= tri_deg * 0.5;
-		if (d < 0) d += tri_deg;
+		points.push_back({get_deg(x,y), {x, y} });
 
-		partitions.push_back(d);
 	}
-	partitions.push_back(360.0/K);
-	sort(partitions.begin(), partitions.end());
-	int Z = partitions.size();
 
 	//binser gan
 	double ans = 0;
-	for (int i=1;i < Z;i ++){
-		ans = max(ans, cari(partitions[i-1], partitions[i]));
+	double jump = (360.0/K) / PARTISI;
+	for (double i = 0; i < 360.0/K; i+= jump){
+		ans = max(ans, cari(i, i + jump));
 	}
 	cout<<setprecision(99)<<rad(ans)<<endl;
 }

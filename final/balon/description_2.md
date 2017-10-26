@@ -4,11 +4,11 @@ Pak Chanek memiliki sebuah balon 2D yang berbentuk poligon segi-M beraturan. Pad
 
 Pada bidang Kartesius yang sama, terdapat N titik. Titik ke-i memiliki koordinat (X[i], Y[i]).
 
-Apabila dipompa, balon akan terus mengembang dengan titik pusat (0, 0), sampai salah satu sisinya mengenai salah satu titik yang ada.
+Apabila dipompa, balon akan terus mengembang dengan titik pusat (0, 0), sampai salah satu sisinya mengenai salah satu titik yang ada. Ukuran balon tersebut didefinisikan sebagai jarak antara titik pusat ke salah satu titik sudut balon.
 
 Sebelum memompa, Pak Chanek dapat merotasi balon kempes tersebut sesuka hati.
 
-Tentukan jarak titik pusat balon ke titik sudut balon terbesar yang mungkin setelah dipompa!
+Tentukan ukuran balon terbesar yang mungkin setelah dipompa!
 
 ### Format Masukan
 
@@ -25,7 +25,7 @@ X[N] Y[N]
 
 ### Format Keluaran
 
-Untuk setiap kasus uji, keluarkan sebuah baris berisi jarak titik pusat balon ke titik sudut balon terbesar yang mungkin setelah dipompa. Jawaban akan dianggap benar apabila memiliki selisih absolut atau relatif dengan jawaban juri paling banyak sebesar 10^-8.
+Untuk setiap kasus uji, keluarkan sebuah baris berisi ukuran terbesar yang mungkin setelah dipompa. Jawaban akan dianggap benar apabila memiliki selisih absolut atau relatif dengan jawaban juri paling banyak sebesar 10^-8.
 
 ### Contoh Masukan
 

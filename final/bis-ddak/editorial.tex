@@ -1,0 +1,42 @@
+% !TeX root = ../editorial_template.tex
+\documentclass[../editorial_template.tex]{subfiles} % Inherits definitions from parent .tex file.
+
+% Per-problem variable definitions
+%TODO: Change placeholders to correct info.
+\newcommand{\problemName}{Judul Soal}
+\newcommand{\problemWriter}{Penulis soal}
+\newcommand{\problemEditorialWriter}{Penulis editorial}
+\newcommand{\problemTags}{tema1, tema2}
+
+\begin{document}
+
+\begin{center}
+    \section*{\problemName}
+    \addcontentsline{toc}{section}{\problemName} % for pdf indexing
+    
+    \begin{tabular}{rl}
+    Penulis soal : & \problemWriter \\
+    Penulis editorial : & \problemEditorialWriter \\
+    Tema : & \problemTags
+    \end{tabular}
+\end{center}
+
+\subsection*{Catatan/Komentar}
+\addcontentsline{toc}{subsection}{Catatan/Komentar} % for pdf indexing
+
+Lorem ipsum dolor sit amet ... %TODO: Add editorial prologue
+
+\subsection*{Versi Mudah}
+\addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
+Batasan: $...$ %TODO: Add constraints for easy version
+
+Lorem ipsum dolor sit amet ... %TODO: Add editorial for easy version
+
+\subsection*{Versi Sulit}
+\addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
+
+Batasan: $...$ %TODO: Add constraints for hard version
+
+Lorem ipsum dolor sit amet ... %TODO: Add editorial for hard version
+
+\end{document}

@@ -1,0 +1,81 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{subfiles}
+\usepackage{hyperref}
+
+\newtheorem{algorithm_def}{Algorithm}[subsection]
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{lemma}{Lemma}[subsection]
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{corollary}{Corollary}[subsection]
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\usepackage{enumitem}
+\setlist{nolistsep}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+
+    \textbf{\huge BUKLET PEMBAHASAN SOAL}
+    
+    \vspace{1cm} % padding
+
+    \includegraphics[width=0.8\textwidth]{../gemastiklogo}
+    
+	\vspace{1cm} % padding
+    
+    \textbf{\LARGE Final PEMROGRAMAN GEMASTIK 10}\\[0.5cm]
+    \textbf{\LARGE 5 November 2017}
+
+	\vfill
+	
+	{\Large Soal-Soal}
+	
+	\def\arraystretch{1.5} % biar megar
+	\begin{tabular}{|c|l|l|}
+		\hline
+		\textbf{Kode} & \textbf{Judul} & \textbf{Penulis} \\
+		\hline
+		A & Organisasi Kemahasiswaan & Alham Fikri Aji \\
+		B & Operasi Bitwise & Alham Fikri Aji \\
+		C & Sirkus Keliling & Pusaka Kaleb Setyabudi \\
+		D & Kuis Kata & Pusaka Kaleb Setyabudi \\
+		E & Pak Grandi & Jonathan Irvin Gunawan \\
+		F & Balon Poligon & William Gozali \\
+		G & Juara Umum & Alham Fikri Aji \\
+		H & Harta Kekayaan & Ashar Fuadi \\
+		I & Berbagi Lawakan & William Gozali \\
+		\hline
+	\end{tabular}
+
+\end{center}
+\end{titlepage}
+
+\subfile{mahasiswa/editorial}
+\pagebreak % to force next section on new page
+\subfile{bitwise/editorial}
+\pagebreak % to force next section on new page
+\subfile{bis-ddak/editorial}
+\pagebreak % to force next section on new page
+\subfile{string-game/editorial}
+\pagebreak % to force next section on new page
+\subfile{multiset/editorial}
+\pagebreak % to force next section on new page
+\subfile{balon/editorial}
+\pagebreak % to force next section on new page
+\subfile{juara-umum/editorial}
+\pagebreak % to force next section on new page
+\subfile{richer/editorial}
+\pagebreak % to force next section on new page
+\subfile{lawak/editorial}
+\end{document}

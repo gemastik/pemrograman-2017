@@ -18,6 +18,38 @@ int ac() {
 }
 const int MAXM = 20000;
 
+bool read_sol(FILE* reader, int N, int M, int K) {
+    char verdict[50];
+    if (!fscanf(reader, "%s", verdict)) wa();
+    if (strcmp(verdict,"mustahil") == 0) return 0;
+    if (strcmp(verdict,"mungkin") != 0) wa();
+
+    vector<pair<int, pair<int,int> > > medals(M);
+    for (int i=0;i<N;i++){
+        int a,b,c;
+        if (fscanf(reader, "%d%d%d", &a, &b, &c) != 3) wa();
+        if (a <= 0 || a > M) wa();
+        if (b <= 0 || b > M) wa();
+        if (c <= 0 || c > M) wa();
+        if (a == b || a == c || b == c) wa();
+        a--; b--; c--;
+        medals[a].first++;
+        medals[b].second.first++;
+        medals[c].second.second++;
+    }
+
+    sort(medals.begin(), medals.end());
+    reverse(medals.begin(), medals.end());
+    int winners = 0;
+    for (int i=0;i<M;i++){
+        if (medals[i] == medals[0]) winners++;
+    }
+    if (winners != K) {
+        wa();
+    }
+
+    return 1;
+}
 
 int main(int argc, char** argv) {
     FILE* tc_in = fopen(argv[1], "r");
@@ -30,40 +62,13 @@ int main(int argc, char** argv) {
         int N,M,K;
 
         fscanf(tc_in, "%d%d%d", &N, &M, &K);
+        bool is_judge_valid = read_sol(tc_out, N, M, K);
+        bool is_con_valid = read_sol(tc_con, N, M, K);
 
-        char verdict[50];
-        char user_verdict[50];
-        fscanf(tc_out, "%s", verdict);
+        if (is_con_valid == is_judge_valid) continue; //solusi juri dan peserta sama
+        if (is_con_valid && !is_judge_valid) continue; // juri ga mungkin, tapi user mungkin; Perlu di warn ke Juri ga sih, biar kita aware? HOW?
+        if (!is_con_valid && is_judge_valid) wa();
 
-        if (fscanf(tc_con, "%s", user_verdict) != 1) wa();
-        if (strcmp(verdict, user_verdict) != 0) wa();
-        if (verdict[2] == 's') continue; //mu s tahil
-
-        vector<pair<int, pair<int,int> > > medals(M);
-        for (int i=0;i<N;i++){
-            int a,b,c;
-            //dummy
-            fscanf(tc_out, "%d%d%d", &a, &b, &c);
-            if (fscanf(tc_con, "%d%d%d", &a, &b, &c) != 3) wa();
-            if (a <= 0 || a > M) wa();
-            if (b <= 0 || b > M) wa();
-            if (c <= 0 || c > M) wa();
-            if (a == b || a == c || b == c) wa();
-            a--; b--; c--;
-            medals[a].first++;
-            medals[b].second.first++;
-            medals[c].second.second++;
-        }
-
-        sort(medals.begin(), medals.end());
-        reverse(medals.begin(), medals.end());
-        int winners = 0;
-        for (int i=0;i<M;i++){
-            if (medals[i] == medals[0]) winners++;
-        }
-        if (winners != K) {
-            wa();
-        }
     }
     return ac();
 }

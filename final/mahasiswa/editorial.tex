@@ -3,10 +3,10 @@
 
 % Per-problem variable definitions
 %TODO: Change placeholders to correct info.
-\newcommand{\problemName}{Judul Soal}
-\newcommand{\problemWriter}{Penulis soal}
-\newcommand{\problemEditorialWriter}{Penulis editorial}
-\newcommand{\problemTags}{tema1, tema2}
+\newcommand{\problemName}{Organisasi Kemahasiswaan}
+\newcommand{\problemWriter}{Alham Fikri Aji}
+\newcommand{\problemEditorialWriter}{Alham Fikri Aji}
+\newcommand{\problemTags}{math}
 
 \begin{document}
 
@@ -24,19 +24,27 @@
 \subsection*{Catatan/Komentar}
 \addcontentsline{toc}{subsection}{Catatan/Komentar} % for pdf indexing
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial prologue
+Batasan kedua versi:
+\begin{itemize}
+    \item $1 \le K \le N$
+    \item $1 \le M[i] \le 100.000$
+\end{itemize}
 
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
-Batasan: $...$ %TODO: Add constraints for easy version
+Batasan: $1 \le N \le 2$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for easy version
+Karena hanya ada paling banyak 2 organisasi, maka kita bisa selesaikan persoalan ini dengan melihat setiap kasus.
+Jika hanya ada tepat 1 organisasi, maka dipastikan mahasiswa minimum yang mungkin adalah $M[1]$. Jika ada 2 organisasi, maka kita harus melihat nilai $K$.
+Jika $K = 1$, maka setiap mahasiswa hanya boleh mengikuti paling banyak 1 organisasi, sehingga mahasiswa minimum yang mungkin adalah $M[1] + M[2]$. Namun jika $K = 2$, maka mahasiswa minimum yang mungkin adalah $\max(M[1],M[2])$
 
 \subsection*{Versi Sulit}
 \addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
 
-Batasan: $...$ %TODO: Add constraints for hard version
+Batasan: $1 \le N \le 100.000$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for hard version
+Cukup mudah disimpulkan bahwa mahasiswa paling sedikit berjumlah $$\max_{1 \le i \le N} M[i]$$ atau sama dengan anggota dari organisasi dengan jumlah anggota terbanyak.
+
+Jika asumsikan Fasilkom memiliki total $T$ mahasiswa, dan setiap mahasiswa boleh mengikuti paling banyak $K$ organisasi, dapat disimpulkan bahwa $(\sum_{i=1}^N M[i]) \le T \times K$ harus terpenuhi. Jika tidak, menurut teorema pigeon-hole principle paling tidak ada 1 mahasiswa yang mengikuti lebih dari $K$ organisasi. Dengan demikian, kita dapat menghitung mahasiswa Fasilkom dengan formula $$T = \left \lceil{\frac{\sum_{i=1}^N M[i]}{K}}\right \rceil$$ dan jawaban akhir berupa $$\max \left ( \max_{1 \le i \le N} M[i],\left \lceil{\frac{\sum_{i=1}^N M[i]}{K}}\right \rceil \right )$$
 
 \end{document}

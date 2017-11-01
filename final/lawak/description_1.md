@@ -4,7 +4,7 @@ Suatu komunitas pelawak terdiri atas N anggota, yang dinomori dari 1 hingga N. S
 
 Setiap pelawak memiliki akun media sosial. Akun media sosial setiap pelawak memiliki oleh nol atau lebih pengikut. Terdapat M informasi pengikut akun media sosial, yang masing-masing menyatakan bahwa akun media sosial pelawak U[i] diikuti oleh akun media sosial pelawak V[i].
 
-Pelawak-pelawak tersebut senang menuliskan lawakan pada akun media sosial masing-masing. Setiap kali seorang pelawak menuliskan lawakan, pengikut-pengikutnya di media sosial akan langsung membaca lawakan tersebut. Untuk setiap pengikut, jika ia menyukai lawakan tersebut tanpa peduli apakah ia sudah pernah mendengarnya, maka ia akan menulis ulang lawakan tersebut keesokan harinya pada akun media sosialnya.
+Pelawak-pelawak tersebut senang menuliskan lawakan pada akun media sosial masing-masing. Setiap kali seorang pelawak menuliskan lawakan, pengikut-pengikutnya di media sosial akan langsung membaca lawakan tersebut. Untuk setiap pengikut, jika ia menyukai lawakan tersebut tanpa peduli apakah ia sudah pernah menulisnya, maka ia akan menulis ulang lawakan tersebut keesokan harinya pada akun media sosialnya.
 
 Sebuah lawakan dikatakan abadi apabila lawakan tersebut akan terus beredar dari hari ke hari, tanpa pernah berakhir.
 

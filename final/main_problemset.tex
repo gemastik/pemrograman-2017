@@ -1,0 +1,110 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{subfiles}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{pgfplots}
+\usepackage{fancyvrb,newverbs,xcolor}
+
+\newtheorem{algorithm_def}{Algorithm}[subsection]
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{lemma}{Lemma}[subsection]
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{corollary}{Corollary}[subsection]
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\usepackage{enumitem}
+\setlist{nolistsep}
+
+\hyphenation{
+	me-nge-ta-hu-i
+	kon-fi-gu-ra-si
+	me-nge-na-i
+	pe-nyam-bung-an	
+	bi-lang-an
+}
+
+\definecolor{cverbbg}{gray}{0.93}
+
+\newenvironment{lcverbatim}
+{\SaveVerbatim{cverb}}
+{\endSaveVerbatim
+	\flushleft\fboxrule=0pt\fboxsep=.5em
+	\colorbox{cverbbg}{%
+		\makebox[\dimexpr\linewidth-2\fboxsep][l]{\BUseVerbatim{cverb}}%
+	}
+	\endflushleft
+}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+
+    \textbf{\huge BUKLET SOAL}
+    
+    \vspace{1cm} % padding
+    
+    \includegraphics[width=0.7\textwidth]{../gemastiklogo}
+    
+	\vspace{1cm} % padding
+    
+    \textbf{\LARGE FINAL PEMROGRAMAN GEMASTIK 10}\\[0.5cm]
+    \textbf{\LARGE 4 November 2017}
+
+	\vfill
+	
+	{\Large Soal}
+	
+	\vspace{.2cm}
+	
+	\def\arraystretch{1.5} % biar megar
+	\begin{tabular}{|c|l|}
+		\hline
+		\textbf{Kode} & \textbf{Judul} \\
+		\hline
+		A & Organisasi Kemahasiswaan \\
+		B & Operasi Bitwise \\
+		C & Sirkus Keliling \\
+		D & Kuis Kata \\
+		E & Pak Grandi \\
+		F & Balon Poligon \\
+		G & Juara Umum \\
+		H & Harta Kekayaan \\
+		I & Berbagi Lawakan \\
+		\hline
+	\end{tabular}
+	
+\end{center}
+\end{titlepage}
+
+\subfile{mahasiswa/description}
+\pagebreak
+\subfile{bitwise/description}
+\pagebreak
+\subfile{bis-ddak/description}
+\pagebreak
+\subfile{string-game/description}
+\pagebreak
+\subfile{multiset/description}
+\pagebreak
+\subfile{balon/description}
+\pagebreak
+\subfile{juara-umum/description}
+\pagebreak
+\subfile{richer/description}
+\pagebreak
+\subfile{lawak/description}
+
+\end{document}

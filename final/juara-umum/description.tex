@@ -1,0 +1,148 @@
+% !TeX root = ../main_problemset.tex
+\documentclass[../main_problemset.tex]{subfiles} % Inherits definitions from parent .tex file.
+
+% Per-problem variable definitions
+\newcommand{\problemName}{G. Juara Umum}
+\newcommand{\problemTL}{2 s}
+\newcommand{\problemML}{64 MB}
+
+\begin{document}
+
+\begin{center}
+    \section*{\problemName}
+    \addcontentsline{toc}{section}{\problemName} % for pdf indexing
+    
+    \begin{tabular}{rl}
+    Batasan waktu : & \problemTL \\
+    Batasan memori : & \problemML
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+\addcontentsline{toc}{subsection}{Deskripsi} % for pdf indexing
+
+Tahun ini, Gemastik terdiri atas N cabang lomba, yang dinomori dari 1 hingga N. Terdapat M universitas sebagai peserta Gemastik, yang dinomori dari 1 hingga M. Setiap universitas mengirimkan tepat satu tim untuk setiap cabang lomba.
+
+Untuk setiap cabang lomba, akan diambil tiga tim berbeda sebagai pemenang, yang berturut-turut akan memperoleh medali emas, perak, dan perunggu. Setelah semua cabang lomba dipertandingkan, peringkat seluruh universitas akan diurutkan berdasarkan perolehan medali. Universitas A akan meraih peringkat yang lebih baik daripada universitas B, apabila:
+
+\begin{itemize}
+	\item perolehan emas A $ > $ perolehan emas B, atau
+	\item perolehan emas A = perolehan emas B dan perolehan perak A $ > $ perolehan perak B, atau
+	\item perolehan emas A = perolehan emas B, perolehan perak A = perolehan perak B, dan perolehan perunggu A $ > $ perolehan perunggu B.
+\end{itemize}
+
+Akhirnya, universitas yang memiliki peringkat terbaik akan mendapatkan gelar juara umum.
+
+Perhatikan bahwa menurut sistem pemeringkatan di atas, mungkin saja terdapat lebih dari satu juara umum. Mungkinkah terdapat tepat K universitas sebagai juara umum?
+
+\subsection*{Format Masukan}
+\addcontentsline{toc}{subsection}{Format Masukan} % for pdf indexing
+
+Baris pertama berisi sebuah bilangan bulat T yang menyatakan banyaknya kasus uji. Baris-baris berikutnya berisi T kasus uji, yang masing-masing diberikan dalam format berikut ini:
+
+\begin{lcverbatim}
+N M K
+\end{lcverbatim}
+
+\subsection*{Format Keluaran}
+\addcontentsline{toc}{subsection}{Format Keluaran} % for pdf indexing
+
+Untuk setiap kasus uji:
+
+Jika tidak mungkin terdapat tepat K universitas sebagai juara umum, keluarkan:
+
+\begin{lcverbatim}
+mustahil
+\end{lcverbatim}
+
+Jika mungkin, keluarkan:
+
+\begin{lcverbatim}
+mungkin
+G[1] S[1] B[1]
+G[2] S[2] B[2]
+.
+.
+G[N] S[N] B[N]
+\end{lcverbatim}
+
+\vspace{.4cm}
+
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Masukan}
+\addcontentsline{toc}{subsection}{Contoh Masukan} % for pdf indexing
+
+\begin{lcverbatim}
+4
+3 3 2
+5 10 2
+4 3 3
+8 6 3
+\end{lcverbatim}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{(Salah Satu) Contoh Keluaran}
+\addcontentsline{toc}{subsection}{Contoh Keluaran} % for pdf indexing
+
+\begin{lcverbatim}
+mustahil
+mungkin
+1 9 10
+1 9 10
+2 6 7
+2 6 7
+5 9 10
+mustahil
+mungkin
+1 2 6
+1 2 6
+2 3 6
+2 3 6
+3 1 6
+3 1 6
+4 5 6
+5 4 6
+\end{lcverbatim}
+\end{minipage}
+
+\textit{Perhatikan bahwa contoh ketiga dan keempat tidak termasuk dalam contoh masukan dan contoh keluaran dari soal versi mudah.}
+
+\subsection*{Penjelasan}
+\addcontentsline{toc}{subsection}{Penjelasan} % for pdf indexing
+
+Untuk contoh kedua, universitas 1 dan universitas 2 menjadi juara umum bersama, karena masing-masing memperoleh 2 medali emas.
+
+Untuk contoh keempat, universitas 1, 2, dan 3 menjadi juara umum bersama, karena masing-masing memperoleh 2 medali emas dan 2 medali perak.
+
+\subsection*{Batasan}
+\addcontentsline{toc}{subsection}{Batasan} % for pdf indexing
+
+\begin{minipage}[t]{0.47\textwidth}
+
+Batasan yang berlaku untuk versi mudah dan versi sulit:
+
+\begin{itemize}
+	\item 1 $ \leq $ T $ \leq $ 10
+	\item 1 $ \leq $ N $ \leq $ 50.000
+	\item 3 $ \le $ M $ \le $ 50.000
+	\item K $ \le $ N
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.06\textwidth}
+	\hfill
+\end{minipage}
+\begin{minipage}[t]{0.47\textwidth}
+Batasan khusus versi mudah:
+\begin{itemize}
+	\item K = 2
+\end{itemize}
+
+\vspace{.2cm}
+
+Batasan khusus versi sulit:
+\begin{itemize}
+	\item 1 $ \le $ K $ \le $ M
+\end{itemize}
+\end{minipage}
+
+\end{document}

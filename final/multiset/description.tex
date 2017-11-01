@@ -1,0 +1,152 @@
+% !TeX root = ../main_problemset.tex
+\documentclass[../main_problemset.tex]{subfiles} % Inherits definitions from parent .tex file.
+
+% Per-problem variable definitions
+\newcommand{\problemName}{E. Pak Grandi}
+\newcommand{\problemTL}{3 s}
+\newcommand{\problemML}{256 MB}
+
+\begin{document}
+
+\begin{center}
+    \section*{\problemName}
+    \addcontentsline{toc}{section}{\problemName} % for pdf indexing
+    
+    \begin{tabular}{rl}
+    Batasan waktu : & \problemTL \\
+    Batasan memori : & \problemML
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+\addcontentsline{toc}{subsection}{Deskripsi} % for pdf indexing
+
+Pak Grandi memiliki papan tulis yang besar sekali.
+
+Pak Chanek menantang Pak Grandi untuk melakukan N aksi, yang masing-masing berbentuk:
+
+\begin{lcverbatim}
+P[i] L[i] R[i] K[i]
+\end{lcverbatim}
+
+Makna dari aksi di atas adalah sebagai berikut:
+
+\begin{itemize}
+	\item Jika P[i] = 1: Pak Grandi harus menuliskan bilangan x sebanyak tepat K[i] buah pada papan tulis, untuk seluruh bilangan bulat L[i] $ \le $ x $ \le $ R[i].
+	\item Jika P[i] = 2: Misalkan cnt(x) menyatakan banyaknya bilangan x pada papan tulis. Pak Grandi harus menghapus bilangan x sebanyak tepat min(cnt(x), K[i]) buah dari papan tulis, untuk seluruh bilangan bulat L[i] $ \le $ x $ \le $ R[i].
+\end{itemize}
+
+Segera setelah melakukan aksi yang diminta, Pak Grandi harus menghitung G[i], yang merupakan bilangan bulat positif terkecil yang tidak tertulis pada papan tulis.
+
+Bantulah Pak Grandi untuk melakukan tantangan yang diminta Pak Chanek.
+
+\subsection*{Format Masukan}
+\addcontentsline{toc}{subsection}{Format Masukan} % for pdf indexing
+
+Baris pertama berisi sebuah bilangan bulat T yang menyatakan banyaknya kasus uji. Baris-baris berikutnya berisi T kasus uji, yang masing-masing diberikan dalam format berikut ini:
+
+\begin{lcverbatim}
+N
+P[1] L[1] R[1] K[1]
+P[2] L[2] R[2] K[2]
+.
+.
+P[N] L[N] R[N] K[N]
+\end{lcverbatim}
+
+\subsection*{Format Keluaran}
+\addcontentsline{toc}{subsection}{Format Keluaran} % for pdf indexing
+
+Untuk setiap kasus uji, keluarkan:
+
+\begin{lcverbatim}
+G[1]
+G[2]
+.
+.
+G[N]
+\end{lcverbatim}
+
+\vspace{.4cm}
+
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Masukan}
+\addcontentsline{toc}{subsection}{Contoh Masukan} % for pdf indexing
+
+\begin{lcverbatim}
+2
+4
+1 1 1 1
+1 3 3 2
+1 2 2 1
+2 1 1 1
+4
+1 1 5 2
+1 11 15 1
+1 6 10 2
+2 1 15 1
+\end{lcverbatim}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Keluaran}
+\addcontentsline{toc}{subsection}{Contoh Keluaran} % for pdf indexing
+
+\begin{lcverbatim}
+2
+2
+4
+1
+6
+6
+16
+11
+\end{lcverbatim}
+\end{minipage}
+
+\textit{Perhatikan bahwa contoh kedua tidak termasuk dalam contoh masukan dan contoh keluaran dari soal versi mudah.}
+
+\subsection*{Penjelasan}
+\addcontentsline{toc}{subsection}{Penjelasan} % for pdf indexing
+
+Pada contoh pertama, mula-mula tidak terdapat bilangan pada papan tulis. Terdapat 4 aksi yang dilakukan oleh Pak Grandi:
+
+\begin{itemize}
+	\item Menuliskan 1 buah bilangan 1: di papan tulis terdapat [1], sehingga G[1] = 2.
+	\item Menuliskan 2 buah bilangan 3: di papan tulis terdapat [1 3 3], sehingga G[2] = 2.
+	\item Menuliskan 1 buah bilangan 2: di papan tulis terdapat [1 3 3 2], sehingga G[3] = 4.
+	\item Menghapus 1 buah bilangan 1: di papan tulis terdapat [3 3 2], sehingga G[4] = 1.
+\end{itemize}
+
+\subsection*{Batasan}
+\addcontentsline{toc}{subsection}{Batasan} % for pdf indexing
+
+\begin{minipage}[t]{0.47\textwidth}
+
+Batasan yang berlaku untuk versi mudah dan versi sulit:
+
+\begin{itemize}
+	\item 1 $ \leq $ T $ \leq $ 10
+	\item 1 $ \leq $ P[i] $ \leq $ 2
+	\item 1 $ \le $ L[i], R[i] $ \le $ 1.000.000.000
+	\item 1 $ \le $ K[i] $ \le $ 1.000.000.000
+	\item 1 $ \le $ N $ \le $ 50.000
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.06\textwidth}
+	\hfill
+\end{minipage}
+\begin{minipage}[t]{0.47\textwidth}
+Batasan khusus versi mudah:
+\begin{itemize}
+	\item L[i] = R[i]
+\end{itemize}
+
+\vspace{.2cm}
+
+Batasan khusus versi sulit:
+\begin{itemize}
+	\item L[i] $ \le $ R[i]
+\end{itemize}
+\end{minipage}
+
+\end{document}

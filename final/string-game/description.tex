@@ -1,0 +1,155 @@
+% !TeX root = ../main_problemset.tex
+\documentclass[../main_problemset.tex]{subfiles} % Inherits definitions from parent .tex file.
+
+% Per-problem variable definitions
+\newcommand{\problemName}{D. Kuis Kata}
+\newcommand{\problemTL}{4 s}
+\newcommand{\problemML}{256 MB}
+
+\begin{document}
+
+\begin{center}
+    \section*{\problemName}
+    \addcontentsline{toc}{section}{\problemName} % for pdf indexing
+    
+    \begin{tabular}{rl}
+    Batasan waktu : & \problemTL \\
+    Batasan memori : & \problemML
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+\addcontentsline{toc}{subsection}{Deskripsi} % for pdf indexing
+
+Pak Chanek mengikuti acara kuis berhadiah bernama Kuis Kata. Pada kuis ini, Pak Chanek akan bermain melawan pembawa acara. Pada kuis ini, terdapat N buah string: S[1], S[2], ..., S[N]. Uniknya, sebelum Pak Chanek datang ke acara kuis tersebut, panitia memberitahukan S[1] kepada Pak Chanek.
+
+String-string akan memenuhi seluruh syarat berikut ini:
+
+\begin{itemize}
+	\item Setiap string akan memiliki antara 1 hingga L karakter abjad \texttt{a} - \texttt{z}.
+	\item Karakter-karakter pada setiap string akan terurut tidak menurun berdasarkan abjad.
+\end{itemize}
+
+Pak Chanek dan pembawa acara mengambil langkah secara bergiliran. Pada setiap langkah, seorang pemain harus mengganti salah satu karakter pada salah satu string dengan sebuah karakter abjad lain, sedemikian sehingga seluruh syarat berikut ini terpenuhi:
+
+\begin{itemize}
+	\item Karakter pengganti urutannya lebih belakang pada abjad daripada karakter yang diganti.
+	\item Karakter-karakter pada string tersebut tetap terurut tidak menurun berdasarkan abjad.
+\end{itemize}
+
+Pemain yang tidak dapat melangkah pada gilirannya (yakni, saat seluruh karakter pada seluruh string adalah \texttt{z}) dinyatakan kalah, dan kuis berakhir.
+
+Sebagai contoh, jika diberikan S = \{``aku'', ``itu''\}, maka contoh-contoh langkah yang memenuhi syarat adalah:
+
+\begin{itemize}
+	\item mengubah ``aku'' menjadi ``anu''
+	\item mengubah ``itu'' menjadi ``iuu''
+\end{itemize}
+
+Contoh-contoh langkah yang tidak memenuhi syarat adalah:
+
+\begin{itemize}
+	\item mengubah ``aku'' dan ``itu'' menjadi ``anu'' dan ``iuu'' (hanya boleh mengubah 1 string)
+	\item mengubah ``aku'' menjadi ``ako'' (\texttt{o} tidak lebih belakang pada abjad daripada \texttt{u})
+	\item mengubah ``aku'' menjadi ``awu'' (hasilnya tidak terurut menurut berdasarkan abjad)
+\end{itemize}
+
+Pak Chanek penasaran, jika Pak Chanek dan pembawa acara \textbf{selalu bermain dengan optimal}, sebenarnya ada berapa kemungkinan kuis yang mungkin sedemikian sehingga Pak Chanek akan menang? Dua kemungkinan dikatakan berbeda apabila terdapat i > 1 sedemikian sehingga S[i] pada kemungkinan yang satu berbeda dengan S[i] pada kemungkinan yang lainnya.
+
+Bantulah Pak Chanek menghitung banyaknya kemungkinan kuis tersebut, mod 1.000.000.007.
+
+\subsection*{Format Masukan}
+\addcontentsline{toc}{subsection}{Format Masukan} % for pdf indexing
+
+Baris pertama berisi sebuah bilangan bulat T yang menyatakan banyaknya kasus uji. Baris-baris berikutnya berisi T kasus uji, yang masing-masing diberikan dalam format berikut ini:
+
+\begin{lcverbatim}
+N L
+S[1]
+\end{lcverbatim}
+
+\subsection*{Format Keluaran}
+\addcontentsline{toc}{subsection}{Format Keluaran} % for pdf indexing
+
+Untuk setiap kasus uji, keluarkan sebuah baris berisi banyaknya kemungkinan modulo 1.000.000.007.
+
+\vspace{.4cm}
+
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Masukan}
+\addcontentsline{toc}{subsection}{Contoh Masukan} % for pdf indexing
+
+\begin{lcverbatim}
+3
+2 1
+y
+2 2
+aa
+20 17
+aku
+\end{lcverbatim}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Keluaran}
+\addcontentsline{toc}{subsection}{Contoh Keluaran} % for pdf indexing
+
+\begin{lcverbatim}
+25
+350
+26630817
+\end{lcverbatim}
+\end{minipage}
+
+\textit{Perhatikan bahwa contoh ketiga tidak termasuk dalam contoh masukan dan contoh keluaran dari soal versi mudah.}
+
+\subsection*{Penjelasan}
+\addcontentsline{toc}{subsection}{Penjelasan} % for pdf indexing
+
+Untuk contoh pertama, semua kemungkinan S[2] yang terdiri atas 1 karakter abjad, kecuali ``y", akan memenangkan Pak Chanek. Dengan kata lain, S = {"y", ``y"} akan membuat Pak Chanek kalah:
+
+\begin{itemize}
+	\item Pada langkah pertama, Pak Chanek harus mengubah salah satu string ``y'' menjadi ``z'' (tidak ada cara lain).
+	\item Pada langkah kedua, pembawa acara akan mengubah string ``y'' yang lain menjadi ``z".
+	\item Pak Chanek tidak dapat melangkah, dan kalah.
+\end{itemize}
+
+Untuk contoh kedua, semua kemungkinan S[2] berikut ini akan memenangkan Pak Chanek:
+
+\begin{itemize}
+	\item ``a", ``b", ..., ``y'' (25 buah)
+	\item ``ab", ..., ``az", ``ba", ``bc", ..., ``bz", ``ca", ``cb", ``cd", ..., ``zy'' (325 buah)
+\end{itemize}
+
+\subsection*{Batasan}
+\addcontentsline{toc}{subsection}{Batasan} % for pdf indexing
+
+\begin{minipage}[t]{0.47\textwidth}
+	
+Batasan yang berlaku untuk versi mudah dan versi sulit:
+
+\begin{itemize}
+	\item 1 $ \leq $ T $ \leq $ 100
+	\item S[1] terdiri atas 1 hingga L karakter abjad \texttt{a} - \texttt{z}
+	\item Karakter-karakter pada S[1] terurut tidak menurun berdasarkan abjad
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.06\textwidth}
+	\hfill
+\end{minipage}
+\begin{minipage}[t]{0.47\textwidth}
+Batasan khusus versi mudah:
+\begin{itemize}
+	\item N = 2
+	\item 1 $ \le $ L $ \le $ 5
+\end{itemize}
+
+\vspace{.2cm}
+
+Batasan khusus versi sulit:
+\begin{itemize}
+	\item N = 1.000.000.000
+	\item 1 $ \le $ L $ \le $ 10.000
+\end{itemize}
+\end{minipage}
+
+\end{document}

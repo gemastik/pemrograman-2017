@@ -1,0 +1,183 @@
+% !TeX root = ../main_problemset.tex
+\documentclass[../main_problemset.tex]{subfiles} % Inherits definitions from parent .tex file.
+
+% Per-problem variable definitions
+\newcommand{\problemName}{I. Berbagi Lawakan}
+\newcommand{\problemTL}{2 s}
+\newcommand{\problemML}{64 MB}
+
+\begin{document}
+
+\begin{center}
+    \section*{\problemName}
+    \addcontentsline{toc}{section}{\problemName} % for pdf indexing
+    
+    \begin{tabular}{rl}
+    Batasan waktu : & \problemTL \\
+    Batasan memori : & \problemML
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+\addcontentsline{toc}{subsection}{Deskripsi} % for pdf indexing
+
+Suatu komunitas pelawak terdiri atas N anggota, yang dinomori dari 1 hingga N. Setiap pelawak memiliki standar tingkat kelucuan humor masing-masing. Pelawak ke-i menyukai sebuah lawakan apabila tingkat kelucuan lawakan tersebut berada di antara A[i] hingga B[i], inklusif.
+
+Setiap pelawak memiliki akun media sosial. Akun media sosial setiap pelawak memiliki oleh nol atau lebih pengikut. Terdapat M informasi pengikut akun media sosial, yang masing-masing menyatakan bahwa akun media sosial pelawak U[i] diikuti oleh akun media sosial pelawak V[i].
+
+Pelawak-pelawak tersebut senang menuliskan lawakan pada akun media sosial masing-masing. Setiap kali seorang pelawak menuliskan lawakan, pengikut-pengikutnya di media sosial akan langsung membaca lawakan tersebut. Untuk setiap pengikut, jika ia menyukai lawakan tersebut tanpa peduli apakah ia sudah pernah menulisnya, maka ia akan menulis ulang lawakan tersebut keesokan harinya pada akun media sosialnya.
+
+Sebuah lawakan dikatakan abadi apabila lawakan tersebut akan terus beredar dari hari ke hari, tanpa pernah berakhir.
+
+Sekarang, terdapat Q buah pertanyaan. Pertanyaan ke-i berbunyi: jika pelawak X[i] menulis lawakan dengan tingkat kelucuan H[i], apakah lawakan tersebut akan menjadi abadi?
+
+\subsection*{Format Masukan}
+\addcontentsline{toc}{subsection}{Format Masukan} % for pdf indexing
+
+Masukan diberikan dalam format berikut ini:
+
+\begin{lcverbatim}
+N M
+A[1] A[2] .. A[N]
+B[1] B[2] .. B[N]
+U[1] V[1]
+U[2] V[2]
+.
+.
+U[M] V[M]
+Q
+X[1] H[1]
+X[2] H[2]
+.
+.
+X[Q] H[Q]
+\end{lcverbatim}
+
+\subsection*{Format Keluaran}
+\addcontentsline{toc}{subsection}{Format Keluaran} % for pdf indexing
+
+Keluarkan Q buah baris. Baris ke-i berisi jawaban dari pertanyaan ke-i, yaitu salah satu dari:
+
+\begin{itemize}
+	\item ``Ya'', apabila akan menjadi abadi.
+	\item ``Tidak'', apabila tidak akan menjadi abadi.
+\end{itemize}
+
+\vspace{.4cm}
+
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Masukan (Mudah)}
+\addcontentsline{toc}{subsection}{Contoh Masukan (Mudah)} % for pdf indexing
+
+\begin{lcverbatim}
+6 6
+0 0 0 0 0 0
+100 100 100 100 100 100
+1 2
+1 3
+2 4
+4 5
+5 2
+3 6
+3
+1 50
+2 30
+3 10
+\end{lcverbatim}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Keluaran (Mudah)}
+\addcontentsline{toc}{subsection}{Contoh Keluaran (Mudah)} % for pdf indexing
+
+\begin{lcverbatim}
+Ya
+Ya
+Tidak
+\end{lcverbatim}
+\end{minipage}
+
+\subsection*{Penjelasan Contoh Masukan dan Keluaran (Mudah)}
+\addcontentsline{toc}{subsection}{Penjelasan Contoh Masukan dan Keluaran (Mudah)} % for pdf indexing
+
+Pada pertanyaan pertama dan kedua, lawakan akan beredar pada pelawak-pelawak \{2, 4, 5\} secara abadi.
+
+Pada pertanyaan ketiga, lawakan akan dibaca oleh pelawak 6 dan ia tulis ulang pada keesokan harinya. Sayangnya, tidak ada seorang pun yang membacanya. Maka, persebaran lawakan ini berakhir.
+
+\vspace{.4cm}
+
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Masukan (Sulit)}
+\addcontentsline{toc}{subsection}{Contoh Masukan (Sulit)} % for pdf indexing
+
+\begin{lcverbatim}
+5 5
+50 10 80 25 80
+99 90 90 90 95
+1 2
+1 3
+2 4
+4 5
+5 2
+3
+1 85
+2 50
+5 85
+\end{lcverbatim}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Keluaran (Sulit)}
+\addcontentsline{toc}{subsection}{Contoh Keluaran (Sulit)} % for pdf indexing
+
+\begin{lcverbatim}
+Ya
+Tidak
+Ya
+\end{lcverbatim}
+\end{minipage}
+
+\subsection*{Penjelasan Contoh Masukan dan Keluaran (Sulit)}
+\addcontentsline{toc}{subsection}{Penjelasan Contoh Masukan dan Keluaran (Sulit)} % for pdf indexing
+
+Pada pertanyaan pertama, lawakan akan beredar pada pelawak-pelawak \{2, 4, 5\} secara abadi.
+
+Pada pertanyaan kedua, lawakan akan dibaca oleh pelawak 4 dan ia tulis ulang pada keesokan harinya. Pelawak 5 akan membacanya, tetapi tidak menuliskan ulang. Maka, persebaran lawakan ini berakhir.
+
+Pada pertanyaan ketiga, lawakan akan beredar pada pelawak-pelawak \{2, 4, 5\} secara abadi.
+
+\subsection*{Batasan}
+\addcontentsline{toc}{subsection}{Batasan} % for pdf indexing
+
+\begin{minipage}[t]{0.47\textwidth}
+
+Batasan yang berlaku untuk versi mudah dan versi sulit:
+
+\begin{itemize}
+	\item 1 $ \leq $ N $ \leq $ 50.000
+	\item 1 $ \leq $ M $ \leq $ 50.000
+	\item 1 $ \leq $ Q $ \leq $ 50.000
+	\item 1 $ \le $ U[i], V[i] $ \le $ N
+	\item U[i] $ \neq $ V[i]
+	\item (U[i], V[i]) $ \neq $ (U[j], V[j]) untuk i $ \neq $ j
+	\item 1 $ \leq $ X[i] $ \leq $ N
+	\item 0 $ \leq $ H[i] $ \leq $ 100
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.06\textwidth}
+	\hfill
+\end{minipage}
+\begin{minipage}[t]{0.47\textwidth}
+Batasan khusus versi mudah:
+\begin{itemize}
+	\item A[i] = 0
+	\item B[i] = 100
+\end{itemize}
+
+\vspace{.2cm}
+
+Batasan khusus versi sulit:
+\begin{itemize}
+	\item 0 $ \le $ A[i] $ \le $ B[i] $ \le $ 100
+\end{itemize}
+\end{minipage}
+
+\end{document}

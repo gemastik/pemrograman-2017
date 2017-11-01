@@ -1,0 +1,121 @@
+% !TeX root = ../main_problemset.tex
+\documentclass[../main_problemset.tex]{subfiles} % Inherits definitions from parent .tex file.
+
+% Per-problem variable definitions
+\newcommand{\problemName}{B. Operasi Bitwise}
+\newcommand{\problemTL}{2 s}
+\newcommand{\problemML}{256 MB}
+
+\begin{document}
+
+\begin{center}
+    \section*{\problemName}
+    \addcontentsline{toc}{section}{\problemName} % for pdf indexing
+    
+    \begin{tabular}{rl}
+    Batasan waktu : & \problemTL \\
+    Batasan memori : & \problemML
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+\addcontentsline{toc}{subsection}{Deskripsi} % for pdf indexing
+
+Carilah N bilangan bulat S[1], S[2], ..., S[N] yang memenuhi seluruh syarat berikut ini:
+
+\begin{itemize}
+	\item 0 $ \le $ S[i] $ < 2^{31} $
+	\item S[1] AND S[2] AND ... AND S[N] = A
+	\item S[1] OR S[2] OR ... OR S[N] = B
+	\item S[1] XOR S[2] XOR ... XOR S[N] = C
+\end{itemize}
+
+dengan AND, OR, XOR merupakan operasi \textit{bitwise} \texttt{\&}, \texttt{|}, dan \texttt{\textasciicircum} secara berturut-turut pada C, C++, maupun Java.
+
+\subsection*{Format Masukan}
+\addcontentsline{toc}{subsection}{Format Masukan} % for pdf indexing
+
+Baris pertama berisi sebuah bilangan bulat T yang menyatakan banyaknya kasus uji. Baris-baris berikutnya berisi T kasus uji, yang masing-masing diberikan dalam format berikut ini:
+
+\begin{lcverbatim}
+N A B C
+\end{lcverbatim}
+
+\subsection*{Format Keluaran}
+\addcontentsline{toc}{subsection}{Format Keluaran} % for pdf indexing
+
+Untuk setiap kasus uji:
+
+Jika tidak mungkin terdapat N bilangan bulat yang memenuhi seluruh syarat tersebut, keluarkan:
+
+\begin{lcverbatim}
+-1
+\end{lcverbatim}
+
+Jika mungkin, keluarkan:
+
+\begin{lcverbatim}
+S[1] S[2] .. S[N]
+\end{lcverbatim}
+
+Jika terdapat lebih dari satu solusi, keluarkan yang mana saja.
+
+\vspace{.4cm}
+
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{Contoh Masukan}
+\addcontentsline{toc}{subsection}{Contoh Masukan} % for pdf indexing
+
+\begin{lcverbatim}
+3
+2 8 14 6
+2 4 6 6
+3 4 6 6
+\end{lcverbatim}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\subsection*{(Salah Satu) Contoh Keluaran}
+\addcontentsline{toc}{subsection}{Contoh Keluaran} % for pdf indexing
+
+\begin{lcverbatim}
+14 8
+-1
+4 4 6
+\end{lcverbatim}
+\end{minipage}
+
+\textit{Perhatikan bahwa contoh ketiga tidak termasuk dalam contoh masukan dan contoh keluaran dari soal versi mudah.}
+
+
+
+\subsection*{Batasan}
+\addcontentsline{toc}{subsection}{Batasan} % for pdf indexing
+
+\begin{minipage}[t]{0.47\textwidth}
+	
+Batasan yang berlaku untuk versi mudah dan versi sulit:
+
+\begin{itemize}
+	\item 1 $ \leq $ T $ \leq $ 10
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.06\textwidth}
+	\hfill
+\end{minipage}
+\begin{minipage}[t]{0.47\textwidth}
+Batasan khusus versi mudah:
+\begin{itemize}
+	\item N = 2
+	\item 0 $ \le $ A, B, C $ < 2^{20} $
+\end{itemize}
+
+\vspace{.2cm}
+
+Batasan khusus versi sulit:
+\begin{itemize}
+	\item 1 $ \le $ N $ \le $ 50.000
+	\item 0 $ \le $ A, B, C $ < 2^{31} $
+\end{itemize}
+\end{minipage}
+
+\end{document}

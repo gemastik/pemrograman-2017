@@ -11,7 +11,7 @@
 \begin{center}
     \section*{\problemName}
     \addcontentsline{toc}{section}{\problemName} % for pdf indexing
-    
+
     \begin{tabular}{rl}
     Batasan waktu : & \problemTL \\
     Batasan memori : & \problemML
@@ -21,7 +21,7 @@
 \subsection*{Deskripsi}
 \addcontentsline{toc}{subsection}{Deskripsi} % for pdf indexing
 
-Murid-murid kelas 6 SD Chanek terbagi atas kelas 6A dan kelas B, yang masing-masing terdiri atas $N$ murid. Murid ke-$i$ di kelas 6A memiliki pantun sepanjang $A[i]$ detik, dan murid ke-$i$ di kelas 6B memiliki pantun sepanjang $B[i]$ detik.
+Murid-murid kelas 6 SD Chanek terbagi atas kelas 6A dan kelas 6B, yang masing-masing terdiri atas $N$ murid. Murid ke-$i$ di kelas 6A memiliki pantun sepanjang $A[i]$ detik, dan murid ke-$i$ di kelas 6B memiliki pantun sepanjang $B[i]$ detik.
 
 Pada acara perpisahan, setiap murid di kelas 6A akan berbalas pantun dengan setiap murid di kelas 6B. Untuk sepasang murid ke-$i$ di kelas 6A dan murid ke-$j$ di kelas 6B, total waktu yang dibutuhkan mereka untuk berbalas pantun adalah $A[i] + B[j]$.
 
@@ -85,6 +85,8 @@ Keluarkan sebuah baris berisi total waktu yang dibutuhkan, dalam detik.
 \end{lcverbatim}
 \end{minipage}
 
+\textit{Perhatikan bahwa contoh kedua tidak termasuk dalam contoh masukan dan contoh keluaran dari soal versi mudah.}
+
 \subsection*{Penjelasan}
 \addcontentsline{toc}{subsection}{Penjelasan} % for pdf indexing
 
@@ -102,22 +104,31 @@ Total waktu yang dibutuhkan adalah 4 + 5 + 5 + 6 = 20 detik.
 \subsection*{Batasan}
 \addcontentsline{toc}{subsection}{Batasan} % for pdf indexing
 
+\begin{minipage}[t]{0.47\textwidth}
+    
 Batasan yang berlaku untuk versi mudah dan versi sulit:
 
 \begin{itemize}
 	\item $1 \le A[i], B[i] \le 100$
 \end{itemize}
-
+\end{minipage}
+\begin{minipage}[t]{0.06\textwidth}
+    \hfill
+\end{minipage}
+\begin{minipage}[t]{0.47\textwidth}
 Batasan khusus versi mudah:
 
 \begin{itemize}
 	\item $N = 1$
 \end{itemize}
 
+\vspace{.2cm}
+
 Batasan khusus versi sulit:
 
 \begin{itemize}
 	\item $1 \le N \le 100.000$
 \end{itemize}
+\end{minipage}
 
 \end{document}

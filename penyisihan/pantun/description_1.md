@@ -1,6 +1,6 @@
 # Berbalas Pantun (Mudah)
 
-Murid-murid kelas 6 SD Chanek terbagi atas kelas 6A dan kelas B, yang masing-masing terdiri atas N murid. Murid ke-i di kelas 6A memiliki pantun sepanjang A[i] detik, dan murid ke-i di kelas 6B memiliki pantun sepanjang B[i] detik.
+Murid-murid kelas 6 SD Chanek terbagi atas kelas 6A dan kelas 6B, yang masing-masing terdiri atas N murid. Murid ke-i di kelas 6A memiliki pantun sepanjang A[i] detik, dan murid ke-i di kelas 6B memiliki pantun sepanjang B[i] detik.
 
 Pada acara perpisahan, setiap murid di kelas 6A akan berbalas pantun dengan setiap murid di kelas 6B. Untuk sepasang murid ke-i di kelas 6A dan murid ke-j di kelas 6B, total waktu yang dibutuhkan mereka untuk berbalas pantun adalah A[i] + B[j].
 

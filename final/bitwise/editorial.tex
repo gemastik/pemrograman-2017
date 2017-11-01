@@ -47,7 +47,7 @@ Bisa diselesaikan sesuai pembahasan di versi mudah
 
 \subsubsection{Kasus N > 2}
 
-Perhatikan bahwa setiap bit dapat kita selesaikan secara independen. Artinya, untuk setiap $0 <= i <= 31$, kita dapat mengerjakan soal ini dengan nilai baru $A_i, B_i, C_i$ yang mana $A_i$ bernilai 1 jika dan hanya jik ($A$ AND $2^i$) > 0, $B_i$ bernilai 1 jika dan hanya jik ($B$ AND $2^i$) > 0, dan $C_i$ bernilai 1 jika dan hanya jika ($C$ AND $2^i$) > 0. Untuk setiap $i$, kita akan mencari solusi $s[i]_1, s[i]_2, ..., s[i]_N$. Pada akhirnya, kita dapat menggabungkan solusi-solusi sebagai $$S_j \sum_{i=0}^{31} 2^i \times s[i]_j$$
+Perhatikan bahwa setiap bit dapat kita selesaikan secara independen. Artinya, untuk setiap $0 <= i <= 31$, kita dapat mengerjakan soal ini dengan nilai baru $A_i, B_i, C_i$ yang mana $A_i$ bernilai 1 jika dan hanya jika ($A$ AND $2^i$) > 0, $B_i$ bernilai 1 jika dan hanya jika ($B$ AND $2^i$) > 0, dan $C_i$ bernilai 1 jika dan hanya jika ($C$ AND $2^i$) > 0. Untuk setiap $i$, kita akan mencari solusi $s[i]_1, s[i]_2, ..., s[i]_N$. Pada akhirnya, kita dapat menggabungkan solusi-solusi sebagai $$S_j \sum_{i=0}^{31} 2^i \times s[i]_j$$
 
 Untuk setiap nilai $i$, kita tahu hanya ada 8 kemungkinan $A_i, B_i, C_i$ berbeda. Selain itu, kita bisa simpulkan bahwa nilai $A_i$ akan 1 jika seluruh $s[i]_j = 1$, nilai $B[i]_1$ akan 1 jika paling tidak ada 1 dari nilai $j$ yang memenuhi $s[i]_j = 1$, dan nilai $C_i$ akan 1 jika $j$ yang memenuhi $s[i]_j = 1$ berjumlah ganjil. Maka, kita dapat mencoba seluruh kemungkinan dan mendapatkan solusi sebagai berikut:
 

@@ -3,10 +3,10 @@
 
 % Per-problem variable definitions
 %TODO: Change placeholders to correct info.
-\newcommand{\problemName}{Judul Soal}
-\newcommand{\problemWriter}{Penulis soal}
+\newcommand{\problemName}{Operasi Bitwise}
+\newcommand{\problemWriter}{Alham Fikri Aji}
 \newcommand{\problemEditorialWriter}{Penulis editorial}
-\newcommand{\problemTags}{tema1, tema2}
+\newcommand{\problemTags}{Ad-hoc, Constructive}
 
 \begin{document}
 
@@ -15,28 +15,56 @@
     \addcontentsline{toc}{section}{\problemName} % for pdf indexing
     
     \begin{tabular}{rl}
-    Penulis soal : & \problemWriter \\
-    Penulis editorial : & \problemEditorialWriter \\
-    Tema : & \problemTags
+		Penulis soal : & \problemWriter \\
+	    Penulis editorial : & \problemEditorialWriter \\
+  		Tema : & \problemTags
     \end{tabular}
 \end{center}
 
 \subsection*{Catatan/Komentar}
 \addcontentsline{toc}{subsection}{Catatan/Komentar} % for pdf indexing
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial prologue
+Untuk pembahasan soal ini, kita definisikan solusi sebagai $S_1, S_2, ..., S_N$.
 
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
-Batasan: $...$ %TODO: Add constraints for easy version
+Batasan: $N = 2; 0 \le A, B, C \e 2^{20}$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for easy version
+Ada beberapa solusi yang dapat digunakan untuk menyelesaikan versi mudah. Salah satunya adalah dengan melakukan brute-force. Perhatikan bahwa N selalu 2. Lakukan perulangan untuk mencoba seluruh nilai $S_1$ dari 0 sampai $B$. Perulangan cukup dilakukan hingga $B$, karena nilai hasil operasi bitwise OR dua bilangan selalu lebih besar atau sama dengan hasil operasi AND ataupun XOR-nya. Untuk setiap nilai $S_1$, kita akan mencoba menghitung $S_2$. Perhatikan bahwa $S_1$ XOR $S_2 = C$, dan berdasarkan sifat XOR maka kita dapat menghitung $S_2 = C$ XOR $S_1$. Setelah didapatkan $S_1$ dan $S_2$, kita cukup melakukan validasi terhadap $A$ dan $B$. Kompleksitas solusi ini adalah $O(B)$.
 
 \subsection*{Versi Sulit}
 \addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
+Batasan: $1 \le N \le 50.000; 0 \le A, B, C \e 2^{31}$
 
-Batasan: $...$ %TODO: Add constraints for hard version
+Mari kita bagi persoalan ini menjadi 3 kasus.
+\subsubsection{Kasus N = 1}
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for hard version
+$S_1 = A$ jika dan hanya jika $A = B = C$. Selain itu tidak ada solusi.
+
+\subsubsection{Kasus N = 2}
+
+Bisa diselesaikan sesuai pembahasan di versi mudah
+
+\subsubsection{Kasus N > 2}
+
+Perhatikan bahwa setiap bit dapat kita selesaikan secara independen. Artinya, untuk setiap $0 <= i <= 31$, kita dapat mengerjakan soal ini dengan nilai baru $A_i, B_i, C_i$ yang mana $A_i$ bernilai 1 jika dan hanya jik ($A$ AND $2^i$) > 0, $B_i$ bernilai 1 jika dan hanya jik ($B$ AND $2^i$) > 0, dan $C_i$ bernilai 1 jika dan hanya jika ($C$ AND $2^i$) > 0. Untuk setiap $i$, kita akan mencari solusi $s[i]_1, s[i]_2, ..., s[i]_N$. Pada akhirnya, kita dapat menggabungkan solusi-solusi sebagai $$S_j \sum_{i=0}^{31} 2^i \times s[i]_j$$
+
+Untuk setiap nilai $i$, kita tahu hanya ada 8 kemungkinan $A_i, B_i, C_i$ berbeda. Selain itu, kita bisa simpulkan bahwa nilai $A_i$ akan 1 jika seluruh $s[i]_j = 1$, nilai $B[i]_1$ akan 1 jika paling tidak ada 1 dari nilai $j$ yang memenuhi $s[i]_j = 1$, dan nilai $C_i$ akan 1 jika $j$ yang memenuhi $s[i]_j = 1$ berjumlah ganjil. Maka, kita dapat mencoba seluruh kemungkinan dan mendapatkan solusi sebagai berikut:
+
+\begin{table}[]
+\centering
+\begin{tabular}{@{}llllll@{}}
+\hline
+A\_i & B\_i & C\_i & s{[}i{]}\_1 & s{[}i{]}\_2 & s{[}i{]}\_3 ... s{[}i{]}\_N       \\ \hline
+0    & 0    & 0    & 0           & 0           & 0                                 \\
+0    & 0    & 1    & \multicolumn{3}{l}{tidak ada solusi}                          \\
+0    & 1    & 0    & 1           & 1           & 0                                 \\
+0    & 1    & 1    & 1           & 0           & 0                                 \\
+1    & 0    & 0    & \multicolumn{3}{l}{tidak ada solusi}                          \\
+1    & 0    & 1    & \multicolumn{3}{l}{tidak ada solusi}                          \\
+1    & 1    & 0    & 1           & 1           & 1, hanya ada solusi jika N genap  \\
+1    & 1    & 1    & 1           & 1           & 1, hanya ada solusi jika N ganjil \\ \hline
+\end{tabular}
+\end{table}
 
 \end{document}

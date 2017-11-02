@@ -38,7 +38,40 @@ Keluarkan Q buah baris. Baris ke-i berisi jawaban dari pertanyaan ke-i, yaitu sa
 - "Ya", apabila akan menjadi abadi.
 - "Tidak", apabila tidak akan menjadi abadi.
 
-### Contoh Masukan
+### Contoh Masukan 1
+
+```
+6 6
+0 0 0 0 0 0
+100 100 100 100 100 100
+1 2
+1 3
+2 4
+4 5
+5 2
+3 6
+3
+1 50
+2 30
+3 10
+```
+
+### Contoh Keluaran 1
+
+```
+Ya
+Ya
+Tidak
+```
+
+### Penjelasan 1
+
+Pada pertanyaan pertama dan kedua, lawakan akan beredar pada pelawak-pelawak {2, 4, 5} secara abadi.
+
+Pada pertanyaan ketiga, lawakan akan dibaca oleh pelawak 6 dan ia tulis ulang pada keesokan harinya. Sayangnya, tidak ada seorang pun yang membacanya. Maka, persebaran lawakan ini berakhir.
+
+
+### Contoh Masukan 2
 
 ```
 5 5
@@ -55,7 +88,7 @@ Keluarkan Q buah baris. Baris ke-i berisi jawaban dari pertanyaan ke-i, yaitu sa
 5 85
 ```
 
-### Contoh Keluaran
+### Contoh Keluaran 2
 
 ```
 Ya
@@ -63,7 +96,7 @@ Tidak
 Ya
 ```
 
-### Penjelasan
+### Penjelasan 2
 
 Pada pertanyaan pertama, lawakan akan beredar pada pelawak-pelawak {2, 4, 5} secara abadi.
 

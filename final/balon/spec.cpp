@@ -198,6 +198,13 @@ protected:
         CASE(N = MAX_N, M = 4, asteroidBeltCase(MAX_COORD, 2000));
     }
 
+    void TestGroup7() {
+        Subtasks({2});
+
+        // Tricky cases
+        CASE(N = 2, M = 4, coords.push_back(getCoord(5, 1)), coords.push_back(getCoord(5, -1)));
+    }
+
 private:
     vector<int> getCoord(int x, int y) {
         vector<int> point;

@@ -1,38 +1,58 @@
+/*
+O(N) using DFS + memo
+ */
 #include <bits/stdc++.h>
 
 using namespace std;
 
 typedef long long LL;
 
-const int MAXN = 100001;
+const int MAXN = 50001;
+const int MAXQ = 50001;
 
 int T;
 int Hmin[MAXN];
 int Hmax[MAXN];
 int N, M, Q;
 vector<int> adjlist[MAXN];
-bool visited[MAXN];
 
-int dfs(int node, int h) {
-  int ret = 1;
-  visited[node] = true;
+bool inStack[MAXN];
+int dp[MAXN];
 
-  if ((Hmin[node] <= h) && (h <= Hmax[node])) {
-    // Spread
-    for (int next : adjlist[node]) {
-      if (!visited[next]) {
-        ret += dfs(next, h);
-      }
-    }
-  }
-
-  return ret;
-}
-
-void solve() {
+void clear() {
   for (int i = 0; i < MAXN; i++) {
     adjlist[i].clear();
   }
+}
+
+void dfsDp(int x) {
+  if (dp[x] != -1) {
+    return;
+  }
+
+  dp[x] = 0;
+  inStack[x] = true;
+
+  for (int i = 0; i < adjlist[x].size(); i++) {
+    int v = adjlist[x][i];
+
+    if (inStack[v]) {
+      dp[x] = 1;
+      break;
+    }
+
+    dfsDp(v);
+    if (dp[v] == 1) {
+      dp[x] = 1;
+      break;
+    }
+  }
+
+  inStack[x] = false;
+}
+
+void solve() {
+  clear();
 
   scanf("%d %d", &N, &M);
 
@@ -51,19 +71,21 @@ void solve() {
   }
 
   scanf("%d", &Q);
+  memset(dp, -1, sizeof(dp));
   for (int i = 0; i < Q; i++) {
     int x, h;
     scanf("%d %d", &x, &h);
 
     x--;
+    dfsDp(x);
 
-    memset(visited, 0, sizeof(visited));
-    printf("%d\n", dfs(x, h));
+    printf("%s\n", (dp[x] == 1) ? "Ya" : "Tidak");
   }
 }
 
 int main() {
-  scanf("%d", &T);
+  // scanf("%d", &T);
+  T = 1;
   for (int jt = 0; jt < T; jt++) {
     solve();
   }

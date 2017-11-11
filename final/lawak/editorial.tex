@@ -2,11 +2,16 @@
 \documentclass[../main_editorial.tex]{subfiles} % Inherits definitions from parent .tex file.
 
 % Per-problem variable definitions
-%TODO: Change placeholders to correct info.
-\newcommand{\problemName}{Judul Soal}
-\newcommand{\problemWriter}{Penulis soal}
-\newcommand{\problemEditorialWriter}{Penulis editorial}
-\newcommand{\problemTags}{tema1, tema2}
+\newcommand{\problemName}{Berbagi Lawakan}
+\newcommand{\problemWriter}{William Gozali}
+\newcommand{\problemEditorialWriter}{William Gozali}
+\newcommand{\problemTags}{\textit{graph}, \textit{memoization}}
+
+\newcommand{\tnode}{\textit{node}\xspace}
+\newcommand{\tNode}{\textit{Node}\xspace}
+\newcommand{\tcycle}{\textit{cycle}\xspace}
+\newcommand{\tCycle}{\textit{Cycle}\xspace}
+\newcommand{\bigO}[1]{\mathcal{O}(#1)} % stolen from Soko
 
 \begin{document}
 
@@ -24,19 +29,36 @@
 \subsection*{Catatan/Komentar}
 \addcontentsline{toc}{subsection}{Catatan/Komentar} % for pdf indexing
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial prologue
+Batasan kedua versi: $1 \le N, M, Q \le 50000$
 
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
-Batasan: $...$ %TODO: Add constraints for easy version
+Batasan: $\mathbf{A[i] = 0; B[i] = 100}$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for easy version
+Tugas kita adalah menentukan apakah suatu \tnode akan menuju ke suatu \tcycle.
+
+Cara sederhananya adalah melakukan \textit{Depth First Search} (DFS) mulai dari \tnode yang ditanyakan, yaitu \tnode $x$. Misalkan sejauh ini DFS telah membentuk \textit{path} dari $x$ sampai \tnode $p$. Untuk seluruh \tnode $q$ yang dapat dikunjungi langsung dari $p$, periksa apakah $q$ merupakan anggota dari \textit{path} yang dibentuk dari $x$ sampai $p$. Apabila ya, berarti lawakan dimulai dari \tnode $x$ menjadi abadi, dan tidak untuk kasus sebaliknya.
+
+Hasil penelusuran dari DFS dapat digunakan untuk menjawab pertanyaan berikutnya. Untuk setiap \tnode, catat informasinya sebagai salah satu dari nilai berikut:
+\begin{itemize}
+  \item 0, bila \tnode ini belum diketahui apakah ke depannya akan berakhir pada \tcycle.
+  \item 1, bila \tnode ini sudah diketahui akan berakhir pada \tcycle.
+  \item 2, bila \tnode ini sudah diketahui tidak akan berakhir pada \tcycle.
+\end{itemize}
+
+Awalnya seluruh \tnode meiliki informasi bernilai 0.
+
+Saat melakukan DFS untuk menjawab pertanyaan berikutnya, jika ditemui \tnode yang memiliki informasi bernilai 1 atau 2, maka DFS dapat dihentikan dan jawaban langsung ditemukan.
+
+Kompleksitas waktu solusi ini adalah $\bigO{M + N + Q}$.
 
 \subsection*{Versi Sulit}
 \addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
 
-Batasan: $...$ %TODO: Add constraints for hard version
+Batasan: $\mathbf{0 \le A[i] \le B[i] \le 100}$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for hard version
+Versi ini dapat diselesaikan dengan solusi pada versi mudah, tetapi dengan mempertimbangkan bahwa kali ini terdapat paling banyak $100$ \textit{graph} yang berbeda.
+
+Anda dapat menggunakan \textit{array} sebesar $100 \times 50000$ untuk menampung informasi dari tiap \tnode, atau memproses seluruh pertanyaan dari yang nilai humornya paling rendah ke paling besar. Kompleksitas waktu solusi ini adalah $\bigO{Q + 100(N + M)}$, atau tetap dapat dituliskan dengan $\bigO{M + N + Q}$.
 
 \end{document}

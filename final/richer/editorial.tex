@@ -2,11 +2,10 @@
 \documentclass[../main_editorial.tex]{subfiles} % Inherits definitions from parent .tex file.
 
 % Per-problem variable definitions
-%TODO: Change placeholders to correct info.
-\newcommand{\problemName}{Judul Soal}
-\newcommand{\problemWriter}{Penulis soal}
-\newcommand{\problemEditorialWriter}{Penulis editorial}
-\newcommand{\problemTags}{tema1, tema2}
+\newcommand{\problemName}{Harta Kekayaan}
+\newcommand{\problemWriter}{Ashar Fuadi}
+\newcommand{\problemEditorialWriter}{Anthony}
+\newcommand{\problemTags}{\textit{lowest common ancestor}, \textit{range query}}
 
 \begin{document}
 
@@ -24,19 +23,45 @@
 \subsection*{Catatan/Komentar}
 \addcontentsline{toc}{subsection}{Catatan/Komentar} % for pdf indexing
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial prologue
+Untuk dapat menyelesaikan soal ini diperlukan pengetahuan mengenai \textit{lowest common ancestor} (LCA) dan struktur data untuk melakukan \textit{range query} seperti \textit{Segment Tree} dan \textit{Fenwick Tree}.
+
+Secara singkat, inti permasalahan yang perlu diselesaikan pada soal ini yaitu jika LCA dari karyawan p dan q adalah LCA(p, q), hitung banyaknya atasan dari LCA(p, q) maupun LCA(p, q) sendiri yang mempunyai kekayaan lebih dari max(R[p], R[q]). Jumlahkan jawaban untuk setiap pasang karyawan p dan q.
+
+Batasan kedua versi:
+\begin{itemize}
+	 \item $1 \le P[i] < i$ untuk $i > 1$
+	 \item $1 \le R[i] \le 100.000$
+\end{itemize}
 
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
-Batasan: $...$ %TODO: Add constraints for easy version
+Batasan: $\mathbf{2 \le N \le 2.000}$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for easy version
+Terdapat beberapa pendekatan yang dapat digunakan untuk menyelesaikan versi mudah dari soal ini. Salah satunya adalah menggunakan cara berikut.
+
+Untuk setiap karyawan, buat daftar maksimum kekayaan setiap dua orang bawahannya yang mempunyai LCA sama dengan dirinya. Dengan kata lain, untuk setiap pasang karyawan p dan q, simpan informasi max(R[p], R[q]) pada karyawan LCA(p, q) (misalnya disimpan pada suatu \textit{list}).
+
+Setelah itu, lakukan \textit{traversal} dari \textit{root} (karyawan yang tidak mempunyai atasan). Dengan bantuan struktur data yang mendukung \textit{range sum query}, setiap memasuki sebuah \textit{node} u, lakukan hal berikut:
+\begin{enumerate}
+	\item Tambahkan nilai 1 pada indeks R[u] yang berarti terdapat tambahan 1 orang karyawan dengan kekayaan R[u].
+	\item Untuk setiap informasi max(R[p], R[q]) yang telah disimpan pada karyawan u, hitung banyaknya bilangan yang lebih besar dari max(R[p], R[q]) (\textit{query} jumlahan bilangan pada posisi max(R[p], R[q]) + 1 sampai nilai maksimum kekayaan) dan tambahkan ke jawaban.
+	\item Kunjungi setiap anak dari \textit{node} u (rekursif).
+	\item Kurangkan nilai 1 pada indeks R[u] karena karyawan ke-u telah selesai diproses.
+\end{enumerate}
 
 \subsection*{Versi Sulit}
 \addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
 
-Batasan: $...$ %TODO: Add constraints for hard version
+Batasan: $\mathbf{2 \le N \le 100.000}$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for hard version
+Untuk menyelesaikan versi sulit dari soal ini, diperlukan pemahaman terhadap konsep \textit{lowest common ancestor} dari dua buah \textit{nodes} untuk menghindari cara perhitungan yang dapat dilakukan pada versi mudah.
+
+Pada versi mudah, perhitungan jawaban dapat dilakukan dengan mencoba mencari LCA dari setiap pasang karyawan. Untuk versi sulit, perhitungan yang dilakukan merupakan kebalikan dari versi mudah, yaitu untuk setiap karyawan, berapa banyak pasangan karyawan bawahannya yang nilai maksimum kekayaan keduanya kurang dari kekayaan dirinya.
+
+Salah satu pendekatan yang dapat digunakan adalah dengan memroses karyawan-karyawan dengan nilai kekayaan dari yang tertinggi ke terrendah. Saat sedang memproses karyawan-karyawan dengan kekayaan $K$, tandai semua karyawan tersebut sebagai sedang diproses. Untuk setiap karyawan tersebut, cari berapa banyak karyawan bawahannya yang belum diproses, anggap ada sebanyak $X$, maka tambahkan $\frac{X (X - 1)}{2}$ ke jawaban. Rumus $\frac{X (X - 1)}{2}$ merupakan banyaknya cara pemilihan 2 orang karyawan dari $X$ karyawan.
+
+Agar dapat menghitung banyaknya bawahan yang belum diproses dengan mudah, representasi hubungan atasan-bawahan dapat diubah menjadi suatu daftar yang linier menggunakan teknik yang disebut \textit{Euler Tour Tree}. \textit{Euler Tour Tree} dilakukan menggunakan \textit{pre-order tree traversal} dan menyimpan posisi atau indeks saat memasuki dan meninggalkan sebuah \textit{node}.
+
+Jika indeks ketika memasuki sebuah \textit{node} u adalah B[u] dan ketika meninggalkannya adalah E[u], maka setiap \textit{node} pada \textit{sub-tree} dengan \textit{root} u akan mempunyai nilai B[] dan E[] di dalam rentang [B[u], E[u]], sehingga untuk menghitung banyaknya bawahan u yang belum diproses, cukup lakukan \textit{range sum query} pada rentang [B[u], E[u]].
 
 \end{document}

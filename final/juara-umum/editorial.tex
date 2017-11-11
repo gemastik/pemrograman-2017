@@ -2,11 +2,13 @@
 \documentclass[../main_editorial.tex]{subfiles} % Inherits definitions from parent .tex file.
 
 % Per-problem variable definitions
-%TODO: Change placeholders to correct info.
-\newcommand{\problemName}{Judul Soal}
-\newcommand{\problemWriter}{Penulis soal}
-\newcommand{\problemEditorialWriter}{Penulis editorial}
-\newcommand{\problemTags}{tema1, tema2}
+\newcommand{\problemName}{Juara Umum}
+\newcommand{\problemWriter}{Alham Fikri Aji}
+\newcommand{\problemEditorialWriter}{William Gozali}
+\newcommand{\problemTags}{Ad-hoc, Constructive}
+
+\newcommand{\bigO}[1]{\mathcal{O}(#1)} % stolen from Soko
+\newcommand{\Mod}[1]{\ \mathrm{mod}\ #1}
 
 \begin{document}
 
@@ -24,19 +26,100 @@
 \subsection*{Catatan/Komentar}
 \addcontentsline{toc}{subsection}{Catatan/Komentar} % for pdf indexing
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial prologue
+Terdapat beberapa solusi untuk menyelesaikan soal ini. Setidaknya, tiga orang yang terlibat dalam pembuatan soal ini memiliki solusi yang berbeda. Solusi yang dibahas pada tulisan ini adalah dari Alham Fikri Aji.
+
+Misalkan universitas ke-$i$ dinyatakan sebagai $u_i$, dan cabang lomba ke-$i$ dinyatakan sebagai $c_i$.
+
+Batasan kedua versi: $1 \le N \le 50000; 3 \le M \le 50000; K \le N$
 
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
-Batasan: $...$ %TODO: Add constraints for easy version
+Batasan: $\mathbf{K = 2}$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for easy version
+Untuk mudahnya, $u_1$ dan $u_2$ diberikan $\lfloor N/2 \rfloor$ buah medali emas dan perak. Medali perunggu sebanyak $\lfloor N/2 \rfloor$ buah tidak dapat diberikan kepada $u_1$ dan $u_2$, sebab mereka menjadi perlu memenangkan $3 \times \lfloor N/2 \rfloor$, yang mana akan melebihi $N$ (banyaknya lomba). Untuk mengatasi masalah ini, kita dapat memberikan seluruh medali perunggu kepada universitas yang bukan juara umum, yaitu $u_3$. Hal ini selalu dapat dilakukan, sebab dijamin paling sedikit terdapat $3$ universitas.
+
+Sebagai contoh, berikut pengaturan pemenang untuk $N=4$:
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c||c|c|c|}
+\hline  & Emas & Perak & Perunggu \\ 
+\hline $c_1$ & $u_1$ & $u_2$ & $u_3$ \\ 
+\hline $c_2$ & $u_2$ & $u_1$ & $u_3$ \\ 
+\hline $c_3$ & $u_1$ & $u_2$ & $u_3$ \\ 
+\hline $c_4$ & $u_2$ & $u_1$ & $u_3$ \\ 
+\hline 
+\end{tabular} 
+\end{table}
+
+Cara ini dapat digunakan untuk $N$ bernilai genap. Untuk $N$ bernilai ganjil, terdapat sisa sebuah medali emas, perak, dan perunggu yang harus dibagikan. Medali emas sisa ini harus diberikan kepada universitas selain $u_1$ dan $u_2$. Kita dapat memberikannya kepada $u_3$.
+
+Untuk membagikan medali perak dan perunggu yang tersisa, kita dapat sedikit mengubah konfigurasi pemenang lombanya dengan cara berikut:
+\begin{enumerate}
+  \item Berikan medali perak kepada $u_2$.
+  \item Berikan medali perunggu kepada $u_1$.
+  \item Tukarkan pemenang medali perak dan perunggu pada $c_1$, sehingga kini $u_3$ memenangkan perak dan $u_2$ memenangkan perunggu.
+\end{enumerate}
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c||c|c|c|}
+\hline  & Emas & Perak & Perunggu \\ 
+\hline $c_1$ & $u_1$ & $\mathbf{u_3}$ & $\mathbf{u_2}$ \\ 
+\hline $c_2$ & $u_2$ & $u_1$ & $u_3$ \\ 
+\hline $c_3$ & $u_1$ & $u_2$ & $u_3$ \\ 
+\hline $c_4$ & $u_2$ & $u_1$ & $u_3$ \\ 
+\hline $c_5$ & $u_3$ & $\mathbf{u_2}$ & $\mathbf{u_1}$ \\ 
+\hline 
+\end{tabular} 
+\end{table}
+
+Khusus untuk kasus $N=1$ dan $N=3$, tidak mungkin ada konfigurasi pemenang yang memungkinkan terdapat $2$ juara umum.
 
 \subsection*{Versi Sulit}
 \addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
 
-Batasan: $...$ %TODO: Add constraints for hard version
+Batasan: $\mathbf{1 \le K \le M}$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for hard version
+\subsubsection*{Kasus $K = 1$}
+Dapat diselesaikan dengan memberikan seluruh medali emas kepada $u_1$, seluruh medali perak kepada $u_2$, dan seluruh medali perunggu kepada $u_3$.
 
+\subsubsection*{Kasus $K = 2$}
+Dapat diselesaikan dengan solusi versi mudah.
+
+\subsubsection*{Kasus $K \ge 3$}
+Kita dapat membagikan $\lfloor N / K \rfloor$ medali emas, perak, dan perunggu kepada $u_1, u_2, ..., u_K$. Hal ini kini dapat dilakukan sebab dipastikan $(3 \times \lfloor N / K \rfloor) \le N$. Misalkan $N = 21$ dan $K = 4$, penentuan pemenangnya dapat diatur dengan pola berotasi dan berulang berikut untuk $(K \times \lfloor N / K \rfloor)$ lomba pertama:
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c||c|c|c|}
+\hline  & Emas & Perak & Perunggu \\ 
+\hline $c_1$ & $u_1$ & $u_2$ & $u_3$ \\ 
+\hline $c_2$ & $u_2$ & $u_3$ & $u_4$ \\ 
+\hline $c_3$ & $u_3$ & $u_4$ & $u_1$ \\ 
+\hline $c_4$ & $u_4$ & $u_1$ & $u_2$ \\ 
+\hline $c_5$ & $u_1$ & $u_2$ & $u_3$ \\ 
+\hline $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+\hline 
+\end{tabular} 
+\end{table}
+
+Medali emas, perak, dan perunggu yang tersisa adalah masing-masing sebanyak sisa bagi $N$ terhadap $K$, yang akan dituliskan sebagai $N \Mod K$.
+
+Medali pada cabang lomba yang tersisa perlu diberikan kepada $M-K$ universitas di peringkat selanjutnya. Untuk menjamin tidak ada satupun dari universitas ini yang memiliki medali sebanyak juara umum, perlu diatur sehingga setiap universitas memenuhi salah satu syarat berikut:
+
+\begin{enumerate}
+    \item Memiliki medali emas sebanyak $\lfloor N / K \rfloor$, medali perak paling banyak $(\lfloor N / K \rfloor - 1)$, dan medali perunggu sebanyak apapun selama masih valid.
+    \item Memiliki medali emas paling banyak $(\lfloor N / K \rfloor - 1)$, dan boleh memiliki medali perak atau perunggu sebanyak apapun selama masih valid.
+\end{enumerate}
+
+Kita dapat memilih salah satu universitas, misalnya $u_{K+1}$, untuk mendapatkan medali emas sebanyak $\min{(\lfloor N / K \rfloor - 1, N \Mod K)}$ dan mendapatkan medali perak/perunggu sebanyak mungkin. Medali emas sisanya dibagi rata kepada universitas lainnya, masing-masing paling banyak $\lfloor N / K \rfloor$.
+
+Strategi berikut dapat digunakan untuk penentuan pemenang pada masing-masing $N \Mod K$ cabang lomba yang tersisa. Misalnya untuk penentuan pemenang $c_i$:
+\begin{enumerate}
+  \item Jika medali emas masih dapat diberikan kepada $u_{K+1}$, maka pemenang medali emas adalah $u_{K+1}$. Selain daripada itu, berikan kepada universitas lainnya yang masih belum menerima emas sebanyak $\lfloor N / K \rfloor$.
+  \item Jika $u_{K+1}$ menerima medali emas, untuk sementara berikan medali perak kepada $u_{K+1}$. Kemudian tukarkan pemenang medali perak $c_i$ dengan suatu cabang lomba $c_x$, yang mana pemenang medali perak pada $c_x$ bukan $u_{K+1}$. Sementara ketika $u_{K+1}$ tidak menerima medali emas, berikan medali perak kepadanya.
+  \item Untuk sementara berikan medali perunggu kepada $u_{K+1}$. Kemudian tukarkan pemenang medali perunggu $c_i$ dengan suatu cabang lomba $c_x$, yang mana pemenang medali perunggu pada $c_x$ bukan $u_{K+1}$.
+\end{enumerate}
+
+Apabila seluruh universitas telah menerima medali emas sebanyak yang mereka bisa, tetapi medali emas masih tersisa, berarti jawabannya adalah mustahil.
 \end{document}

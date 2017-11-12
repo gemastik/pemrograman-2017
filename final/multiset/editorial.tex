@@ -2,11 +2,10 @@
 \documentclass[../main_editorial.tex]{subfiles} % Inherits definitions from parent .tex file.
 
 % Per-problem variable definitions
-%TODO: Change placeholders to correct info.
-\newcommand{\problemName}{Judul Soal}
-\newcommand{\problemWriter}{Penulis soal}
-\newcommand{\problemEditorialWriter}{Penulis editorial}
-\newcommand{\problemTags}{tema1, tema2}
+\newcommand{\problemName}{Pak Grandi}
+\newcommand{\problemWriter}{Jonathan Irvin Gunawan}
+\newcommand{\problemEditorialWriter}{Anthony}
+\newcommand{\problemTags}{\textit{range query}}
 
 \begin{document}
 
@@ -24,19 +23,62 @@
 \subsection*{Catatan/Komentar}
 \addcontentsline{toc}{subsection}{Catatan/Komentar} % for pdf indexing
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial prologue
+Batasan kedua versi:
+\begin{itemize}
+	\item $1 \le P[i] \le 2$
+	\item $1 \le L[i], R[i] \le 10^9$
+	\item $1 \le K[i] \le 10^9$
+	\item $1 \le N \le 50.000$
+\end{itemize}
 
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
-Batasan: $...$ %TODO: Add constraints for easy version
+Batasan: $\mathbf{L[i]=R[i]}$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for easy version
+Perhatikan bahwa untuk versi mudah pada soal ini, operasi-operasi dengan $L[i] > N$ dapat diabaikan.
+
+Penyelesaian versi ini cukup sederhana. Salah satu cara yang dapat digunakan adalah sebagai berikut:
+
+\begin{enumerate}
+	\item Inisialisasi sebuah \textit{set} dengan bilangan-bilangan dari 1 hingga N + 1 dan sebuah \textit{array} untuk menyimpan nilai banyaknya kemunculan masing-masing bilangan dari 1 sampai N.
+	\item Untuk setiap operasi:
+		\begin{itemize}
+			\item Tambah: tambahkan nilai kemunculan L[i] sebanyak K[i]. Jika L[i] terdapat dalam \textit{set}, hapus L[i] dari \textit{set}.
+			\item Hapus: kurangkan nilai kemunculan L[i] sebanyak K[i] (jika hasilnya bernilai kurang dari 0, nilai kemunculan dianggap 0). Jika nilai kemunculan L[i] bernilai 0, tambahkan L[i] ke dalam \textit{set}.
+		\end{itemize}
+		Setiap selesai operasi, cukup ambil elemen terkecil dalam \textit{set}. Perhatikan bahwa \textit{set} tersebut digunakan untuk menyimpan bilangan-bilangan yang \textbf{tidak} sedang berada dalam \textit{multiset}.
+\end{enumerate}
 
 \subsection*{Versi Sulit}
 \addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
 
-Batasan: $...$ %TODO: Add constraints for hard version
+Batasan: $\mathbf{L[i] \le R[i]}$
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for hard version
+Untuk pengerjaan versi sulit pada soal ini, salah satu pendekatan yang dapat digunakan yaitu dengan memroses secara \textit{offline}.
+
+Mengerjakan secara \textit{offline} maksudnya adalah dengan membaca semua perintah atau operasi yang perlu dilakukan terlebih dahulu. Misalnya untuk soal ini berarti semua nilai (P, L, R, K) akan disimpan terlebih dahulu tanpa menghitung jawaban secara langsung.
+
+Setelah semua interval [L, R] dibaca, maka interval-interval tersebut dapat dikompres. Sebagai kasus umum (tidak terbatas pada soal ini), jika terdapat N buah bilangan berbeda, bilangan-bilangan tersebut akan diubah menjadi bilangan dari 1 hingga N (atau lainnya sesuai kebutuhan). Contohnya yaitu jika terdapat [1, 6, 8, 10, 100], dapat dibuat pemetaan satu-satu berikut:
+\begin{itemize}
+	\item $1 \leftrightarrow 1$
+	\item $6 \leftrightarrow 2$
+	\item $8 \leftrightarrow 3$
+	\item $10 \leftrightarrow 4$
+	\item $100 \leftrightarrow 5$
+\end{itemize}
+
+Karena paling banyak terdapat 2N batas-batas interval, pada hasil kompresi akan terdapat paling banyak 2N bilangan pula, sehingga telah dapat dilakukan operasi-operasi menggunakan struktur data seperti \textit{segment tree}.
+
+\textit{Node} pada \textit{segment tree} perlu mengandung informasi mengenai apakah interval yang dicakup lengkap atau tidak sehingga pada saat \textit{query} hanya membutuhkan waktu $\bigO{\log N}$. Langkah \textit{query} pada suatu \textit{node} adalah:
+\begin{itemize}
+	\item jika \textit{node} tersebut mempunyai anak:
+		\begin{itemize}
+			\item jika interval yang dicakup anak kirinya lengkap, telusuri anak kanan
+			\item jika tidak lengkap, telusuri anak kiri
+		\end{itemize}
+	\item jika tidak mempunyai anak (dengan kata lain hanya mencakup 1 posisi), maka bagian ini merupakan jawaban.
+\end{itemize}
+
+Dengan cara ini maka secara keseluruhan untuk menyelesaikan $N$ buah operasi membutuhkan waktu $\bigO{N \log N}$
 
 \end{document}

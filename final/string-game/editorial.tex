@@ -2,11 +2,10 @@
 \documentclass[../main_editorial.tex]{subfiles} % Inherits definitions from parent .tex file.
 
 % Per-problem variable definitions
-%TODO: Change placeholders to correct info.
-\newcommand{\problemName}{Judul Soal}
-\newcommand{\problemWriter}{Penulis soal}
-\newcommand{\problemEditorialWriter}{Penulis editorial}
-\newcommand{\problemTags}{tema1, tema2}
+\newcommand{\problemName}{Kuis Kata}
+\newcommand{\problemWriter}{Pusaka Kaleb Setyabudi}
+\newcommand{\problemEditorialWriter}{Pusaka Kaleb Setyabudi}
+\newcommand{\problemTags}{\textit{Sprague-Grundy theorem, dynamic programming}}
 
 \begin{document}
 
@@ -24,19 +23,131 @@
 \subsection*{Catatan/Komentar}
 \addcontentsline{toc}{subsection}{Catatan/Komentar} % for pdf indexing
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial prologue
+Batasan yang berlaku pada versi mudah dan sulit:
+
+\begin{itemize}
+	\item 1 $ \leq $ T $ \leq $ 100
+	\item S[1] terdiri atas 1 hingga L karakter abjad \texttt{a} - \texttt{z}
+	\item Karakter-karakter pada S[1] terurut tidak menurun berdasarkan abjad
+\end{itemize}
+
+Pembahasan di bawah ditulis dengan asumsi bahwa pembaca telah memahami mengenai \textit{Grundy number} dan \textit{Sprague-Grundy theorem}.\footnote{untuk referensi, dapat mengacu pada \url{https://www.hackerrank.com/topics/game-theory-and-grundy-numbers/} dan \url{http://www.gabrielnivasch.org/fun/combinatorial-games/sprague-grundy}.}
 
 \subsection*{Versi Mudah}
 \addcontentsline{toc}{subsection}{Versi Mudah} % for pdf indexing
-Batasan: $...$ %TODO: Add constraints for easy version
+Batasan: $ N = 2; 1 \le L \le 5 $
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for easy version
+Definisikan suatu fungsi $ g(S) $ yang menyatakan \textit{Grundy number} dari suatu \textit{string} $ S $. Jawaban dari versi mudah dapat didapat dengan mencari banyaknya \textit{string} $ S' $ yang memenuhi $ g(S')\ \mathrm{xor}\ g(S[0]) = 0 $. \textit{Bruteforce} dapat dilakukan untuk mendapatkan \textit{string-string} $ S' $.
+
+Perhatikan bahwa prekomputasi terhadap banyaknya \textit{string} $ S' $ yang memenuhi $ g(S') = x $ untuk suatu \textit{Grundy number} $ x $ diperlukan untuk mendapatkan \textit{accepted} pada versi ini.
+
+Sehingga, kompleksitas solusi adalah $ \bigO{(\mathrm{banyak\ kemungkinan\ \textit{string}\ valid}) + T} $.
+
+\textit{Fun fact:} \textit{Grundy number} terbesar untuk suatu \textit{string} $ S' $ adalah 25. Pembuktian diserahkan kepada pembaca.
 
 \subsection*{Versi Sulit}
 \addcontentsline{toc}{subsection}{Versi Sulit} % for pdf indexing
 
-Batasan: $...$ %TODO: Add constraints for hard version
+Batasan: $ 1 \le N \le 1.000.000.000; 1 \le L \le 10.000 $
 
-Lorem ipsum dolor sit amet ... %TODO: Add editorial for hard version
+Solusi juri dan pembahasan untuk versi sulit dibuat berdasarkan bentuk ekivalen/transformasi soal asli yaitu sebagai berikut.
+
+\subsubsection*{Pendahuluan: Transformasi Soal}
+\addcontentsline{toc}{subsubsection}{Pendahuluan: Transformasi Soal} % for pdf indexing
+
+Suatu \textit{string} $ A = a_1a_2a_3\mathellipsis a_{|A|} $ dapat diubah bentuknya menjadi barisan $ A' = (a'_1, a'_2, a'_3, \mathellipsis, a'_{|A|}, a'_{|A|+1}) $ dengan $ a'_1 = \mathrm{jarak}(a_1, \mathtt{a}), a'_{|A|+1} = \mathrm{jarak}(a_{|A|}, \mathtt{z}), $ dan $ a'_i = \mathrm{jarak}(a_i, a_{i-1}) $ untuk $ 2 \le i \le |A| $. Sebagai contoh, \textit{string}
+
+$$
+A = \mathtt{aku}
+$$
+
+ekivalen dengan barisan
+
+$$
+A' = (0, 10, 10, 5).
+$$
+
+Untuk selanjutnya, istilah ``\textit{state}'' akan dipakai secara ekivalen dengan istilah ``barisan''.
+
+Pada bentuk yang diubah ini, perhatikan bahwa suatu langkah mengganti karakter $ a_i $ dengan $ a_i+x $ pada \textit{string} $ A $ ekivalen dengan menambah nilai $ a'_i $ sebanyak $ x $ dan mengurangi nilai $ a'_{i + 1} $ sebanyak $ x $. Sebagai contoh, jika \textit{string} $ \mathtt{aku} $ di atas diubah menjadi $ \mathtt{anu} $, maka $ A' $ berubah menjadi
+
+$$
+A'' = (0, 13, 7, 5).
+$$
+
+Dengan bentuk demikian, kondisi selesai dari kuis kata adalah jika barisan $ A' $ berbentuk
+
+$$
+A' = (25, 0, 0, \mathellipsis).
+$$
+
+atau ekivalen dengan \textit{string}
+
+$$
+\mathtt{zzz}\mathellipsis
+$$
+
+\subsubsection*{Pendahuluan: \textit{\textbf{Grundy Number}} untuk $ \mathbf{\mathit{A}} $}
+\addcontentsline{toc}{subsubsection}{Pendahuluan: Grundy Number untuk A} % for pdf indexing
+
+\textbf{Observasi 1.} $ A = (*, 0, 0, 0, \mathellipsis) $ dengan $ * $ sembarang bilangan bulat nonnegatif, memiliki \textit{Grundy number} 0 (\textit{losing state}).
+
+\textbf{Lemma 1.} $ A = (*, 0, *, 0, 0, 0, \mathellipsis) $ memiliki \textit{Grundy number} 0 (\textit{losing state}).
+
+Bukti Lemma 1: Perhatikan bahwa pemain pertama hanya dapat melakukan langkah sehingga $ A $ berubah menjadi $ (*, a, b, 0, 0, 0, \mathellipsis) $ (memindahkan sebanyak $ a $ dari posisi ketiga). Pada langkah selanjutnya, pemain kedua dapat selalu memastikan kemenangan dengan cara mengikuti langkah pemain pertama yaitu dengan memindahkan $ a $ tersebut ke posisi selanjutnya/di depannya (yaitu menjadi $ (*, 0, b, 0, 0, 0, \mathellipsis) $). Pola tersebut terus dilakukan oleh pemain kedua hingga keadaan permainan menjadi $ (*, 0, 0, 0, \mathellipsis) $ (keadaan dalam Observasi 1).
+
+\textbf{Corollary 1.} $ A = (*, 0, *, 0, *, 0, *, \mathellipsis) $  memiliki \textit{Grundy number} 0 (\textit{losing state}).
+
+\textbf{Lemma 2.} $ A = (*, a, 0, 0, 0, \mathellipsis) $ untuk $ a \ge 1 $ adalah \textit{winning state} dengan \textit{Grundy number} $ a $.
+
+Bukti Lemma 2: Untuk sembarang $ a $, perhatikan bahwa \textit{state} $ A $ dapat mengunjungi tepat $ a - 1 $ \textit{state} lainnya yaitu $ (*, 0, 0, 0, \mathellipsis), (*, 1, 0, 0, 0, \mathellipsis), \mathellipsis, (*, a-1, 0, 0, 0, \mathellipsis) $ dengan masing-masing memiliki \textit{Grundy number} sesuai dengan bilangan pada posisi kedua. Oleh karena itu, \textit{Grundy number} dari $ (*, a, 0, 0, 0, \mathellipsis) $ adalah $ \mathrm{mex}(\{0, 1, 2, \mathellipsis, a - 1\}) = a $. Secara intuisi, \textit{state} $ A $ adalah \textit{winning state} karena pemain pertama dapat mengubah $ A $ menjadi $ (*, 0, 0, 0, \mathellipsis) $ yang adalah \textit{losing state} (Observasi 1).
+
+\textbf{Corollary 2.} $ A = (*, a, *, 0, *, 0, *, 0, \mathellipsis) $ untuk $ a \ge 1 $ adalah \textit{winning state} dengan \textit{Grundy number} $ a $.
+
+\textbf{Corollary 3.} \textit{State} $ A = (*, a, *, 0, *, 0, *, 0, \mathellipsis) $ ekivalen dengan \textit{state} $ A' = (0, a, 0, 0, 0, \mathellipsis) $.
+
+\textbf{Lemma 3.} \textit{State} $ A = (0, a, 0, b, 0, 0, 0, \mathellipsis) $ ekivalen dengan gabungan dari dua \textit{state} yang saling independen $ B = (0, a, 0, 0, 0, \mathellipsis) $ dan $ C = (0, b, 0, 0, 0, \mathellipsis) $. Dengan kata lain, \textit{Grundy number} keduanya bernilai sama ($ g(A) = g(B)\ \mathrm{xor}\ g(C) $).
+
+Bukti Lemma 3: Salah satu pembuktian dapat dilakukan melalui \textit{bruteforce} terhadap ke $ 26\times 26 $ kemungkinan nilai $ a $ dan $ b $ yang ada. \textit{State} $ A $ dapat didekomposisi menjadi dua \textit{state} lain tersebut karena selama permainan, pengurangan terhadap suatu bilangan pada posisi genap tertentu tidak akan mempengaruhi bilangan pada posisi genap lainnya (Corollary 3).
+
+Sebagai contoh, perubahan terhadap \textit{state}
+
+$$
+	A = (0, a, 0, b, 0, 0, 0, \mathellipsis)
+$$
+
+menjadi 
+
+$$
+	A' = (0, a, b', b - b', 0, 0, 0, \mathellipsis)
+$$
+
+adalah ekivalen dengan perubahan \textit{state} $ A $ menjadi
+
+$$
+	A'' = (0, a, 0, b - b', 0, 0, 0, \mathellipsis).
+$$
+
+Perhatikan bahwa terdapat dua kesimpulan: (1) \textit{state} $ A' $ dan \textit{state} $ A'' $ ekivalen, dan (2) nilai $ b' $ yang merupakan pengurang dari $ b $ (suatu bilangan pada posisi genap) tidak akan mempengaruhi bilangan posisi genap lainnya.
+
+\textbf{Corollary 4.} \textit{State} $ A = (*, x_2, *, x_4, *, x_6, \mathellipsis) $ memiliki \textit{Grundy number} yaitu $g(A) = x_2\ \mathrm{xor}\ x_4\ \mathrm{xor}\ x_6\ \mathrm{xor}\ \mathellipsis $.
+
+\subsubsection*{Solusi}
+\addcontentsline{toc}{subsubsection}{Solusi} % for pdf indexing
+
+Berdasarkan \textit{Sprague-Grundy theorem}, solusi untuk versi sulit dapat dirumuskan menjadi mencari banyaknya kombinasi \textit{string} $ S[2], S[3], \mathellipsis, S[N] $ sehingga $ g(S[1])\ \mathrm{xor}\ g(S[2])\ \mathrm{xor}\ g(S[3])\ \mathrm{xor}\ \mathellipsis\ \mathrm{xor}\ g(S[N]) = 0$. Tahap-tahap pencarian nilai tersebut dapat dicapai melalui perumusan DP berikut.
+
+$$
+f(n, r) = 
+\begin{cases}
+0, & n = 0 \land r \neq 0 \\
+1, & n = 0 \land r = 0 \\
+\displaystyle \sum_{i=0}^{25}f(n - 1, r\ \mathrm{xor}\ i) * h(L, i), & n > 0
+\end{cases}
+$$
+
+dengan $ f(n, r) $ menyatakan banyaknya kemunkinan $ n $ \textit{string} yang memiliki \textit{Grundy number} $ r $ dan $ h(n, r) $ menyatakan banyaknya \textit{string} dengan panjang maksimal $ n $ yang memiliki \textit{Grundy number} $ r $. Perhatikan bahwa $ h(n, r) $ juga dapat dikomputasi menggunakan \textit{dynamic programming}. Jawaban terdapat pada $ f(N - 1, g(S[1])) $.
+
+Namun, implementasi DP di atas secara mentah tidak akan mendapatkan \textit{accepted} pada versi ini karena batasan $ N $ yang sangat besar. Untuk mendapatkan \textit{accepted}, penghitungan fungsi $ f $ di atas perlu dilakukan melalui perkalian matriks.\footnote{untuk referensi, silakan kunjungi \url{http://fusharblog.com/solving-linear-recurrence-for-programming-contest/}.}
 
 \end{document}

@@ -2,7 +2,6 @@
 \documentclass[../main_editorial.tex]{subfiles} % Inherits definitions from parent .tex file.
 
 % Per-problem variable definitions
-%TODO: Change placeholders to correct info.
 \newcommand{\problemName}{Operasi Bitwise}
 \newcommand{\problemWriter}{Alham Fikri Aji}
 \newcommand{\problemEditorialWriter}{Alham Fikri Aji}
@@ -54,7 +53,7 @@ Perhatikan bahwa setiap bit dapat kita selesaikan secara independen. Artinya, un
 
 Untuk setiap nilai $i$, kita tahu hanya ada 8 kemungkinan $A_i, B_i, C_i$ berbeda. Selain itu, kita bisa simpulkan bahwa nilai $A_i$ akan 1 jika seluruh $s[i]_j = 1$, nilai $B[i]_1$ akan 1 jika paling tidak ada 1 dari nilai $j$ yang memenuhi $s[i]_j = 1$, dan nilai $C_i$ akan 1 jika $j$ yang memenuhi $s[i]_j = 1$ berjumlah ganjil. Maka, kita dapat mencoba seluruh kemungkinan dan mendapatkan solusi sebagai berikut:
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline

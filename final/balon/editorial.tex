@@ -42,10 +42,10 @@ Batasan: $\mathbf{N = 1}$
 
 Solusi optimal dicapai apabila segmen garis $OT_1$ dijadikan garis yang tegak lurus terhadap $P_1P_2$.
 
-\begin{figure*}[!h]
+\begin{figure}[H]\centering
 	\centering
 	\includegraphics[width=0.35\textwidth]{balon/asset/easy.pdf}
-\end{figure*}
+\end{figure}
 
 Ukuran dari balon poligon adalah $||OP_1||$, yang dapat dicari dengan cara berikut:
 
@@ -62,14 +62,14 @@ Batasan: $\mathbf{1 \le N \le 100}$
 
 Untuk versi sulit, definisikan sebuah variabel tambahan, yaitu $\alpha$ yang menyatakan sudut yang dibentuk oleh sumbu-x positif terhadap $P_1$.
 
-\begin{figure*}[!h]
+\begin{figure}[H]\centering
 	\centering
 	\includegraphics[width=0.35\textwidth]{balon/asset/hard-intro.pdf}
-\end{figure*}
+\end{figure}
 
 Karena poligon memiliki simetri putar, nilai $\alpha$ yang perlu dipedulikan adalah $0 \le \alpha < \omega$. 
 
-Versi ini juga lebih mudah apabila kita bekerja dengan sistem koordinat kutub. Artinya, setiap titik $T_i$ memiliki dua informasi:
+Versi ini juga lebih mudah apabila kita bekerja dengan sistem koordinat kutub. Artinya, setiap titik $T_i$ memiliki dua informasi
 
 \begin{enumerate}
   \item Jarak $T_i$ ke titik $O$. Nyatakan nilai ini dengan $T_i^r$.
@@ -85,10 +85,10 @@ Misalkan segmen garis $OQ$ merupakan segmen garis yang tegak lurus dengan $P_1$ 
 &=& \frac{1}{\cos{\frac{\omega}{2}}} ||OT_i|| \cos{\left| \alpha + \frac{\omega}{2} - T_i^\theta \right|}
 \end{eqnarray*}
 
-\begin{figure*}[!h]
+\begin{figure}[H]\centering
 	\centering
 	\includegraphics[width=0.35\textwidth]{balon/asset/hard-calc.pdf}
-\end{figure*}
+\end{figure}
 
 Untuk kasus ketika titik $T_i$ tidak berada di daerah yang diapit oleh $P_1$ dan $P_2$, normalisasi nilai $T_i^\theta$ dengan mengurangkannya dengan $\omega$ sampai berada di daerah yang diapit oleh $P_1$ dan $P_2$. Hasil perhitungan akan tetap benar, dikarenakan adanya simetri putar.
 
@@ -98,19 +98,19 @@ Misalkan $T_i^{min}$ menyatakan nilai $\alpha$ yang menyebabkan ukuran poligon p
 
 Untuk kasus ketika hanya terdapat $T_1$, didapatkan kurva berikut, dengan $r$ menyatakan ukuran poligon:
 
-\begin{figure*}[!h]
+\begin{figure}[H]\centering
 	\centering
 	\includegraphics[width=0.35\textwidth]{balon/asset/hard-chart1.pdf}
-\end{figure*}
+\end{figure}
 
 Terdapat dua daerah yang mana masing-masing merupakan fungsi yang memiliki tepat sebuah nilai puncak, yaitu daerah $\alpha \in [0, T_1^{min}]$ dan $\alpha \in [T_1^{min}, \omega]$.
 
 Untuk kasus ketika terdapat $T_1$ dan $T_2$, kita dapat mencari irisan kedua kurva tersebut:
 
-\begin{figure*}[!h]
+\begin{figure}[H]\centering
 	\centering
 	\includegraphics[width=0.35\textwidth]{balon/asset/hard-chart2.pdf}
-\end{figure*}
+\end{figure}
 
 Kini terdapat tiga daerah yang mana masing-masing merupakan fungsi yang memiliki tepat sebuah nilai puncak, yaitu daerah $\alpha \in [0, T_2^{min}]$, $\alpha \in [T_2^{min}, T_1^{min}]$, $\alpha \in [T_1^{min}, \omega]$.
 

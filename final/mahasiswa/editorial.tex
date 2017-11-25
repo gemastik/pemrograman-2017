@@ -6,7 +6,7 @@
 \newcommand{\problemName}{Organisasi Kemahasiswaan}
 \newcommand{\problemWriter}{Alham Fikri Aji}
 \newcommand{\problemEditorialWriter}{Alham Fikri Aji}
-\newcommand{\problemTags}{math}
+\newcommand{\problemTags}{math, greedy}
 
 \begin{document}
 
@@ -45,6 +45,6 @@ Batasan: $1 \le N \le 100.000$
 
 Cukup mudah disimpulkan bahwa mahasiswa paling sedikit berjumlah $$\max_{1 \le i \le N} M[i]$$ atau sama dengan anggota dari organisasi dengan jumlah anggota terbanyak.
 
-Jika asumsikan Fasilkom memiliki total $T$ mahasiswa, dan setiap mahasiswa boleh mengikuti paling banyak $K$ organisasi, dapat disimpulkan bahwa $(\sum_{i=1}^N M[i]) \le T \times K$ harus terpenuhi. Jika tidak, menurut teorema pigeon-hole principle paling tidak ada 1 mahasiswa yang mengikuti lebih dari $K$ organisasi. Dengan demikian, kita dapat menghitung mahasiswa Fasilkom dengan formula $$T = \left \lceil{\frac{\sum_{i=1}^N M[i]}{K}}\right \rceil$$ dan jawaban akhir berupa $$\max \left ( \max_{1 \le i \le N} M[i],\left \lceil{\frac{\sum_{i=1}^N M[i]}{K}}\right \rceil \right )$$
+Jika asumsikan Fasilkom memiliki total $T$ mahasiswa, dan setiap mahasiswa boleh mengikuti paling banyak $K$ organisasi, dapat disimpulkan bahwa $(\sum_{i=1}^N M[i]) \le T \times K$ harus terpenuhi. Jika tidak, menurut teorema pigeon-hole principle paling tidak ada 1 mahasiswa yang mengikuti lebih dari $K$ organisasi. Dengan demikian, kita dapat menghitung mahasiswa Fasilkom dengan rumus $$T = \left \lceil{\frac{\sum_{i=1}^N M[i]}{K}}\right \rceil$$ dan jawaban akhir berupa $$\max \left ( \max_{1 \le i \le N} M[i],\left \lceil{\frac{\sum_{i=1}^N M[i]}{K}}\right \rceil \right )$$
 
 \end{document}
